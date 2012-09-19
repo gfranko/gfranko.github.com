@@ -1,0 +1,12 @@
+{% if site.github_user %}
+<section>
+	<h1>Github</h1>
+    <a href="https://github.com/gfranko" target="_blank">
+        <img src="{{ root_url }}/images/github-32.png" alt="Github" title="Github" class="social" />
+    </a>
+  {% if site.github_show_profile_link %}
+  <a href="https://github.com/{{site.github_user}}">@{{site.github_user}}</a> on GitHub
+  {% endif %}
+</section>
+<br />
+{% endif %}
