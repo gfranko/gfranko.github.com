@@ -1,0 +1,468 @@
+/*
+ * jQuery.selectBoxIt.css 0.1.0
+ * Author: @gregfranko
+ */
+
+/* div surrounding the Select Box */
+#testSelectBoxItContainer {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    float:left;
+}
+
+/* Select Box */
+#testSelectBoxIt {
+  height: 30px; /* Height of the select box */
+  cursor:pointer;
+  white-space:nowrap;
+  /* Provide a background image here if you want to use an image for the down arrow */
+}
+
+/* Select Box and Select Box Options  */
+#testSelectBoxIt, #testSelectBoxItOptions {
+  width: 240px; /* Width of the select box and select box options*/
+}
+
+/* Select Box Text */
+#testSelectBoxItText {
+  font: 14px Helvetica, Arial;
+  text-indent: 5px;
+  line-height: 30px;
+  overflow:hidden;
+  float:left;
+  white-space:nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Select Box Options List*/
+#testSelectBoxItOptions {
+  font: 14px Helvetica, Arial;
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:absolute;
+  overflow:auto;
+  cursor:pointer;
+  display:none;
+  z-index:99999;
+  outline:none;
+ }
+
+/* Select Box Individual Options */
+#testSelectBoxItOptions li {
+  line-height: 30px; /* Height of Individual Select Box Options */
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  overflow:hidden;
+  white-space:nowrap;
+  list-style: none;
+}
+
+/* Select Box Down Arrow Container (if an image is not used) */
+#testSelectBoxItArrowContainer {
+  width: 30px; /* Positions the down arrow */
+  float:right;
+}
+
+/* Select Box Down Arrow */
+#testSelectBoxItArrow {
+	/* Horizontally centers the down arrow */
+    margin-right:auto;
+    margin-left:auto;
+}
+
+/* Dropdown List Individual Option Icon Positioning */
+#testSelectBoxItOptions li span {
+  float:left;
+}
+
+/* Dropdown list Default Icon Positioning */
+#testSelectBoxItDefaultIcon {
+  float: left;
+}
+
+.images {
+    float: left;
+    margin-right: 5px;
+}
+
+.jquery-image {
+    float: right;
+    margin-top: 5px;
+}
+
+/* div surrounding the Select Box */
+#effectsDropDownSelectBoxItContainer {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    float:left;
+}
+
+/* Select Box */
+#effectsDropDownSelectBoxIt {
+  height: 30px; /* Height of the select box */
+  cursor:pointer;
+  white-space:nowrap;
+  /* Provide a background image here if you want to use an image for the down arrow */
+}
+
+/* Select Box and Select Box Options  */
+#effectsDropDownSelectBoxIt, #effectsDropDownSelectBoxItOptions {
+  width: 240px; /* Width of the select box and select box options*/
+}
+
+/* Select Box Text */
+#effectsDropDownSelectBoxItText {
+  font: 14px Helvetica, Arial;
+  text-indent: 5px;
+  line-height: 30px;
+  overflow:hidden;
+  float:left;
+  white-space:nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Select Box Options List*/
+#effectsDropDownSelectBoxItOptions {
+  font: 14px Helvetica, Arial;
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:absolute;
+  overflow:auto;
+  cursor:pointer;
+  display:none;
+  z-index:99999;
+  outline:none;
+  max-height: 240px;
+ }
+
+/* Select Box Individual Options */
+#effectsDropDownSelectBoxItOptions li {
+  line-height: 30px; /* Height of Individual Select Box Options */
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  overflow:hidden;
+  white-space:nowrap;
+  list-style: none;
+}
+
+/* Select Box Down Arrow Container (if an image is not used) */
+#effectsDropDownSelectBoxItArrowContainer {
+  width: 30px; /* Positions the down arrow */
+  float:right;
+}
+
+/* Select Box Down Arrow */
+#effectsDropDownSelectBoxItArrow {
+	/* Horizontally centers the down arrow */
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#effectsButton {
+    margin-left: 20px;
+    padding: 5px;
+}
+
+#effectsButton:hover {
+    cursor: pointer;
+}
+
+/* div surrounding the Select Box */
+#iconsSelectBoxItContainer {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    float:left;
+}
+
+/* Select Box */
+#iconsSelectBoxIt {
+  height: 30px; /* Height of the select box */
+  cursor:pointer;
+  white-space:nowrap;
+  /* Provide a background image here if you want to use an image for the down arrow */
+}
+
+/* Select Box and Select Box Options  */
+#iconsSelectBoxIt, #iconsSelectBoxItOptions {
+  width: 270px; /* Width of the select box and select box options*/
+}
+
+/* Select Box Text */
+#iconsSelectBoxItText {
+  font: 14px Helvetica, Arial;
+  text-indent: 5px;
+  line-height: 30px;
+  overflow:hidden;
+  float:left;
+  white-space:nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Select Box Options List*/
+#iconsSelectBoxItOptions {
+  font: 14px Helvetica, Arial;
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:absolute;
+  overflow:auto;
+  cursor:pointer;
+  display:none;
+  z-index:99999;
+  outline:none;
+ }
+
+/* Select Box Individual Options */
+#iconsSelectBoxItOptions li {
+  line-height: 30px; /* Height of Individual Select Box Options */
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  overflow:hidden;
+  white-space:nowrap;
+  list-style: none;
+}
+
+/* Select Box Down Arrow Container (if an image is not used) */
+#iconsSelectBoxItArrowContainer {
+  width: 30px; /* Positions the down arrow */
+  float:right;
+}
+
+/* Select Box Down Arrow */
+#iconsSelectBoxItArrow {
+	/* Horizontally centers the down arrow */
+    margin-right:auto;
+    margin-left:auto;
+}
+
+/* Dropdown List Individual Option Icon Positioning */
+#iconsSelectBoxItOptions li span {
+  float:left;
+}
+
+/* Dropdown list Default Icon Positioning */
+#iconsSelectBoxItDefaultIcon {
+  float: left;
+}
+
+
+
+/* div surrounding the Select Box */
+#upArrowSelectBoxItContainer {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    float:left;
+}
+
+/* Select Box */
+#upArrowSelectBoxIt {
+  height: 30px; /* Height of the select box */
+  cursor:pointer;
+  white-space:nowrap;
+  /* Provide a background image here if you want to use an image for the down arrow */
+}
+
+/* Select Box and Select Box Options  */
+#upArrowSelectBoxIt, #upArrowSelectBoxItOptions {
+  width: 270px; /* Width of the select box and select box options*/
+}
+
+/* Select Box Text */
+#upArrowSelectBoxItText {
+  font: 14px Helvetica, Arial;
+  text-indent: 5px;
+  line-height: 30px;
+  overflow:hidden;
+  float:left;
+  white-space:nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Select Box Options List*/
+#upArrowSelectBoxItOptions {
+  font: 14px Helvetica, Arial;
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:absolute;
+  overflow:auto;
+  cursor:pointer;
+  display:none;
+  z-index:99999;
+  outline:none;
+ }
+
+/* Select Box Individual Options */
+#upArrowSelectBoxItOptions li {
+  line-height: 30px; /* Height of Individual Select Box Options */
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  overflow:hidden;
+  white-space:nowrap;
+  list-style: none;
+}
+
+/* Select Box Down Arrow Container (if an image is not used) */
+#upArrowSelectBoxItArrowContainer {
+  width: 30px; /* Positions the down arrow */
+  float:right;
+}
+
+/* Select Box Down Arrow */
+#upArrowSelectBoxItArrow {
+	/* Horizontally centers the down arrow */
+    margin-right:auto;
+    margin-left:auto;
+}
+
+/* Dropdown List Individual Option Icon Positioning */
+#upArrowSelectBoxItOptions li span {
+  float:left;
+}
+
+/* Dropdown list Default Icon Positioning */
+#upArrowSelectBoxItDefaultIcon {
+  float: left;
+}
+
+
+
+
+
+
+
+
+
+/* div surrounding the Select Box */
+#optgroupsSelectBoxItContainer {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    float:left;
+}
+
+/* Select Box */
+#optgroupsSelectBoxIt {
+  height: 30px; /* Height of the select box */
+  cursor:pointer;
+  white-space:nowrap;
+  /* Provide a background image here if you want to use an image for the down arrow */
+}
+
+/* Select Box and Select Box Options  */
+#optgroupsSelectBoxIt, #optgroupsSelectBoxItOptions {
+  width: 270px; /* Width of the select box and select box options*/
+}
+
+/* Select Box Text */
+#optgroupsSelectBoxItText {
+  font: 14px Helvetica, Arial;
+  text-indent: 5px;
+  line-height: 30px;
+  overflow:hidden;
+  float:left;
+  white-space:nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* Select Box Options List*/
+#optgroupsSelectBoxItOptions {
+  font: 14px Helvetica, Arial;
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:absolute;
+  overflow:auto;
+  cursor:pointer;
+  display:none;
+  z-index:99999;
+  outline:none;
+ }
+
+/* Select Box Individual Options */
+#optgroupsSelectBoxItOptions li {
+  line-height: 30px; /* Height of Individual Select Box Options */
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  overflow:hidden;
+  white-space:nowrap;
+  list-style: none;
+}
+
+/* Dropdown List Individual Options */
+#optgroupsSelectBoxItOptions li, #optgroupsSelectBoxItOptions .optgroupHeader {
+  line-height: 30px; /* Height of Individual Select Box Options */
+  text-indent: 5px; /* Horizontal Positioning of the select box option text */
+  overflow:hidden;
+  white-space:nowrap;
+  list-style:none;
+}
+
+/* Dropdown List Optgroup Headers */
+#optgroupsSelectBoxItOptions .optgroupHeader {
+  font-weight: bold;
+}
+
+/* Dropdown List Optgroup Options */
+#optgroupsSelectBoxItOptions .optgroupOption {
+  text-indent: 20px;
+}
+
+/* Dropdown List Optgroup Header hover psuedo class */
+#optgroupsSelectBoxItOptions .optgroupHeader[data-disabled='true']:hover {
+  cursor: default;
+} 
+
+/* Select Box Down Arrow Container (if an image is not used) */
+#optgroupsSelectBoxItArrowContainer {
+  width: 30px; /* Positions the down arrow */
+  float:right;
+}
+
+/* Select Box Down Arrow */
+#optgroupsSelectBoxItArrow {
+	/* Horizontally centers the down arrow */
+    margin-right:auto;
+    margin-left:auto;
+}
+
+/* Dropdown List Individual Option Icon Positioning */
+#optgroupsSelectBoxItOptions li span {
+  float:left;
+}
+
+/* Dropdown list Default Icon Positioning */
+#optgroupsSelectBoxItDefaultIcon {
+  float: left;
+}

@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Creating Custom Project Builds with DownloadBuilder.js - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="DownloadBuilder.js helps you create custom project builds for your open source projects">
+  <meta name="keywords" content="Greg Franko, DownloadBuilder.js, Custom Project Builds">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Creating Custom Project Builds With DownloadBuilder.js</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T14:52:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="left" src="http://gregfranko.com/DownloadBuilder.js/img/html5.png" width="205"></p>
+
+<br /><br /><br /><br /><br /><br />
+
+
+<h3>Please, Just Give Me What I Want</h3>
+
+<p>Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important for users.  Since it is nearly impossible to create a project that is a perfect fit for all users, many OS projects provide a custom build option.  This allows users to specify which parts of a project he/she wants and then download only those parts (thus minimizing file size).</p>
+
+<p><em>Examples of popular OS projects that are providing custom build options now include jQuery (recent addition in version 1.8), jQueryUI, Modernizr, Twitter Bootstrap, Can.js, etc.</em></p>
+
+<p>After reviewing the custom build processes of the above OS projects, it seemed that each project had developed its own custom back-end build process from scratch.  This architecture seemed to work well for projects with many contributors/organizational backing, but I wanted an easy solution that I could use for my own OS projects where I was the only main contributor.  Since I could not find any existing OS projects that fit the bill, I created <strong>DownloadBuilder.js</strong>.</p>
+
+<h3>DownloadBuilder.js</h3>
+
+<h4>Description</h4>
+
+<p><a href="http://gregfranko.com/DownloadBuilder.js/">DownloadBuilder.js</a> is a JavaScript library that uses the HTML5 Filesystem API to create concatenated single file custom builds for front-end projects.  Since the project uses the HTML5 Filesystem API, all of its features only currently work in Chrome 21+, although it can still be used in all other modern browsers(Firefox, IE8+) to create a generated concatenated project file.</p>
+
+<!-- more -->
+
+
+<h4>Getting Started</h4>
+
+<p><strong>Note:</strong> DownloadBuilder.js expects your project to be decoupled and split into separate files (modular approach).</p>
+
+<p>Download the <a href="https://github.com/gfranko/DownloadBuilder.js/zipball/master">entire project</a> from Github and look at the examples in the <em>demos</em> folder.</p>
+
+<h4>Include DownloadBuilder.js</h4>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>    // DownloadBuilder.js
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;DownloadBuilder.js&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>HTML</h5>
+
+<p>Create one checkbox for each file in your project that you want to allow users to download. Each checkbox value should be the full file path.</p>
+
+<p><strong>Note:</strong> You can use Github or local relative file paths. This example uses Github to download your project files.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>    // A checkbox with the correct Github filepath of testfile.js
+</span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;checkbox&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">checked=</span><span class="s">&quot;checked&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value=</span><span class="s">&quot;src/javascripts/testfile.js&quot;</span><span class="nt">&gt;</span>Test File<span class="nt">&lt;/label&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>JavaScript</h5>
+
+<p>Using a library (eg. jQuery) or regular JavaScript, create a new DownloadBuilder object instance with custom options when the DOM is ready.</p>
+
+<p><strong>Note:</strong> You do not need to use a library, such as jQuery. I am using it here for convenience. Also, all options are optional and more documentation about all of the options can be found in the documentation.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="c1">//Executes your code when the DOM is ready.  Acts the same as $(document).ready().</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// All options passed to the DownloadBuilder object constructor are optional</span>
+</span><span class='line'>        <span class="c1">// This example is a sample Github setup</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DownloadBuilder</span><span class="p">({</span> <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;gfranko&quot;</span><span class="p">,</span> <span class="s2">&quot;repo&quot;</span><span class="o">:</span> <span class="s2">&quot;jquery.selectboxit.js&quot;</span><span class="p">,</span> <span class="s2">&quot;branch&quot;</span><span class="o">:</span> <span class="s2">&quot;dev&quot;</span> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next, create an event handler for when you want to create your custom built file, call the <code>buildURL()</code> method to construct a file url (if supported), and then create custom logic once your custom built file has been created (the file is passed into the buildURL callback function).</p>
+
+<p><strong>Note:</strong> More documentation about the buildURL method and other methods can be found in the documentation.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="c1">// Whenever an element with an id of javascript-generate is clicked, the buildURL() method is called</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#javascript-generate&quot;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Pass in all of the checkboxes that should be used to download files, the desired name of the file to be created,</span>
+</span><span class='line'>        <span class="c1">// the type of file to be created, and a callback function</span>
+</span><span class='line'>        <span class="nx">builder</span><span class="p">.</span><span class="nx">buildURL</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#javascript-downloads input[type=&#39;checkbox&#39;]:checked&quot;</span><span class="p">),</span> <span class="s2">&quot;example.js&quot;</span><span class="p">,</span> <span class="s2">&quot;javascript&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// An object is passed to the callback function which contains a file url</span>
+</span><span class='line'>            <span class="c1">// (if the current browser supports the HTML5 Filesystem API), file content (the text of the file),</span>
+</span><span class='line'>            <span class="c1">// the name of the file that was created, and the type of file that was created.</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Put any custom logic here</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Below is the full <strong>DownloadBuilder.js</strong> example:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="c1">//Executes your code when the DOM is ready.  Acts the same as $(document).ready().</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// All options passed to the DownloadBuilder object constructor are optional</span>
+</span><span class='line'>        <span class="c1">// This example is a sample Github setup</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DownloadBuilder</span><span class="p">({</span> <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;gfranko&quot;</span><span class="p">,</span> <span class="s2">&quot;repo&quot;</span><span class="o">:</span> <span class="s2">&quot;jquery.selectboxit.js&quot;</span><span class="p">,</span> <span class="s2">&quot;branch&quot;</span><span class="o">:</span> <span class="s2">&quot;dev&quot;</span> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Whenever an element with an id of javascript-generate is clicked, the buildURL() method is called</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#javascript-generate&quot;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Pass in all of the checkboxes that should be used to download files, the desired name of the file to be created,</span>
+</span><span class='line'>            <span class="c1">// the type of file to be created, and a callback function</span>
+</span><span class='line'>            <span class="nx">builder</span><span class="p">.</span><span class="nx">buildURL</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#javascript-downloads input[type=&#39;checkbox&#39;]:checked&quot;</span><span class="p">),</span> <span class="s2">&quot;example.js&quot;</span><span class="p">,</span> <span class="s2">&quot;javascript&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="c1">// An object is passed to the callback function which contains a file url</span>
+</span><span class='line'>                <span class="c1">// (if the current browser supports the HTML5 Filesystem API), file content (the text of the file),</span>
+</span><span class='line'>                <span class="c1">// the name of the file that was created, and the type of file that was created.</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="c1">// Put any custom logic here</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Summary</h3>
+
+<p><a href="https://github.com/gfranko/DownloadBuilder.js">DownloadBuilder.js</a> is a great fit for small OS projects that are only worried about creating a single file custom build.  If there is a feature that you would like to see added to DownloadBuilder.js, feel free to create an issue or fork the project the project on Github.  Happy custom building!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T14:52:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/backbone-dot-js-convincing-the-boss-guide/" title="Previous Post: Backbone.js: Convincing the Boss Guide">&laquo; Backbone.js: Convincing the Boss Guide</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/documenting-your-open-source-projects/" title="Next Post: Documenting Your Open Source Projects">Documenting Your Open Source Projects &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/';
+        var disqus_url = 'http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

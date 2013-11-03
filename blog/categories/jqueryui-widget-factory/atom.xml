@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jQueryUI Widget Factory | Greg Franko]]></title>
+  <link href="http://gfranko.github.com/blog/categories/jqueryui-widget-factory/atom.xml" rel="self"/>
+  <link href="http://gfranko.github.com/"/>
+  <updated>2013-11-02T21:49:36-04:00</updated>
+  <id>http://gfranko.github.com/</id>
+  <author>
+    <name><![CDATA[Greg Franko]]></name>
+    <email><![CDATA[gfranko5@yahoo.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Registering the jQueryUI Widget Factory as an AMD Module]]></title>
+    <link href="http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
+    <updated>2013-02-10T09:39:00-05:00</updated>
+    <id>http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
+    <content type="html"><![CDATA[<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="left" src="/images/jqueryui.png" width="200"></a></p>
+
+<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
+
+<!-- more -->
+
+
+
+
+<br><br>
+
+
+<p>Unfortunately, AMD script loaders, such as <a href="http://requirejs.org/">Require.js</a>, are not drop-in solutions.  To use an AMD module system, you must make sure every other JavaScript library used in your application is <em>AMD Compatible</em>.</p>
+
+<h3>AMD Compatible</h3>
+
+<p>For a JavaScript file to be <em>AMD Compatible</em>, the JavaScript content must be wrapped in a <code>define()</code> method and all module (file) dependencies must be listed.</p>
+
+<p>A possible solution is to change the source of each JavaScript file you are using and make sure the content is wrapped inside of a <code>define()</code> method.  This is both time-intensive and error-prone, since you will even have to change the source of third-party libraries that your application is using, such as jQuery.</p>
+
+<p>At this point you may be scratching your head and asking yourself a few questions...</p>
+
+<!-- more -->
+
+
+<h3>Common Questions</h3>
+
+<p><strong>Why don't third-party libraries automatically wrap their code in a define method?</strong></p>
+
+<p>Third-party libraries, such as jQuery, are often used in many different development environments, and the jQuery team cannot assume that jQuery is being used in an AMD environment.  If jQuery was not being used in an AMD environment, then a syntax error would be thrown complaining that <code>the define method is undefined</code>.</p>
+
+<p>Luckily for us, jQuery and many other popular libraries have found a way to support the AMD API (with the help of the always awesome <a href="https://github.com/jrburke">James Burke</a>)!  When jQuery is executed, it checks to see if an AMD script loader is being used, and then conditionally wraps itself in a <code>define()</code> method and declares itself as a <strong>named AMD module</strong>.</p>
+
+<p><strong>Is there a better way to load a non-AMD Compatible third-party script with Require.js then upgrading the source of a file?</strong>
+Yes, with the Require.js v2.0 release, the <code>shim</code> configuration option was added to <em>shim</em> third-party libraries that were not AMD compatible and exported a global object.  You can read more about the <code>shim</code> configuration <a href="http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration/">here</a>.</p>
+
+<p><strong>Does the shim configuration solve all of the AMD Compatibility problems?</strong>
+No!  Although the <code>shim</code> configuration works for the most common uses cases, it is still not the ideal approach.  Shimmed third-party scripts cannot be loaded from a CDN after a build, since shimmed files are inlined by the builder and may be executed by Require.js before a CDN asset dependency.  The best approach is making sure a file is wrapped in a <code>define()</code> method (this works with CDN assets).</p>
+
+<h3>jQuery AMD Support</h3>
+
+<p>The first FAQ above mentioned that jQuery supports the AMD API by conditionally wrapping itself in a <code>define()</code> method and declaring itself as <strong>named AMD module</strong>.  Let's take a look at the jQuery source to see how they are doing it:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nx">define</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">.</span><span class="nx">jQuery</span> <span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">define</span><span class="p">(</span> <span class="s2">&quot;jquery&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">jQuery</span><span class="p">;</span> <span class="p">}</span> <span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The jQuery code is checking to make sure that a global <code>define()</code> method is on the page, that there is an <code>amd</code> property (object) set on the <code>define</code> method (Remember this is JavaScript and functions act as first-class objects and can have properties), and that the <code>amd</code> object contains a <code>jQuery</code> property that is set to true.  jQuery is essentially checking that an AMD script loader is on the page and that the AMD loader handles the special case when more than one jQuery version is included on the page (this is unfortunately very common).</p>
+
+<p>If an AMD loader satisfies all of the jQuery AMD checks, then jQuery will wrap itself in the global <code>define()</code> method, register itself as a named module ("jquery"), and return itself (the jQuery object) within the <code>define()</code> method callback function.</p>
+
+<p><strong>Note:</strong>  Registering <strong>named</strong> AMD modules is usually not recommended, since it hard codes a module id and does not allow you to change the module name, making it inflexible.  The reason most popular third-party libraries register as <strong>named</strong> AMD modules is because many other libraries depend on them, and desire a common name that they can list as a dependency.</p>
+
+<h3>Using jQuery with Require.js</h3>
+
+<p>Now that we know jQuery is AMD compatible, we can easily use jQuery with a Require.js configuration like this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Sample Configuration File</span>
+</span><span class='line'><span class="c1">// -------------------------</span>
+</span><span class='line'><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Sets the js folder as the base directory for all future relative paths</span>
+</span><span class='line'>  <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;./js&quot;</span><span class="p">,</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// 3rd party script alias names (Easier to type &quot;jquery&quot; than &quot;libs/jquery, etc&quot;)</span>
+</span><span class='line'>  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>  <span class="c1">// Core Libraries</span>
+</span><span class='line'>  <span class="c1">// --------------</span>
+</span><span class='line'>  <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery&quot;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Includes Desktop Specific JavaScript files here (or inside of your Desktop router)</span>
+</span><span class='line'><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;jquery&quot;</span><span class="p">],</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey look, I&#39;m using jQuery with Require.js!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Using jQuery Plugins with Require.js</h3>
+
+<p>Although jQuery supports the AMD API, that does not mean that jQuery plugins are also AMD compatible.  Here is how we could load a jQuery plugin that does not support the AMD API:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Sample Configuration File</span>
+</span><span class='line'><span class="c1">// -------------------------</span>
+</span><span class='line'><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Sets the js folder as the base directory for all future relative paths</span>
+</span><span class='line'>  <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;./js&quot;</span><span class="p">,</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// 3rd party script alias names (Easier to type &quot;jquery&quot; than &quot;libs/jquery, etc&quot;)</span>
+</span><span class='line'>  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>  <span class="c1">// Core Libraries</span>
+</span><span class='line'>  <span class="c1">// --------------</span>
+</span><span class='line'>  <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery&quot;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/plugins/example&quot;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">},</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;jquery&quot;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Includes Desktop Specific JavaScript files here (or inside of your Desktop router)</span>
+</span><span class='line'><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;jquery&quot;</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">],</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey look, I&#39;m using a jQuery plugin that does not support the AMD API with Require.js!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The above code example uses the <code>shim</code> configuration to tell Require.js that the plugin depends on jQuery.  Internally, Require.js waits until jQuery is loaded before it loads the jQuery plugin.</p>
+
+<p>Luckily for plugin authors, a jQuery plugin can internally support the AMD API:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Example plugin</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">factory</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">define</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// AMD. Register as an anonymous module.</span>
+</span><span class='line'>    <span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">],</span> <span class="nx">factory</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Browser globals</span>
+</span><span class='line'>    <span class="nx">factory</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">jqueryPlugin</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{};</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This jQuery plugin example checks to make sure an AMD loader is on the page and then registers itself as an <strong>anonymous</strong> AMD module (while also passing the "jquery" module as a dependency).  Since jQuery registers itself as a named AMD module, the plugin is able to pass that exact name as a dependency.</p>
+
+<p><strong>Note:</strong> You can find other AMD patterns <a href="https://github.com/umdjs/umd">here</a>;</p>
+
+<p>Here is how you would load the AMD Compatible jQuery plugin with Require.js:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Sample Configuration File</span>
+</span><span class='line'><span class="c1">// -------------------------</span>
+</span><span class='line'><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Sets the js folder as the base directory for all future relative paths</span>
+</span><span class='line'>  <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;./js&quot;</span><span class="p">,</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// 3rd party script alias names (Easier to type &quot;jquery&quot; than &quot;libs/jquery, etc&quot;)</span>
+</span><span class='line'>  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>  <span class="c1">// Core Libraries</span>
+</span><span class='line'>  <span class="c1">// --------------</span>
+</span><span class='line'>  <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery&quot;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/plugins/example&quot;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Includes Desktop Specific JavaScript files here (or inside of your Desktop router)</span>
+</span><span class='line'><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;jquery&quot;</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">],</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey look, I&#39;m using a jQuery plugin with Require.js!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>jQueryUI Widget Factory Plugins</h3>
+
+<p>The above code example is a great solution for jQuery plugins to register themselves as anonymous AMD modules, but let's next look at jQuery plugins that depend on both jQuery and the <strong>jQueryUI Widget Factory</strong>.</p>
+
+<p>In case you are not familiar, the jQueryUI Widget Factory <em>provides a flexible base for building complex, stateful plugins with a consistent API.</em> - per the jQueryUI website.</p>
+
+<p>The Widget Factory is designed not only for plugins that are part of jQuery UI, but for general consumption by developers who want to create object-oriented components without reinventing common infrastructure.</p>
+
+<p>Since more and more jQuery plugin authors, including myself, are using the jQueryUI Widget Factory, it is necessary to understand how to use these jQuery plugins with AMD loaders such as Require.js.</p>
+
+<p>Since the jQueryUI Widget Factory does not support the AMD API, here is how you currently have to load jQuery plugins that depend on the jQueryUI Widget Factory:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Sample Configuration File</span>
+</span><span class='line'><span class="c1">// -------------------------</span>
+</span><span class='line'><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Sets the js folder as the base directory for all future relative paths</span>
+</span><span class='line'>  <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;./js&quot;</span><span class="p">,</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// 3rd party script alias names (Easier to type &quot;jquery&quot; than &quot;libs/jquery, etc&quot;)</span>
+</span><span class='line'>  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>  <span class="c1">// Core Libraries</span>
+</span><span class='line'>  <span class="c1">// --------------</span>
+</span><span class='line'>  <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery&quot;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="s2">&quot;jquery.ui.widget&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery.ui.widget&quot;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="s2">&quot;jquery.selectBoxIt&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/plugins/jquery.selectBoxIt&quot;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">},</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="s2">&quot;jquery.ui.widget&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;jquery&quot;</span><span class="p">],</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&quot;jquery.selectBoxIt&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;jquery.ui.widget&quot;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Includes Desktop Specific JavaScript files here (or inside of your Desktop router)</span>
+</span><span class='line'><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;jquery&quot;</span><span class="p">,</span> <span class="s2">&quot;jquery.ui.widget&quot;</span><span class="p">,</span> <span class="s2">&quot;jquery.selectBoxIt&quot;</span><span class="p">],</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey look, I&#39;m using a jQueryUI Widget Factory plugin with Require.js!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The above code uses the <code>shim</code> configuration to shim both the jQueryUI Widget Factory and <a href="https://github.com/gfranko/jquery.selectBoxIt.js">SelectBoxIt</a>, a jQuery plugin based on the jQueryUI Widget Factory.  This works, but requires additional configuration setup and the <code>shim</code> configuration, which prevents the loading of CDN assets after building using the Require.js optimizer.</p>
+
+<p>After experiencing this first hand, I tweeted my desire that the jQueryUI Widget Factory should declare itself as a <strong>named</strong> AMD module, so that plugins (like SelectBoxIt) could list the Widget factory as a dependency and support the AMD API.</p>
+
+<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/jrburke">jrburke</a> You should convince the jQueryUI devs to declare the Widget Factory as a named module, like jQuery.Lot's of plugins depend on it.</p>&mdash; Greg Franko (@GregFranko) <a href="https://twitter.com/GregFranko/status/299184644887306240">February 6, 2013</a></blockquote>
+
+
+<p>Dave Methvin, the President of the jQuery Foundation, and Scott Gonzalez, the jQueryUI Project lead, (both all around good guys), responded by asking me if James Burke's <a href="https://github.com/jrburke/jqueryui-amd">jqueryui-amd</a> project would suit my needs.</p>
+
+<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/gregfranko">gregfranko</a> Yes, @<a href="https://twitter.com/scott_gonzalez">scott_gonzalez</a> says you're taking me on a mandate? Let's gobowling. Does <a href="https://t.co/oE5mSOTg" title="https://github.com/jrburke/jqueryui-amd">github.com/jrburke/jquery…</a> work for you? @<a href="https://twitter.com/jrburke">jrburke</a></p>&mdash; Dave Methvin (@davemethvin) <a href="https://twitter.com/davemethvin/status/299595913150726145">February 7, 2013</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/scott_gonzalez">scott_gonzalez</a> @<a href="https://twitter.com/davemethvin">davemethvin</a> @<a href="https://twitter.com/jrburke">jrburke</a> I'll write a blog post and let you know when it is done.</p>&mdash; Greg Franko (@GregFranko) <a href="https://twitter.com/GregFranko/status/299613588459495424">February 7, 2013</a></blockquote>
+
+
+<p>If you are not familiar with James Burke's <a href="https://github.com/jrburke/jqueryui-amd">jqueryui-amd</a> project, it is a Node.js command line project that will automatically wrap jQueryUI modules within <code>define()</code> methods and pass jQuery as a dependency, thus making jQueryUI <em>AMD Compatible</em>:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">jQuery</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// jQueryUI code goes here</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This is a great solution if you are only using jQueryUI plugins (i.e. Calendar widget, etc), but not such a great solution for third-party plugin authors, like myself, who are using the jQueryUI Widget Factory as the base for our plugin structures.</p>
+
+<p>Here is how you would load a jQueryUI Widget Factory plugin with Require.js, when using the <strong>jqueryui-amd</strong> project:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Sample Configuration File</span>
+</span><span class='line'><span class="c1">// -------------------------</span>
+</span><span class='line'><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// Sets the js folder as the base directory for all future relative paths</span>
+</span><span class='line'>  <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;./js&quot;</span><span class="p">,</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// 3rd party script alias names (Easier to type &quot;jquery&quot; than &quot;libs/jquery, etc&quot;)</span>
+</span><span class='line'>  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>  <span class="c1">// Core Libraries</span>
+</span><span class='line'>  <span class="c1">// --------------</span>
+</span><span class='line'>  <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery&quot;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="s2">&quot;jquery.ui.widget&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/jquery.ui.widget&quot;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="s2">&quot;jquery.selectBoxIt&quot;</span><span class="o">:</span> <span class="s2">&quot;libs/plugins/jquery.selectBoxIt&quot;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">},</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="nx">shim</span><span class="o">:</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// Shimming SelectBoxIt by telling Require.js that the plugin depends on the jQueryUI Widget Factory</span>
+</span><span class='line'><span class="s2">&quot;jquery.selectBoxIt&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;jquery.ui.widget&quot;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Includes Desktop Specific JavaScript files here (or inside of your Desktop router)</span>
+</span><span class='line'><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;jquery&quot;</span><span class="p">,</span> <span class="s2">&quot;jquery.ui.widget&quot;</span><span class="p">,</span> <span class="s2">&quot;jquery.selectBoxIt&quot;</span><span class="p">],</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hey look I&#39;m using a jQueryUI Widget Factory plugin with Require.js!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>In the above code example, you'll notice that jQueryUI Widget Factory no longer needs to use the shim configuration, since the <strong>jqueryui-amd</strong> project has wrapped it within a <code>define()</code> method.  Unfortunately, the SelectBoxIt plugin still needs to be shimmed, since it is not AMD compatible.</p>
+
+<p>By now you may be thinking, couldn't you just support the AMD API within SelectBoxIt by doing this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">;(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">selectBoxIt</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">define</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// AMD. Register as an anonymous module.</span>
+</span><span class='line'>    <span class="nx">define</span><span class="p">([</span><span class="s2">&quot;jquery&quot;</span><span class="p">,</span> <span class="s2">&quot;jquery.ui.widget&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">selectBoxIt</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Browser globals</span>
+</span><span class='line'>    <span class="nx">selectBoxIt</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// SelectBoxIt code goes here</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}));</span> <span class="c1">// End of all modules</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Technically yes, I could conditionally support the AMD API by using the above code.  The problem is that it would be a very confusing process for plugin users, since I would have to point them to the <strong>jqueryui-amd</strong> project, which is not trivial to set up.  Or I could maintain an up-to-date AMD Compatible version of the jQueryUI Widget Factory. Not an ideal process.</p>
+
+<p>It would be much easier to tell users to create a Require.js path called, "jquery.ui.widget", and be done with it!</p>
+
+<h2>Upgrading the jQueryUI Widget Factory</h2>
+
+<p>Following the lead of jQuery, I believe the jQueryUI Widget Factory should support the AMD API by registering as a named AMD module that Widget Factory plugins can declare as a dependency:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">;(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">widgetFactory</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">define</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">define</span><span class="p">.</span><span class="nx">amd</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// AMD. Register as an anonymous module.</span>
+</span><span class='line'>    <span class="nx">define</span><span class="p">(</span> <span class="s2">&quot;jquery.ui.widget&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;jquery&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">widgetFactory</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Browser globals</span>
+</span><span class='line'>    <span class="nx">widgetFactory</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">$</span><span class="p">,</span> <span class="kc">undefined</span> <span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// jQuery Widget Factory code goes here</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I have listed "jquery.ui.widget" to be the default name of the Widget Factory, but that is only my personal opinion and may be subject to change.  If this change is put into the jQueryUI Widget Factory, then the thousands of plugins that are based on it (probably more), could easily support the AMD API.  This means that no Require.js configurations/extra steps would be necessary for you to use a jQuery plugin based on the Widget Factory.</p>
+
+<p><strong>Note:</strong> Check out this <a href="https://gist.github.com/gfranko/4750778">gist</a> to see the full source of the AMD Compatible jQueryUI Widget Factory that I am proposing.</p>
+
+<h2>Final Thoughts</h2>
+
+<p>It only takes a couple lines of code to support the AMD API, so I feel that the jQueryUI Widget Factory should follow in the footsteps of its parent's favorite child, jQuery, and just do it (I am not sponsored by Nike).  I'd love to hear your thoughts!  Happy AMD'ing!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating a jQuery Plugin using jqBoilerplate]]></title>
+    <link href="http://gfranko.github.com/blog/creating-a-jquery-plugin-using-jqboilerplate/"/>
+    <updated>2012-04-22T20:04:00-04:00</updated>
+    <id>http://gfranko.github.com/blog/creating-a-jquery-plugin-using-jqboilerplate</id>
+    <content type="html"><![CDATA[<h2>What is a jQuery Plugin?</h2>
+
+<p>A typical jQuery plugin is a method that is added to the jQuery prototype object, <code>fn</code>, that interacts with one or more DOM elements wrapped in a jQuery object.  Something like this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">//Adding the tooltip method to the jQuery prototype</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">options</span> <span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//Plugin logic</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Then the jQuery plugin can be used like this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">//Calls the jQuery tooltip plugin on a DOM element</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input#firstName&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<!-- more -->
+
+
+<h2>Creating Advanced jQuery Plugins</h2>
+
+<p>Creating simple jQuery plugins like the above example is easy.  Creating more advanced/stateful jQuery plugins is not easy.  This is why projects such as the <strong>jQueryUI widget factory</strong> were created to provide structure for advanced/stateful jQuery plugins.</p>
+
+<h2>jQueryUI Widget Factory</h2>
+
+<p>Although the <strong>jQueryUI widget factory</strong> is a great project that helps maintain best practices, code organization, and consistency among jQuery plugins, not every developer wants to use it.  The most common reason for developers not using the widget factory, is that it places another level of abstraction on top of creating a jQuery plugin.  This means another dependency/project that you need to keep upgraded, and another API that you need to learn.</p>
+
+<h2>jqBoilerplate</h2>
+
+<p>Enter <a href="http://www.jqBoilerplate.com">jqBoilerplate</a>.  <strong>jqBoilerplate</strong> is a project I created that provides boilerplate jQuery/JavaScript code that will help you start writing stateful jQuery plugins/widgets more efficiently, without having to learn a new API.  All of the code provided is just vanilla jQuery, so if you know jQuery, you can start working right away.</p>
+
+<p>The boilerplate code heavily uses the <strong>Revealing Module Pattern</strong>, which is a Classical JavaScript design pattern to allow private and public properties/methods.  This makes it trivial to provide your plugin users with a public API, while keeping the private parts of your plugin well... private.</p>
+
+<h2>The Revealing Module Pattern Example</h2>
+
+<p>Here is a plain JavaScript example of the Revealing Module Pattern:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">//Person Constructor</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">occupation</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">//Instance variables stored in the self object</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">firstName</span><span class="o">:</span> <span class="nx">firstName</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">lastName</span><span class="o">:</span> <span class="nx">lastName</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">occupation</span><span class="o">:</span> <span class="nx">occupation</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Public method</span>
+</span><span class='line'><span class="nx">getFullName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Private method</span>
+</span><span class='line'><span class="nx">_getOccupation</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">occupation</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Public API</span>
+</span><span class='line'><span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">getFullName</span><span class="o">:</span> <span class="nx">getFullName</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The above example allows you to view greg's first and last name (Click on the JavaScript tab to view the code).  If you wanted to view greg's occupation, you would not be able to, because greg's occupation is private (not returned by the function).</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/kSAZ5/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<h2>Other benefits of jqBoilerplate</h2>
+
+<p>jqBoilerplate not only organizes your jQuery plugin code with the Revealing Module Pattern, but it provides other plugin goodies as well.  Other goodies include a free jQuery pseudo selector, methods to interact with getting and setting plugin options, prevention of multiple instances of your jQuery plugin being called on the same element, callback function and chaining support, and more.</p>
+
+<h2>How to Use jqBoilerplate</h2>
+
+<p>Although a lot of the plugin code has already been written for you, certain methods have been left mostly blank so that you can put your custom jQuery logic in them.  These methods include:</p>
+
+<p><code>_events()</code> - This method will handle setting all of your plugin event handlers</p>
+
+<p><code>disable()</code> - This method will disable the DOM element being called by your plugin</p>
+
+<p><code>enable()</code> - This method will enable the DOM element being called by your plugin</p>
+
+<p><code>destroy()</code> - This method will bring the page back to it's initial state (before the plugin was called)</p>
+
+<p><code>create()</code> - This method will create your jQuery plugin.  This is where the magic happens.</p>
+
+<p>Although all of these methods are provided, you are free to remove them if you feel they are not necessary for your plugin.</p>
+
+<p>After you write your custom logic in the above methods, the only thing left to do is update the <code>pluginName</code> variable to match your specific jQuery plugin name, and also update the <code>pluginVersion</code> variable to the match the actual release version of your jQuery plugin.  And thats it!  Happy jQuery Plugin coding!</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<p>Questions will be added here from the <a href="https://github.com/gfranko/jq-boilerplate/issues" target="_blank">Github Issues Page</a> and from the comments below.  Also, more demos/documentation will be provided on request.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Backbone.js: Convincing the Boss Guide - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="Creating Backbone.js Custom Builds to help convince the boss to use Backbone.js">
+  <meta name="keywords" content="Greg Franko, Backbone.js, Backbone.js Custom Builds, Backbone.js Convincing the Boss Guide">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Backbone.js: Convincing the Boss Guide</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T10:00:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="left" src="http://backbonejs.org/docs/images/backbone.png" width="405"></p>
+
+<br /><br /><br /><br /><br />
+
+
+<h3>Year of the JavaScript MV* Frameworks</h3>
+
+<p>I am officially pronouncing <strong>2012 as the year of the JavaScript MV* frameworks</strong>.  Although many people complain that the JavaScript MV* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let&#8217;s look at the glass half full.  The influx of JavaScript MV* frameworks has created new design patterns that have promoted <strong>JavaScript as a language that you should care about</strong>.  JavaScript codebase consistency, maintainability, and performance have never been scrutinized more.  This intensified focus is helping the web become an even better place to spend your time.</p>
+
+<p>Although 2012 has been a big win for the JavaScript community, there is still much work to be done.  Much of that work consists of educating developers, who may not be JavaScript wizards (seriously not everyone can be <a href="http://paulirish.com/">Paul Irish</a>, <a href="http://addyosmani.com/">Addy Osmani</a>, etc), that organizing their front-end codebases deserves their full time and attention.</p>
+
+<p>A common argument against using JavaScript MV* frameworks by non-JavaScript wizards is that most &#8220;apps&#8221; are not complex enough to warrent using these &#8220;bloated MV Whatever frameworks&#8221; (their words not mine).  Before you start screaming at your computer, let&#8217;s look at this argument in more detail using <a href="http://backbonejs.org">Backbone.js</a>, one of the most popular JavaScript MV* frameworks, and <a href="http://gregfranko.com/backbone/customBuild/">custom Backbone.js builds</a>.</p>
+
+<!-- more -->
+
+
+<h3>Backbone.js</h3>
+
+<p><strong>Backbone.js</strong> is a great client-side MV* JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, Router, and Event class objects.  Although your application may not need all of the functionality that Backbone.js provides you, 99% of all applications could use the functionality provided by one or more Backbone.js class objects.  <strong>Let&#8217;s take a look at each Backbone.js class object and determine if a &#8220;simple&#8221; application needs the functionality provided.</strong></p>
+
+<h4>Backbone.js View</h4>
+
+<p>Backbone <strong>Views</strong> allow you to organize all of your JavaScript event handlers while also providing a mechanism for adding dynamic HTML to your page through the optional use of JavaScript templates.</p>
+
+<p>Here is an example Backbone View class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="kd">var</span> <span class="nx">View</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Represents the actual DOM element that corresponds to your View</span>
+</span><span class='line'>        <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor</span>
+</span><span class='line'>        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Event Handlers</span>
+</span><span class='line'>        <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="s2">&quot;click #example&quot;</span><span class="o">:</span> <span class="s2">&quot;doSomething&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Updates the text of the element with an ID attribute of example            </span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;#example&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;This is an example&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">doSomething</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Do something</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Backbone.js View Conclusion</h5>
+
+<p>The basic functionality that a Backbone View class object provides is organizing your JavaScript event handlers and organizing how you update your applications UI.  99.9% of all applications (simple or complex) will include JavaScript event handlers that respond to user interactions and then add content to a page.</p>
+
+<p>A common problem with most applications is that their JavaScript code is filled with inconsistent event handlers.  You could very well see a &#8220;legacy&#8221; application with <strong>DOM Level 0</strong> (event handlers inside HTML code), <strong>DOM Level 1</strong> (event handlers inside JavaScript code that limit the amount of event handlers that can be bound to each HTML element) , and <strong>DOM Level 2</strong> event handlers (event handlers inside JavaScript code that allows an unlimited amount of event handlers to be bound to each HTML element).  This inconsistency makes it extremely difficult to maintain an app, especially if a new team member is added to the project.</p>
+
+<p>If you are using a library, such as <a href="http://www.jquery.com">jQuery</a>, you most likely have many DOM Level 2 events in your codebase (ie. $(&#8220;body&#8221;).click(function() {})).  Although jQuery helps with the consistency of your event handlers, it does not help you structure how to organize all of your event handlers.  With just jQuery, an application could consist of spaghetti code that binds event handlers all over the place.  I have worked in this environment, and have found that more bugs are created because of this inconsistency.</p>
+
+<p>No matter the complexity of your application, Backbone Views could very easily help promote best practices and improve maintainability of your JavaScript event handlers.</p>
+
+<h4>Backbone Model</h4>
+
+<p>Backbone <strong>Models</strong> store all of your applications business logic and data. This allows you to organize all of your application&#8217;s data validation inside of your Models.</p>
+
+<p>Here is an example Backbone Model class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="kd">var</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Default properties</span>
+</span><span class='line'>        <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nx">example</span><span class="o">:</span> <span class="s2">&quot;I love having my data separated from the DOM&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor</span>
+</span><span class='line'>        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Any time a Model attribute is set, this method is called</span>
+</span><span class='line'>        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Backbone.js Model Conclusion</h5>
+
+<p>The basic functionality that a Backbone Model class object provides is a place for your application to store and validate client-side information.  99.9% of applications will include validation of data.</p>
+
+<p>A common problem with most applications is that they use the DOM (Document Object Model) as a database (Backbone.js creator, Jeremy Ashkenas, has talked about this at length).  Any time an application needs to find the current &#8220;state&#8221; of an application, that data is retrieved from the DOM.  This can severely hurt performance, since DOM related activities are one of the most memory intensive actions your JavaScript can take.</p>
+
+<p>A common misconception is that the DOM is a part of the JavaScript language.  It isn&#8217;t.  In fact, it is a completely separate API that JavaScript interacts with.  Having the ability to query the current &#8220;state&#8221; of your application without always resorting to querying the DOM is a HUGE WIN.</p>
+
+<p>No matter the complexity of your application, Backbone Models could very easily promote decoupling your code and standardizing where your application performs business logic validation.</p>
+
+<h4>Backbone.js Collection</h4>
+
+<p>If your application is complex, it is also helpful to use Backbone <strong>Collections</strong>, which provides a mechanism to interact with many different Model instances. Since Backbone has a hard dependency on Underscore.js, you are able to utilize many Underscore.js methods to interact with Collections.</p>
+
+<p>Here is an example Backbone Collection class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">Collection</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Allows the Collection to work with User models</span>
+</span><span class='line'>    <span class="nx">model</span><span class="o">:</span> <span class="nx">User</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Backbone.js Collection Conclusion</h5>
+
+<p>The basic functionality that a Backbone Collection class object provides is a mechanism for your application to interact with one or more Backbone Models.</p>
+
+<p>The Backbone Collection class object may not be necessary for all applications, since the true benefit of collections shines through when your application contains more than one Backbone Model instance, and very simple applications may only contain one model instance.</p>
+
+<h4>Backbone.js Router</h4>
+
+<p>Backbone <strong>Routers</strong> are typically used to define &#8220;routes&#8221; in your application. Routes are essentially a unique page in a traditional web application, but in a one page JavaScript application, they help organize your client-side logic without requiring a page refresh (traditionally appending a route as a hash tag to a browser&#8217;s url or using the new HTML5 push state api to silently track page state).</p>
+
+<p>Here is an example Backbone Router class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="kd">var</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor</span>
+</span><span class='line'>        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Required for Backbone to start listening to hashchange events</span>
+</span><span class='line'>        <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">routes</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Calls the home method when there is no hashtag on the url</span>
+</span><span class='line'>            <span class="s1">&#39;&#39;</span><span class="o">:</span> <span class="s1">&#39;home&#39;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="s1">&#39;home&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Gets called when there is no hashtag on the url</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;My very first Backbone route&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Backbone.js Router Conclusion</h5>
+
+<p>The basic functionality that a Backbone Router class object provides is a mechanism for your application to utlize a &#8220;single page&#8221; structure.  This is particularly useful if you do not want page refreshes in your application when a user navigates between &#8220;pages&#8221; or different sections of your app&#8217;s functionality.</p>
+
+<p>The Backbone Router class object may not be necessary for all applications, since not all applications may want the &#8220;single page&#8221; feel or care about refreshing the page.</p>
+
+<h4>Backbone.js Event</h4>
+
+<p>Backbone <strong>Events</strong> are an important concept in Backbone, since they provide you with an easy mechanism to use the pub sub pattern and decouple your code.  Backbone triggers certain events by default (eg. a Model change event is triggered after a Model property has been validated and saved), but Backbone also allows you to trigger and bind to custom events.  This is an extremely useful pattern, since it allows many different classes to listen to one class, without that one class knowing about any of its listeners.</p>
+
+<p>Here is an example Event being triggered by a Backbone Model class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>    <span class="kd">var</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Default properties</span>
+</span><span class='line'>        <span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nx">example</span><span class="o">:</span> <span class="s2">&quot;I love having my data separated from the DOM&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor</span>
+</span><span class='line'>        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Any time a Model attribute is set, this method is called</span>
+</span><span class='line'>        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">triggerEvent</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Triggers an test event and passes data that can be accessed in the event handler</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">someData</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span> <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here is an example Event being bound by a Backbone View class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Represents the actual DOM element that corresponds to your View (There is a one to one relationship between View Objects and DOM elements)</span>
+</span><span class='line'>        <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor</span>
+</span><span class='line'>        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">//Setting the view&#39;s model property.  This assumes you have created a model class and stored it in the Model variable</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">//Event handler that calls the initHandler method when the init Model Event is triggered</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">test</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Event Handlers</span>
+</span><span class='line'>        <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="s2">&quot;click #example&quot;</span><span class="o">:</span> <span class="s2">&quot;testModelEvent&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Updates the text of the element with an ID attribute of example            </span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;#example&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;This is an example&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">promptUser</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Isn&#39;t this great?&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes, yes it is&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">testModelEvent</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">triggerEvent</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">test</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Just got &quot;</span> <span class="o">+</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">someData</span> <span class="o">+</span> <span class="s2">&quot; from my model!&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Backbone.js Event Conclusion</h5>
+
+<p>The basic functionality that a Backbone Event class object provides is a mechanism for using the <strong>pub/sub</strong> pattern to decouple an application&#8217;s codebase.  99.9% of applications could benefit from a design pattern that promotes decouplization (not sure if that is a real word).</p>
+
+<p>A common jQuery design pattern is triggering and binding to <strong>jQuery special events</strong> on the HTML body element.  This pattern is extremely useful, but Backbone improves on this pattern, since it does not rely on the DOM for its pub/sub implementation.  This improves performance and flexibility, since it allows you to bind to custom events on a generic JavaScript object instead of just a jQuery object.</p>
+
+<p>No matter the complexity of your application, the Backbone Events class object could very easily promote decoupling your code and consistent special event binding.</p>
+
+<h3>Backbone.js Custom Builds</h3>
+
+<p>Backbone.js does not support custom builds by default, so I looked at the Backbone codebase and split up all of the Backbone Class Objects into their own files. Since Backbone.js is not set up in a modular way and instead heavily uses local variables all scoped under one Immediately Invoked Function Expression (IIFE) like most libraries, I had to make a few changes to remove these local property dependencies so that they could be split into several files.</p>
+
+<p>With Backbone.js custom builds, you can now use the Backbone Events class object as a standalone pub/sub solution, or only use Backbone Views to organize all of your app&#8217;s event handlers, or use Backbone Models to store all of your applications data client-side, etc (all while minimizing your file size).</p>
+
+<p>Backbone.js is incredible, so I wanted to make it even easier for people who aren&#8217;t completely sold on using it, to only take what they want/need.  Start making <a href="http://gregfranko.com/backbone/customBuild/">Backbone.js Custom Builds</a> now!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T10:00:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/backbone-js/'>Backbone.js</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/require-dot-js-2-dot-0-shim-configuration/" title="Previous Post: Require.js 2.0 Shim Configuration">&laquo; Require.js 2.0 Shim Configuration</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/" title="Next Post: Creating Custom Project Builds with DownloadBuilder.js">Creating Custom Project Builds with DownloadBuilder.js &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide/';
+        var disqus_url = 'http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

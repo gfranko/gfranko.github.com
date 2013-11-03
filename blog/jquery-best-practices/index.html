@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>jQuery Best Practices - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="Register the jQueryUI Widget Factory as a named AMD module so that other jQuery plugins that depend on the Widget Factory can provide AMD support">
+  <meta name="keywords" content="Greg Franko, jQuery, jQuery Best Practices">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/jquery-best-practices">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">jQuery Best Practices</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-20T11:24:00-04:00" pubdate data-updated="true">Jul 20<span>th</span>, 2013</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank"><img class="left" src="/images/jquery.png" width="300"></a></p>
+
+<p>Back in February 2013, I presented about jQuery best practices at the <a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/">Nova Web Development User Group</a> meetup.  Let&#8217;s take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.</p>
+
+<!-- more -->
+
+
+
+
+<br><br>
+
+
+<h2>IIFEs</h2>
+
+<p>IIFEs are an ideal solution for locally scoping global variables/properties and protecting your JavaScript codebase from outside interference (e.g. third-party libraries).  If you are writing jQuery code that will be run in many different environments (e.g. jQuery plugins), then it is important to use an IIFE to locally scope jQuery.</p>
+
+<blockquote><p>You can&#8217;t assume everyone is using the $ to alias jQuery.</p></blockquote>
+
+<p>Here is how you would do it:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="c1">// IIFE - Immediately Invoked Function Expression</span>
+</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// The $ is now locally scoped</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// The rest of your code goes here!</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">));</span>
+</span><span class='line'>  <span class="c1">// The global jQuery object is passed as a parameter</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you don&#8217;t like having to scroll to the bottom of your source file to see what global variables/properties you are passing to your IIFE, you can do this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="c1">// IIFE - Immediately Invoked Function Expression</span>
+</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">yourcode</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// The global jQuery object is passed as a parameter</span>
+</span><span class='line'>      <span class="nx">yourcode</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// The rest of your code goes here!</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To read more about IIFEs, you can read my blog post titled, <a href="/blog/i-love-my-iife/">I Love My IIFE</a>.</p>
+
+<h2>Ready Event</h2>
+
+<p>Many developers wrap all of their code inside of the jQuery ready event like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// The DOM is ready!</span>
+</span><span class='line'>      <span class="c1">// The rest of your code goes here!</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or developers use a shorter version like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// The DOM is ready!</span>
+</span><span class='line'>      <span class="c1">// The rest of your code goes here!</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you are doing either of the above patterns, then you should consider moving the pieces of your application (e.g. methods), that don&#8217;t depend on the DOM, outside of the ready event handler.  Like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="c1">// IIFE - Immediately Invoked Function Expression</span>
+</span><span class='line'>  <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">yourcode</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// The global jQuery object is passed as a parameter</span>
+</span><span class='line'>      <span class="nx">yourcode</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// The $ is now locally scoped </span>
+</span><span class='line'>          <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// The DOM is ready!</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// The rest of your code goes here!</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This pattern makes it easier to separate your logic (from a code design perspective) since not everything has to be wrapped inside of a single anonymous function.  It will also improve your application&#8217;s page load performance, since not everything needs to initialized right away.</p>
+
+<h2>Caching DOM selectors</h2>
+
+<p>When manipulating elements in the DOM (e.g. animating, setting attributes, changing CSS properties), it is important to consider performance.</p>
+
+<blockquote><p>Every time you select a DOM element using jQuery, you are instantiating a new jQuery object and forcing jQuery to search the DOM.</p></blockquote>
+
+<p>Instead of creating multiple jQuery instances and forcing jQuery to re-query the DOM for a particular element, you can cache your jQuery object in a variable and reuse it like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   
+</span><span class='line'>  <span class="c1">// Stores the jQuery instance inside of a variable</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">elem</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#elem&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Set&#39;s an element&#39;s title attribute using it&#39;s current text</span>
+</span><span class='line'>  <span class="nx">elem</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">text</span><span class="p">());</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Set&#39;s an element&#39;s text color to red</span>
+</span><span class='line'>  <span class="nx">elem</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Makes the element fade out</span>
+</span><span class='line'>  <span class="nx">elem</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you prefer the previous code snippet to be on one line, you can <strong>chain</strong> multiple jQuery methods together like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="c1">// Stores the live DOM element inside of a variable</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">elem</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#elem&quot;</span><span class="p">);</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">// Chaining</span>
+</span><span class='line'>  <span class="nx">elem</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">).</span><span class="nx">fadeOut</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Adding DOM elements</h2>
+
+<p>Adding elements to the DOM is one of the slowest and most common use cases in a web application.  To limit the performance hit, make sure you are not unneccessarily adding elements to the DOM.</p>
+
+<p>A common example, that can cause web applications to feel janky (or slow), is building a dynamic HTML unordered list.  Since there could potentially be thousands of list items inside of the list, you want to make sure to only append to the DOM once (instead of thousands of times).  Like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="c1">// Dynamically building an unordered list from an array</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">localArr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Greg&quot;</span><span class="p">,</span> <span class="s2">&quot;Peter&quot;</span><span class="p">,</span> <span class="s2">&quot;Kyle&quot;</span><span class="p">,</span> <span class="s2">&quot;Danny&quot;</span><span class="p">,</span> <span class="s2">&quot;Mark&quot;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">list</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;ul.people&quot;</span><span class="p">),</span>
+</span><span class='line'>      <span class="nx">dynamicItems</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">localArr</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">dynamicItems</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li id=&quot;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s2">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">dynamicItems</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The previous example stores the entire HTML of the dynamic list inside of a local string variable.  Once all the HTML has been created, the list is appended to the page <strong>ONE TIME</strong>.  Many developers mistakingly append to the DOM each time they create a new list item.  <strong>DO NOT DO BE THAT DEVELOPER</strong></p>
+
+<h2>Event Delegation</h2>
+
+<p>DOM event handlers take up a lot of memory and can very easily cause <strong>memory leaks</strong> (and poor performance) in web applications.  We can use an HTML unordered list example to demonstrate how to use <strong>event delegation</strong> to reduce the number of event handlers that we have and the amount of memory our application uses.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#longlist&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">list</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;mouseenter&quot;</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Click me!&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">list</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Why did you click me?!&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The previous example uses the jQuery <code>on()</code> method to add <em>mouseenter</em> and <em>click</em> event handlers to an unordered list.  The second argument provided to the <code>on()</code> method is the <strong>event handler context</strong>.  This tells jQuery to trigger the associated unordered list event handler if a list item child element has been the targeted DOM element.</p>
+
+<p>To understand event delegation, we have to understand <strong>event bubbling</strong>.  Event Bubbling is a behavior associated with DOM elements where parent DOM elements (all the way up to the <code>document</code>) are notified of child DOM element events.  Not all DOM events natively <em>bubble</em>, so jQuery has done the heavy lifting and made the event bubbling behavior consistent for every event and browser.</p>
+
+<p>Because of event bubbling, we only have to add one additional event handler to the unordered list (instead of a new event handler for each child list item).  This saves system memory, which allows more memory to be allocated for other intensive operations, such as animations (improving our app&#8217;s perceived performance).</p>
+
+<h2>Ajax</h2>
+
+<p>Since jQuery version 1.5+, the jQuery <code>ajax()</code> method has returned a Promise object.  Using Promises with Ajax allows us to bind multiple callback functions to our request, write flexible code where our ajax handling logic is in a different place than our actual request, and wait for multiple requests to complete before starting an action.</p>
+
+<p>Here is an example of separating the handling logic from the actual request:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="kd">function</span> <span class="nx">getName</span><span class="p">(</span><span class="nx">personid</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">dynamicData</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>      <span class="nx">dynamicData</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">personID</span><span class="p">;</span>
+</span><span class='line'>      <span class="c1">// Returns the jQuery ajax method</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>          <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;getName.php&quot;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">data</span><span class="o">:</span> <span class="nx">dynamicData</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">getName</span><span class="p">(</span><span class="s2">&quot;2342342&quot;</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Updates the UI based the ajax result</span>
+</span><span class='line'>      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.person-name&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Our example demonstrates a <code>getName()</code> function that accepts a unique id, sends an ajax request with that unique id, and returns the jQuery <code>ajax()</code> method.  Since our function returns the jQuery <code>ajax()</code> method (which returns a Promise by default), we are able to call the <code>done()</code> method and pass a callback function (which will execute once the request has completed).</p>
+
+<p>If we had wanted to wait for two separate ajax requests to our endpoint, we could have done something like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="kd">function</span> <span class="nx">getName</span><span class="p">(</span><span class="nx">personid</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">dynamicData</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>      <span class="nx">dynamicData</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">personID</span><span class="p">;</span>
+</span><span class='line'>      <span class="c1">// Returns the jQuery ajax method</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>          <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;getName.php&quot;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">data</span><span class="o">:</span> <span class="nx">dynamicData</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">getName</span><span class="p">(</span><span class="s2">&quot;2342342&quot;</span><span class="p">),</span>
+</span><span class='line'>      <span class="nx">person2</span> <span class="o">=</span> <span class="nx">getName</span><span class="p">(</span><span class="s2">&quot;3712968&quot;</span><span class="p">),</span>
+</span><span class='line'>      <span class="nx">people</span> <span class="o">=</span> <span class="p">[</span><span class="nx">person1</span><span class="p">,</span> <span class="nx">person2</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">people</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// Both the ajax requests have completed</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We are using the JavaScript <code>apply()</code> method in the previous example to demonstrate how we can pass an array to the <code>$.when</code> method.  If you do not want to use an array, then you can very easily pass each promise object (stored in a variable) as regular parameters.</p>
+
+<p>Happy jQuerying!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-20T11:24:00-04:00" pubdate data-updated="true">Jul 20<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/jquery-best-practices/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/jquery-best-practices/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/" title="Previous Post: Registering the jQueryUI Widget Factory as an AMD Module">&laquo; Registering the jQueryUI Widget Factory as an AMD Module</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/instant-dependency-management-with-requirejs/" title="Next Post: Instant Dependency Management with RequireJS">Instant Dependency Management with RequireJS &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/jquery-best-practices/';
+        var disqus_url = 'http://gfranko.github.com/blog/jquery-best-practices/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

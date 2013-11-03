@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>I Love My IIFE - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="Write more readable Immediately Invoked Function Expression's (IIFE's)">
+  <meta name="keywords" content="Greg Franko, JavaScript Design Patters, IIFE, Immediately Invoked Function Expression">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/i-love-my-iife">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">I Love My IIFE</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-05T14:29:00-05:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="blog/i-love-my-iife"><img class="left" src="/images/JavaScript-logo-small.png" width="200"></a></p>
+
+<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
+
+<!-- more -->
+
+
+
+
+<br><br><br><br>
+
+
+<p>In the words of <a href="http://james.padolsey.com/javascript/iife-argument-madness/">James Padolsey</a>:</p>
+
+<blockquote><p>An IIFE protects a module&#8217;s scope from the environment in which it is placed.</p></blockquote>
+
+<p>There are more benefits to using IIFE&#8217;s than just local scoping, but before we talk about some of the other benefits, let&#8217;s take a look at some code to see how to create a basic IIFE:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// my special code</span>
+</span><span class='line'><span class="p">}());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above <strong>IFFE</strong> is just an anonymous function (no name attached to it) that is wrapped inside of a set of parentheses and called (invoked) immediately.  Let&#8217;s break this down step by step.</p>
+
+<h3>The Anonymous Function:</h3>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// my special code</span>
+</span><span class='line'><span class="p">}();</span> <span class="c1">// The parentheses make sure the anonymous function gets called immediately</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A function, without a name, is created and then called (invoked) immediately via the <code>()</code> at the very end.</p>
+
+<h3>The Parentheses</h3>
+
+<p>You might be wondering why we need to wrap the immediately invoked anonymous function inside of parentheses.  Before I explain why, try the above code inside of a console window.  Get a syntax error?</p>
+
+<p>By wrapping the anonymous function inside of parentheses, the JavaScript parser knows to treat the anonymous function as a function expression instead of a function declaration.  A function expression can be called (invoked) immediately by using a set of parentheses, but a function declaration cannot be.</p>
+
+<!-- more -->
+
+
+<p><strong>Note</strong>: In case you forget the difference between JavaScript function expressions and function declarations:</p>
+
+<p><em>Function Expression</em> - <code>var test = function() {};</code></p>
+
+<p><em>Function Declaration</em> - <code>function test() {};</code></p>
+
+<p>Since the anonymous function within our IIFE is a function expression and is not being assigned to a global variable, no global property is being created, and all of the properties created inside of the function expression are scoped locally to the expression itself.</p>
+
+<h3>Other Benefits of using an IIFE</h3>
+
+<p>Whew, now that we understand the basic concept of an IIFE, let&#8217;s determine some other benefits of using them in your code.</p>
+
+<h4>Reduce scope lookups</h4>
+
+<p>A small performance benefit of using IIFE&#8217;s is the ability to pass commonly used global objects (window, document, jQuery, etc) to an IIFE&#8217;s anonymous function, and then reference these global objects within the IIFE via a local scope.</p>
+
+<p><strong>Note</strong>: JavaScript first looks for a property in the local scope, and then it goes all the way up the chain, last stopping at the global scope.  Being able to place global objects in the local scope provides faster internal lookup speeds and performance.</p>
+
+<p>Let&#8217;s look at a code example of passing global objects to an IIFE:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function that has three arguments</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// You can now reference the window, document, and jQuery objects in a local scope</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span> <span class="c1">// The global window, document, and jQuery objects are passed into the anonymous function</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Minification Optimization</h4>
+
+<p>Another small performance benefit of using IIFE&#8217;s is that it helps with minification optimization.  Since we are able to pass global objects into the anonymous function as local values (parameters), a minifier is able to reduce the name of each global object to a one letter word (as long as you don&#8217;t already have a variable of the same name).  Let&#8217;s look at the above code sample after minification:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function that has three arguments</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// You can now reference the window, document, and jQuery objects in a local scope</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span> <span class="c1">// The global window, document, and jQuery objects are passed into the anonymous function</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Note</strong>:  Another added benefit (when using jQuery), is that you can freely use the <code>$</code> without worrying about other library conflicts, since you passed in the global <code>jQuery</code> object and scoped it to the <code>$</code> as a local parameter.</p>
+
+<h3>Readability</h3>
+
+<p>One of the con&#8217;s with using IIFE&#8217;s is readability.  If you have a lot of JavaScript code inside of an IIFE, and you want to find the parameters that you are passing into an IIFE, then you need to scroll all the way to the bottom of the page.  Luckily, there is a more readable pattern that I have begun to use:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">library</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Calls the second IIFE and locally passes in the global jQuery, window, and document objects</span>
+</span><span class='line'>    <span class="nx">library</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Locally scoped parameters </span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Library code goes here</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This IIFE pattern allows you see what global objects you are passing into your IIFE, without you having to scroll to the very bottom of a potentially very long file.  Happy IIFE&#8217;ing!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-05T14:29:00-05:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/design-patterns/'>Design Patterns</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/i-love-my-iife/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/i-love-my-iife/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/backbone-dot-validateall-plugin/" title="Previous Post: Backbone.validateAll plugin">&laquo; Backbone.validateAll plugin</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/backbone-require-boilerplate-explained/" title="Next Post: Backbone-Require-Boilerplate Explained">Backbone-Require-Boilerplate Explained &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/i-love-my-iife/';
+        var disqus_url = 'http://gfranko.github.com/blog/i-love-my-iife/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

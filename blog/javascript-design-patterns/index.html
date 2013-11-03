@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Design Patterns - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="JavaScript design patterns used for AddThis Smart Layers">
+  <meta name="keywords" content="Greg Franko, Design Patterns, AddThis">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/javascript-design-patterns">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaScript Design Patterns</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-05T11:43:00-04:00" pubdate data-updated="true">Oct 5<span>th</span>, 2013</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns"><img class="left" src="/images/architecture.jpg" width="300"></a></p>
+
+<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
+
+<!-- more -->
+
+
+
+
+<br><br>
+
+
+<h2>Use Case</h2>
+
+<p>Smart Layers is a product suite that currently includes 6 different UI widgets (including share, follow, recommended content). Although each widget contains unique functionality, there are many similarities between the widgets.</p>
+
+<p>For example, all widgets create and append DOM elements, listen to events, support user-specified options, utilize CSS3 show/hide animations, etc. Once we put our code architect hats on, we realized that:</p>
+
+<blockquote><p>We needed an inheritance model that could handle both unique widget functionality and common logic without code duplication.</p></blockquote>
+
+<h2>Simple JavaScript Prototypal Inheritance</h2>
+
+<p>At this point, it is important to delve into object-oriented JavaScript, and recognize the difference between <strong>instance properties</strong> and <strong>prototype properties</strong>.</p>
+
+<h3>Instance Properties</h3>
+
+<p>Instance properties are properties that are scoped to a particular instance object and are not propagated to other instances (unless you go out of your way to change that). Let’s look at an example:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="c1">// Creates an AddThisEmployee constructor function</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">AddThisEmployee</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Creates an AddThisEmployee instance object</span>
+</span><span class='line'>  <span class="c1">// and stores it in the greg local variable</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">greg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddThisEmployee</span><span class="p">(</span><span class="s1">&#39;Greg Franko&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="c1">// Creates an AddThisEmployee instance object</span>
+</span><span class='line'>    <span class="c1">// and stores it in the sol local variable</span>
+</span><span class='line'>    <span class="nx">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddThisEmployee</span><span class="p">(</span><span class="s1">&#39;Sol Chea&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Greg doesn&#39;t like his name and decides to</span>
+</span><span class='line'>  <span class="c1">// legally change it to &#39;Frank The Tank&#39;</span>
+</span><span class='line'>  <span class="nx">greg</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Frank The Tank&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Sol has no idea that Greg has changed his name to</span>
+</span><span class='line'>  <span class="c1">// &#39;Frank The Tank&#39; and continues to call him Greg</span>
+</span><span class='line'>  <span class="c1">// This angers Greg</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the previous example, each instance object contains one instance property (name). Since each instance object’s properties are not propagated to each other, they are not aware of each other’s changes.</p>
+
+<h3>Prototype Properties</h3>
+
+<p>On the other hand, prototype properties are properties that are propagated to all instances. In JavaScript, an object’s property is looked up at run time, by first checking if there is an instance property. If there is not an instance property, then the object’s prototype is checked next to see if it contains the property.</p>
+
+<blockquote><p>All prototype properties are kept in sync and visible to each instance.</p></blockquote>
+
+<p>Let’s demonstrate prototypes by expanding upon our previous code example:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="c1">// Creates a Person constructor function</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">AddThisEmployee</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Assigns the AddThisEmployee prototype property</span>
+</span><span class='line'>  <span class="nx">AddThisEmployee</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">companyName</span><span class="o">:</span> <span class="s1">&#39;AddThis&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="c1">// Creates an AddThisEmployee instance object and</span>
+</span><span class='line'>  <span class="c1">// stores it in the greg local variable</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">greg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddThisEmployee</span><span class="p">(</span><span class="s1">&#39;Greg Franko&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="c1">// Creates an AddThisEmployee instance object and</span>
+</span><span class='line'>    <span class="c1">// stores it in the sol local variable</span>
+</span><span class='line'>    <span class="nx">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddThisEmployee</span><span class="p">(</span><span class="s1">&#39;Sol Chea&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Greg doesn&#39;t like his name and decides to</span>
+</span><span class='line'>  <span class="c1">// legally change it to &#39;Frank The Tank&#39;</span>
+</span><span class='line'>  <span class="nx">greg</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Frank The Tank&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Sol has no idea that Greg has changed his name to</span>
+</span><span class='line'>  <span class="c1">// &#39;Frank The Tank&#39; and continues to call him Greg</span>
+</span><span class='line'>  <span class="c1">// This angers Greg</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// AddThis changes it&#39;s company name to &#39;Team Awesome&#39;</span>
+</span><span class='line'>  <span class="nx">AddThisEmployee</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">companyName</span> <span class="o">=</span> <span class="s1">&#39;Team Awesome&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Both Greg and Sol know that AddThis changed it&#39;s name</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greg</span><span class="p">.</span><span class="nx">companyName</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sol</span><span class="p">.</span><span class="nx">companyName</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For Smart Layers, every widget instance reuses the same object as it’s prototype. This both simplifies the codebase and makes it easy to make changes that need to be propagated to all widgets.</p>
+
+<h2>Factory Pattern</h2>
+
+<p>Since every widget is created in a similar way, we needed a design pattern to take care of the instance creation process. Smart Layers uses the Factory pattern as a generic interface for creating instance objects.</p>
+
+<p>Here’s a high-level look:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="kd">var</span> <span class="nx">commonObj</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">exampleProp</span><span class="o">:</span> <span class="s1">&#39;Each instance will have this property&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>    <span class="nx">factory</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">instanceProps</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">x</span> <span class="k">in</span> <span class="nx">instanceProps</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">if</span> <span class="p">(</span><span class="nx">instanceProps</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">[</span><span class="nx">x</span><span class="p">]</span> <span class="o">=</span> <span class="nx">instanceProps</span><span class="p">[</span><span class="nx">x</span><span class="p">];</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>        <span class="nx">widget</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">widget</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">commonObj</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">widget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Constructor</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">widget</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Calls the factory method</span>
+</span><span class='line'>  <span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Constructor function</span>
+</span><span class='line'>    <span class="nx">_create</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The previous example shows a <code>factory()</code> method that can be called by passing a string name and an object literal containing all of the desired instance properties.</p>
+
+<blockquote><p>The factory pattern abstracts away the JavaScript constructor and prototype assigning ugliness, and provides an easy way to implement a consistent API for each instance.</p></blockquote>
+
+<p><strong>Note:</strong> For similar techniques that work with jQuery plugins, check out the <a href="http://api.jqueryui.com/jQuery.widget/" target="_blank">jQueryUI Widget Factory</a> and <a href="https://github.com/gfranko/jqfactory" target="_blank">jqfactory</a> open-source projects.</p>
+
+<h2>Module Pattern</h2>
+
+<p>Another major design pattern used in Smart Layers is the module pattern. Currently, the Smart Layers JavaScript API only has one public method (destroy) that can be used after Smart Layers is initialized on the page. Under the hood though, the JavaScript API consists of multiple hidden methods that are used internally. To accomplish public/private API methods, we took advantage of JavaScript function scoping to only expose what we wanted to.</p>
+
+<p>Let’s look at a basic example of the module pattern:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="c1">// Function constructor</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Local variables that are privately scoped</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">lastName</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">occupation</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">occupation</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Public API properties</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">firstName</span><span class="o">:</span> <span class="nx">firstName</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="c1">// Instantiating a new Person instance object</span>
+</span><span class='line'>  <span class="nx">greg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Greg&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Franko&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;JavaScript Engineer&#39;</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Prints out &quot;Greg&quot;</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;first name&#39;</span><span class="p">,</span> <span class="nx">greg</span><span class="p">.</span><span class="nx">firstName</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Prints out &quot;undefined&quot;</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;last name&#39;</span><span class="p">,</span> <span class="nx">greg</span><span class="p">.</span><span class="nx">lastName</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Prints out &quot;undefined&quot;</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;occupation&#39;</span><span class="p">,</span> <span class="nx">greg</span><span class="p">.</span><span class="nx">occupation</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This example demonstrates that all local variables, declared using the <code>var</code> keyword, are only accessible within the declaring function or other nested functions.</p>
+
+<p>In our example, a person’s first name, last name, and occupation are all local variables. An object, that includes the <code>firstName</code> property, is then returned inside of our constructor function.  Since the <code>firstName</code> local variable is the only variable returned, it is the only property that can be retrieved from a different scope.</p>
+
+<blockquote><p>The module pattern is an example of a <strong>closure</strong>, since a local property is kept alive and can be referenced inside of a different scope.</p></blockquote>
+
+<p>Here’s a more practical example:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="c1">// Method that will only return functions that do not</span>
+</span><span class='line'>  <span class="c1">// begin with an underscore</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">publicApi</span> <span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">method</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">currentMethod</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">publicApi</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="nx">method</span> <span class="k">in</span> <span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">currentMethod</span> <span class="o">=</span> <span class="nx">api</span><span class="p">[</span><span class="nx">method</span><span class="p">];</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">publicApi</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span> <span class="o">=</span> <span class="nx">api</span><span class="p">[</span><span class="nx">method</span><span class="p">];</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">publicApi</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Stores the return value of the publicApi method</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">publicMethods</span> <span class="o">=</span> <span class="nx">publicApi</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">publicMethod</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+</span><span class='line'>    <span class="nx">_privateMethod</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Should only contain the publicMethod as a property</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Public API&#39;</span><span class="p">,</span> <span class="nx">publicMethods</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This demonstrates the technique that Smart Layers uses to expose public API methods. All methods that start with an underscore are assumed to be private and are not returned as a public method.</p>
+
+<h2>Summary</h2>
+
+<p>Prototypal inheritance, the factory pattern, and the module pattern are all extremely useful techniques that can be used together to create powerful applications. I’d love to hear your thoughts and the patterns you use in your own JavaScript codebases!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-05T11:43:00-04:00" pubdate data-updated="true">Oct 5<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/addthis/'>AddThis</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/javascript-design-patterns/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/javascript-design-patterns/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/javascript-performance-tips/" title="Previous Post: JavaScript Performance Tips">&laquo; JavaScript Performance Tips</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/javascript-design-patterns/';
+        var disqus_url = 'http://gfranko.github.com/blog/javascript-design-patterns/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

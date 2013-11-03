@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Modular jQuery Plugins - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="jQuery Plugin Architecture">
+  <meta name="keywords" content="Greg Franko, jQuery, Modular jQuery Plugins">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/modular-jquery-plugins">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Modular jQuery Plugins</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-22T20:54:00-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2013</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="blog/modular-jquery-plugins/" target="_blank" title="Modular jQuery Plugins"><img class="left" src="/images/constructionhat.png" width="250"></a></p>
+
+<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let&#8217;s review my talk.</p>
+
+<!-- more -->
+
+
+
+
+<br><br>
+
+
+<h2>What Does Modular Mean to You?</h2>
+
+<p>The term &#8220;modular&#8221; has many different definitions in the JavaScript community.  In the context of this blog post, let&#8217;s establish it as JavaScript logic that is separated from the rest of a codebase, can work independently, and <strong>does one thing and does it well</strong>.</p>
+
+<h2>Why Modular?</h2>
+
+<p><strong>Maintainability</strong>.  It is far easier for developers to understand code that has a <strong>limited scope</strong>.</p>
+
+<h2>Benefits of a Maintainable Codebase</h2>
+
+<p><em>New Contributors</em> - A modular codebase allows new contributors to make improvements/changes straight away, since knowledge of an entire codebase is not required.</p>
+
+<p><em>Core Maintainer</em> - Looking at code you wrote over three months ago might as well have been written by someone else.  You will experience the same learning curve improvement that new contributors experience.</p>
+
+<p><em>Code Reuse</em> - When different parts of an application are separated into standalone modules, it is easier to plugin and play each part wherever you need it.  This drastically decreases the amount of code and code duplication in a codebase.  Less bytes = happier developers.</p>
+
+<p><em>Physical and Emotional Well-Being</em> - Wading through one monolithic file is difficult on the eyes and brain.  Looking at logically-grouped small files is not.</p>
+
+<h2>jQuery Plugins</h2>
+
+<p>Now that we have covered the benefits of a modular codebase, let&#8217;s take a high-level look at a typical jQuery plugin codebase.</p>
+
+<p>Let&#8217;s assume this is a jQuery Tooltip plugin that has been written in one file:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Adding the tooltip method to the jQuery prototype</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">options</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Boilerplate jQuery plugin code goes here</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="c1">// Plugin Constructor</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">Tooltip</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class='line'>  <span class="c1">// All my plugin logic goes here</span>
+</span><span class='line'>  <span class="nx">Tooltip</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>  <span class="c1">//Default Options</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For very small plugins, this code structure will work at first.  Unfortunately, one of the most common problems in software development, <a href="http://en.wikipedia.org/wiki/Feature_creep">feature creep</a>, will demonstrate that this architecture is not scalable.</p>
+
+<blockquote><p>As more features are added to a plugin and the codebase grows, it becomes more difficult to maintain.</p></blockquote>
+
+<h2>How to Become Modular?</h2>
+
+<p>AMD (e.g. Require.js) and CommonJS (e.g. Node.js) are the two most commonly used module formats that allow you to separate your codebase into small reusable pieces.  If you aren&#8217;t using a specific module format, then you need to be aware of inner-file dependencies when separating logic into different files and then bringing them together at build time.</p>
+
+<h2>Can I use AMD with my jQuery Plugin?</h2>
+
+<p>Yes!  You can wrap each JavaScript file in an AMD <code>define()</code> method call, that lists all file dependencies, and then use the Require.js optimizer, <a href="https://github.com/jrburke/r.js/">r.js</a>, and <a href="https://github.com/jrburke/almond">Almond.js</a> to build your library.</p>
+
+<p>This means that you can internally use AMD to build your JavaScript library, while not forcing users to use AMD themselves.</p>
+
+<p>Here is an example Require.js build profile (using Almond.js) to do just that:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">({</span>
+</span><span class='line'>  <span class="nx">baseUrl</span><span class="o">:</span> <span class="s2">&quot;src/js&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1">// Set&#39;s the path name of the first file that will be built</span>
+</span><span class='line'>  <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;examplePlugin&quot;</span><span class="o">:</span> <span class="s2">&quot;app/begin&quot;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="c1">// Makes sure everthing is wrapped in an IIFE (does not expose any global vars)</span>
+</span><span class='line'>  <span class="nx">wrap</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1">// Uses the small AMD shim, Almond.js, instead of Require.js</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;../libs/almond&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1">// All of your Require.js configurations would go in here</span>
+</span><span class='line'>  <span class="nx">mainConfigFile</span><span class="o">:</span> <span class="s2">&quot;app/config/config.js&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">include</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;examplePlugin&quot;</span><span class="p">],</span>
+</span><span class='line'>  <span class="c1">// Creates a new minified file</span>
+</span><span class='line'>  <span class="nx">out</span><span class="o">:</span> <span class="s2">&quot;js/dist/examplePlugin.min.js&quot;</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This works great, but unfortunately, Almond.js needs to be built into your library&#8217;s source file.  Although Almond.js is a small library (~1kb gzipped and minified), it is not desirable for third-party code to be built inside of your own third-party library.</p>
+
+<p>Recently, jQuery started wrapping all of it&#8217;s <a href="https://github.com/jquery/jquery/tree/master/src">source files</a> in AMD <code>define()</code> method calls.  Instead of including an AMD shim, such as Almond.js, the jQuery team is using regular expression checks, at <a href="https://github.com/jquery/jquery/blob/1.x-master/build/tasks/build.js">build time</a>, to convert all <code>define()</code> method calls into local variables.  This allows the jQuery team to use the benefits of AMD (e.g. dependency management) during development, while not having to include an AMD shim (such as Almond.js) after the jQuery production source file is built.</p>
+
+<p>This is a great idea, but I am looking forward to someone (potentially me) creating <strong>a Grunt plugin that can generically reverse engineer an Almond.js project</strong> at build time and removes any AMD trace.  When this happens, I believe the majority of JavaScript library authors will start incorporating AMD into their workflows.</p>
+
+<h2>How to Make jQuery Plugins Maintainable</h2>
+
+<p>Abstract <strong>boilerplate</strong> code</p>
+
+<p>Make the codebase <strong>modular</strong> (even without Require.js)</p>
+
+<h2>Abstract jQuery Plugin Boilerplate</h2>
+
+<p>There are currently two open-source libraries that help abstract away common jQuery plugin boilerplate code; the <a href="http://api.jqueryui.com/jQuery.widget/">jQueryUI Widget Factory</a> and <a href="https://github.com/gfranko/jqfactory">jqfactory</a>.</p>
+
+<h2>jQueryUI Widget Factory</h2>
+
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif" width="500"></a></p>
+
+<p>Provides a <strong>consistent foundation and API</strong> for building jQuery plugins</p>
+
+<p>Supports <strong>widget inheritance</strong> using functions</p>
+
+<p>Provides common <strong>helper methods</strong></p>
+
+<p>Let&#8217;s us create plugins using <strong>object literals</strong></p>
+
+<p><strong>Can be used independently of jQueryUI</strong></p>
+
+<p><em>Example</em>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Calling the jQueryUI Widget Factory Method</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">widget</span><span class="p">(</span><span class="s2">&quot;an.example&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// These options will be used as defaults</span>
+</span><span class='line'>  <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">someOption</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="c1">// Constructor</span>
+</span><span class='line'>  <span class="nx">_create</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">internal</span><span class="p">)</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="c1">// Custom method we added to our plugin instance</span>
+</span><span class='line'>  <span class="nx">customMethod</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="c1">// The rest of your plugin goes here</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>jqfactory</h2>
+
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png" width="400"></a></p>
+
+<p>Supports <strong>widget inheritance</strong> using object literals</p>
+
+<p>Provides common <strong>helper methods</strong></p>
+
+<p>Supports <strong>jQuery prototype namespacing</strong></p>
+
+<p>Includes an elegant, promises-based, solution for <strong>asynchronous initializations</strong></p>
+
+<p>Easy event binding support <strong>similar to Backbone.js views</strong></p>
+
+<p><em>Example</em>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="c1">// Calling the jqfactory Method</span>
+</span><span class='line'>   <span class="nx">$</span><span class="p">.</span><span class="nx">jqfactory</span><span class="p">(</span><span class="s1">&#39;person.greg&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Default plugin options</span>
+</span><span class='line'>        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">occupation</span><span class="o">:</span> <span class="s1">&#39;JavaScript Engineer&#39;</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="c1">// Plugin Constructor (called first)</span>
+</span><span class='line'>        <span class="nx">_create</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+</span><span class='line'>        <span class="c1">// Dom manipulation goes here (called second)</span>
+</span><span class='line'>        <span class="nx">_render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+</span><span class='line'>        <span class="c1">// Plugin event bindings (called third)</span>
+</span><span class='line'>        <span class="nx">_events</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>            <span class="s1">&#39;click&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="c1">// All event listeners are now bound (called last)</span>
+</span><span class='line'>        <span class="nx">_postevents</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Differences Between the jQueryUI Widget Factory and jqfactory</h3>
+
+<p>  <strong>Namespacing</strong></p>
+
+<p>  jqfactory supports jQuery prototype namespacing and the jQueryUI Widget Factory does not.  This means that with jqfactory, you could create a multiple jQuery plugins under a single jQuery name (reducing the possibility of naming collisions).</p>
+
+<p>  <strong>Inheritance</strong></p>
+
+<p>  jqfactory allows widgets to inherit from object literals when the jQueryUI Widget Factory supports inheritance using functions.</p>
+
+<p>  <strong>AMD support</strong></p>
+
+<p>  jqfactory exports itself as a named AMD module (&#8220;jqfactory&#8221;) when the jQueryUI Widget Factory does not currently support AMD (although all jQueryUI files will soon be exported as anonymous AMD modules in a future release).</p>
+
+<p>  <strong>Event Handlers</strong></p>
+
+<p>  jqfactory does not support passing event handlers as options when the jQueryUI Widget Factory does support event handler options.</p>
+
+<p>  <strong>Assumed Environment</strong></p>
+
+<p>  jqfactory does not assume that you are using jQueryUI, when the jQueryUI Widget Factory does (e.g. Expects jQueryUI CSS class names).</p>
+
+<p>  <strong>Syntactic Sugar</strong></p>
+
+<p>  jqfactory provides helpful abstractions in places the widget factory does not.  Examples include event binding, jQuery deferred object support on intialization, and automatic event firing for certain actions (e.g. setting options)</p>
+
+<h2>Separate Our Plugin into Independent Pieces</h2>
+
+<p>From here on out, let&#8217;s assume we are using jqfactory to abstract away our jQuery plugin boilerplate code and are now ready to split up our plugin into separate files.</p>
+
+<h2>Our First jQuery Plugin File</h2>
+
+<p>Let&#8217;s assume that this file will be the first built file and will contain our default plugin options.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// options.js</span>
+</span><span class='line'><span class="c1">// ----------</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">example</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">example</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">someOption</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>On to the Next File</h2>
+
+<p>Let&#8217;s assume that this file will contain our plugin constructor function logic.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// _create.js</span>
+</span><span class='line'><span class="c1">// ----------</span>
+</span><span class='line'><span class="nx">example</span><span class="p">.</span><span class="nx">_create</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Our constructor logic goes here</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Can You See the Pattern?</h2>
+
+<p>So far, we are creating a new file for each plugin method.  The reality is that this is a bit overkill, so try to <strong>make logical modular design decisions</strong>.  In other words, try to put methods/features that depend on each other in the same file.  Since we are not using anything that handles dependency management (e.g. Require.js), we are forced to track dependencies ourselves.</p>
+
+<h2>Creating Our Plugin</h2>
+
+<p>Once we are done decoupling our plugin into different files, we can create our plugin using jqfactory.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// _plugin.js</span>
+</span><span class='line'><span class="c1">// ----------</span>
+</span><span class='line'><span class="c1">// Calling the jqfactory Method</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">jqfactory</span><span class="p">(</span><span class="s2">&quot;an.example&quot;</span><span class="p">,</span> <span class="nx">example</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Building Our Plugin with Grunt</h2>
+
+<p><a href="http://gruntjs.com" target="_blank" title="Grunt.js"><img class="center" src="/images/grunt.png"></a></p>
+
+<p>Since our plugin has been separated into multiple files, we need a command-line tool to build our plugin into one file (for a user to use).  We also want users to be able to exclude certain files from the build to allow custom builds.  This is where <strong>Grunt</strong> comes in.</p>
+
+<h2>What is Grunt?</h2>
+
+<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png" width="200"></a>
+JavaScript (Node.js) Command-Line Task Runner</p>
+
+<p>Perfect for <strong>automating repetitive tasks</strong></p>
+
+<p>A <strong>huge plugin ecosystem</strong></p>
+
+<h2>Example Grunt Tasks?</h2>
+
+<p>File Concatenation</p>
+
+<p>Minification</p>
+
+<p>Code Quality Checking (e.g. jsHint)</p>
+
+<p>Unit Testing and Phantom.js</p>
+
+<p><strong>SO MUCH MORE</strong></p>
+
+<h2>How Do We Use It?</h2>
+
+<p>We need to create a file, called <strong>Gruntfile.js</strong>, at the root of our project directory.</p>
+
+<h2>Creating Our Gruntfile</h2>
+
+<h3>Step 1</h3>
+
+<p>Inside of Gruntfile.js, we first need to wrap all of our Node.js code inside of a <strong>module.exports</strong> function.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Gruntfile.js</span>
+</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// The rest of our Grunt code will go here!</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Step 2</h3>
+
+<p>Add the configurations for any Grunt plugins/custom tasks you would like to use inside of the <code>initConfig()</code> Grunt method and also call the <code>loadNpmTasks</code> Grunt method for each plugin.  For this example, we are going to use the <a href="https://github.com/gruntjs/grunt-contrib-concat">grunt-contrib-concat</a> and <a href="https://github.com/chrissrogers/grunt-wrap">grunt-wrap</a> plugins.</p>
+
+<p><strong>Note:</strong> Any plugins that start with the <em>grunt-contrib</em> naming convention are Grunt plugins that are maintained by the core Grunt team.  All other plugins are user plugins.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Gruntfile.js</span>
+</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">baseFilePath</span> <span class="o">=</span> <span class="s1">&#39;src/js/&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">fileToBuild</span> <span class="o">=</span> <span class="nx">baseFilePath</span> <span class="o">+</span> <span class="s1">&#39;jquery.customBuild.js&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">// Our Grunt configuration</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">concat</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;&lt;%= customBuild.files %&gt;&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">dest</span><span class="o">:</span> <span class="nx">fileToBuild</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">wrap</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">modules</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="nx">fileToBuild</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">wrapper</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;;(function($, undefined) {\n&#39;</span><span class="p">,</span> <span class="s1">&#39;\n}(jQuery));&#39;</span><span class="p">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-concat&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-wrap&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// Our custom task will go here next  </span>
+</span><span class='line'> <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Note:</strong> In the previous code example, you will notice that we had to call the <code>loadNpmTasks()</code> Grunt method for each Grunt plugin we were using.  This can become annoying to do if you are using many Grunt plugins, so you may want to check out the <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a> plugin, which allows you to load all Grunt plugins with one line of code.</p>
+
+<h3>Step 3</h3>
+
+<p>Create our very own customBuild <strong>custom Grunt task</strong>.  Our custom task will work together with the other Grunt plugins we are already using (concat, wrap) to allow users to create custom builds of our jQuery plugin.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Gruntfile.js</span>
+</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">baseFilePath</span> <span class="o">=</span> <span class="s1">&#39;src/js/&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">fileToBuild</span> <span class="o">=</span> <span class="nx">baseFilePath</span> <span class="o">+</span> <span class="s1">&#39;jquery.customBuild.js&#39;</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">// Our Grunt configuration</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">concat</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;&lt;%= customBuild.files %&gt;&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">dest</span><span class="o">:</span> <span class="nx">fileToBuild</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">wrap</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">modules</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">src</span><span class="o">:</span> <span class="p">[</span><span class="nx">fileToBuild</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">wrapper</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;;(function($, undefined) {\n&#39;</span><span class="p">,</span> <span class="s1">&#39;\n}(jQuery));&#39;</span><span class="p">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-concat&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-wrap&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// Our custom task will go here next</span>
+</span><span class='line'>  <span class="c1">// Registers a default Grunt Task</span>
+</span><span class='line'>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;customBuild&#39;</span><span class="p">,</span> <span class="s1">&#39;customBuild task&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">defaultFiles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">,</span> <span class="s1">&#39;_create&#39;</span><span class="p">,</span> <span class="s1">&#39;_plugin&#39;</span><span class="p">,</span> <span class="s1">&#39;customMethod&#39;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">args</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">args</span><span class="p">,</span> <span class="nx">customFiles</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">// Loops through and excludes any file that was passed</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">while</span><span class="p">(</span><span class="o">++</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">index</span> <span class="o">=</span> <span class="nx">defaultFiles</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="nx">defaultFiles</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// Makes sure that each passed file has the correct file path</span>
+</span><span class='line'>    <span class="nx">customFiles</span> <span class="o">=</span> <span class="nx">defaultFiles</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">currentFile</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">baseFilePath</span> <span class="o">+</span> <span class="nx">currentFile</span> <span class="o">+</span> <span class="s1">&#39;.js&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="c1">// Sets a Grunt configuration variable</span>
+</span><span class='line'>    <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;customBuild.files&#39;</span><span class="p">,</span> <span class="nx">customFiles</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// Run&#39;s the Grunt concat plugin</span>
+</span><span class='line'>    <span class="nx">grunt</span><span class="p">.</span><span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;concat&#39;</span><span class="p">,</span> <span class="s1">&#39;wrap&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Running Grunt</h2>
+
+<p>On the command line, type: <code>grunt customBuild</code>.  This will build all of our plugin files into one file.</p>
+
+<p>If you had wanted to exclude a file from the build (let&#8217;s assume there is an optional customMethod.js file), then you could type: <code>grunt customBuild:customMethod</code></p>
+
+<p><img class="center" src="/images/gruntcustombuild.png" width="400"></p>
+
+<p><strong>Success!</strong></p>
+
+<p>By default, any colon-separated arguments passed to our customBuild Grunt task will be mapped to plugin file names and will be not be included in our build.</p>
+
+<h2>Final Thoughts</h2>
+
+<p>JavaScript workflow tools are improving every day and will continue to improve.  Start using these tools today!</p>
+
+<p>Also, if you would like to learn how to create custom web UI builds for your users, then check out the rest of <a href="http://gregfranko.com/modular-jquery-plugins-talk/#32">jQuery Portland Slide Deck</a> that covers my open source library, <a href="http://gregfranko.com/DownloadBuilder.js/">DownloadBuilder.js</a></p>
+
+<p>Happy jQuery plugin building!</p>
+
+<div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-22T20:54:00-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/grunt/'>Grunt</a>, <a class='category' href='/blog/categories/require-js/'>Require.js</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/modular-jquery-plugins/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/modular-jquery-plugins/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/instant-dependency-management-with-requirejs/" title="Previous Post: Instant Dependency Management with RequireJS">&laquo; Instant Dependency Management with RequireJS</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/javascript-performance-tips/" title="Next Post: JavaScript Performance Tips">JavaScript Performance Tips &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/modular-jquery-plugins/';
+        var disqus_url = 'http://gfranko.github.com/blog/modular-jquery-plugins/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

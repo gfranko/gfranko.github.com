@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Design Patterns | Greg Franko]]></title>
+  <link href="http://gfranko.github.com/blog/categories/design-patterns/atom.xml" rel="self"/>
+  <link href="http://gfranko.github.com/"/>
+  <updated>2013-11-02T21:49:36-04:00</updated>
+  <id>http://gfranko.github.com/</id>
+  <author>
+    <name><![CDATA[Greg Franko]]></name>
+    <email><![CDATA[gfranko5@yahoo.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[I Love My IIFE]]></title>
+    <link href="http://gfranko.github.com/blog/i-love-my-iife/"/>
+    <updated>2013-01-05T14:29:00-05:00</updated>
+    <id>http://gfranko.github.com/blog/i-love-my-iife</id>
+    <content type="html"><![CDATA[<p><a href="blog/i-love-my-iife"><img class="left" src="/images/JavaScript-logo-small.png" width="200"></a></p>
+
+<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
+
+<!-- more -->
+
+
+
+
+<br><br><br><br>
+
+
+<p>In the words of <a href="http://james.padolsey.com/javascript/iife-argument-madness/">James Padolsey</a>:</p>
+
+<blockquote><p>An IIFE protects a module's scope from the environment in which it is placed.</p></blockquote>
+
+<p>There are more benefits to using IIFE's than just local scoping, but before we talk about some of the other benefits, let's take a look at some code to see how to create a basic IIFE:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// my special code</span>
+</span><span class='line'><span class="p">}());</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The above <strong>IFFE</strong> is just an anonymous function (no name attached to it) that is wrapped inside of a set of parentheses and called (invoked) immediately.  Let's break this down step by step.</p>
+
+<h3>The Anonymous Function:</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// my special code</span>
+</span><span class='line'><span class="p">}();</span> <span class="c1">// The parentheses make sure the anonymous function gets called immediately</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>A function, without a name, is created and then called (invoked) immediately via the <code>()</code> at the very end.</p>
+
+<h3>The Parentheses</h3>
+
+<p>You might be wondering why we need to wrap the immediately invoked anonymous function inside of parentheses.  Before I explain why, try the above code inside of a console window.  Get a syntax error?</p>
+
+<p>By wrapping the anonymous function inside of parentheses, the JavaScript parser knows to treat the anonymous function as a function expression instead of a function declaration.  A function expression can be called (invoked) immediately by using a set of parentheses, but a function declaration cannot be.</p>
+
+<!-- more -->
+
+
+<p><strong>Note</strong>: In case you forget the difference between JavaScript function expressions and function declarations:</p>
+
+<p><em>Function Expression</em> - <code>var test = function() {};</code></p>
+
+<p><em>Function Declaration</em> - <code>function test() {};</code></p>
+
+<p>Since the anonymous function within our IIFE is a function expression and is not being assigned to a global variable, no global property is being created, and all of the properties created inside of the function expression are scoped locally to the expression itself.</p>
+
+<h3>Other Benefits of using an IIFE</h3>
+
+<p>Whew, now that we understand the basic concept of an IIFE, let's determine some other benefits of using them in your code.</p>
+
+<h4>Reduce scope lookups</h4>
+
+<p>A small performance benefit of using IIFE's is the ability to pass commonly used global objects (window, document, jQuery, etc) to an IIFE's anonymous function, and then reference these global objects within the IIFE via a local scope.</p>
+
+<p><strong>Note</strong>: JavaScript first looks for a property in the local scope, and then it goes all the way up the chain, last stopping at the global scope.  Being able to place global objects in the local scope provides faster internal lookup speeds and performance.</p>
+
+<p>Let's look at a code example of passing global objects to an IIFE:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function that has three arguments</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// You can now reference the window, document, and jQuery objects in a local scope&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span> <span class="c1">// The global window, document, and jQuery objects are passed into the anonymous function</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4>Minification Optimization</h4>
+
+<p>Another small performance benefit of using IIFE's is that it helps with minification optimization.  Since we are able to pass global objects into the anonymous function as local values (parameters), a minifier is able to reduce the name of each global object to a one letter word (as long as you don't already have a variable of the same name).  Let's look at the above code sample after minification:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function that has three arguments</span>
+</span><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// You can now reference the window, document, and jQuery objects in a local scope&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span> <span class="c1">// The global window, document, and jQuery objects are passed into the anonymous function</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Note</strong>:  Another added benefit (when using jQuery), is that you can freely use the <code>$</code> without worrying about other library conflicts, since you passed in the global <code>jQuery</code> object and scoped it to the <code>$</code> as a local parameter.</p>
+
+<h3>Readability</h3>
+
+<p>One of the con's with using IIFE's is readability.  If you have a lot of JavaScript code inside of an IIFE, and you want to find the parameters that you are passing into an IIFE, then you need to scroll all the way to the bottom of the page.  Luckily, there is a more readable pattern that I have begun to use:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">library</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// Calls the second IIFE and locally passes in the global jQuery, window, and document objects</span>
+</span><span class='line'><span class="nx">library</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Locally scoped parameters</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Library code goes here&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This IIFE pattern allows you see what global objects you are passing into your IIFE, without you having to scroll to the very bottom of a potentially very long file.  Happy IIFE'ing!</p>
+]]></content>
+  </entry>
+  
+</feed>

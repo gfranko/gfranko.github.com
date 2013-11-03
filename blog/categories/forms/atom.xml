@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Forms | Greg Franko]]></title>
+  <link href="http://gfranko.github.com/blog/categories/forms/atom.xml" rel="self"/>
+  <link href="http://gfranko.github.com/"/>
+  <updated>2013-11-02T21:49:36-04:00</updated>
+  <id>http://gfranko.github.com/</id>
+  <author>
+    <name><![CDATA[Greg Franko]]></name>
+    <email><![CDATA[gfranko5@yahoo.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Introducing the jQuery Plugin SelectBoxIt]]></title>
+    <link href="http://gfranko.github.com/blog/introducing-the-jquery-plugin-selectboxit/"/>
+    <updated>2012-04-14T00:11:00-04:00</updated>
+    <id>http://gfranko.github.com/blog/introducing-the-jquery-plugin-selectboxit</id>
+    <content type="html"><![CDATA[<p><link href="/stylesheets/jQuery.selectBoxIt.css" rel="stylesheet" type="text/css"></p>
+
+<script src="/javascripts/jQuery.selectBoxIt.min.js" type="text/javascript"></script>
+
+
+<script src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+
+
+<script src="/javascripts/jquery.tableofcontents.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#toc").tableOfContents(null, { startLevel: "2", depth: "2" }); 
+        var selectBox = $("select#test, select#icons").selectBoxIt({ showEffect: "fadeIn", showEffectSpeed: 300, hideEffect: "fadeOut", hideEffectSpeed: 300 }).data("selectBoxIt");
+        $("#switcher").themeswitcher();
+        var effectsSelectBox = $("select#effectsDropDown").selectBoxIt().data("selectBoxIt");
+        $("#effectsButton").click(function() {
+            var effect = $("select#effectsDropDown").val();
+            selectBox.setOptions({ showEffect: effect, hideEffect: effect });
+            if(!selectBox.list.is(":visible")) {
+                selectBox.open();
+            }
+            else {
+                selectBox.close();   
+            }
+        });
+        $(".ui-button").mouseenter(function() {
+            $(this).addClass("ui-state-hover");
+        });
+        $(".ui-button").mouseleave(function() {
+            $(this).removeClass("ui-state-hover");
+        });
+        var upArrowSelectBox = $("select#upArrow").selectBoxIt().data("selectBoxIt");
+
+        $("select#upArrow").bind({
+            "open": function() {
+                upArrowSelectBox.setOption("downArrowIcon", "ui-icon ui-icon-triangle-1-n");
+            },
+            "close": function() {
+                upArrowSelectBox.setOption("downArrowIcon", "ui-icon ui-icon-triangle-1-s");
+            }
+        });
+
+        var optgroupsSelectBox = $("select#optgroups").selectBoxIt().data("selectBoxIt");
+    });
+</script>
+
+
+<h2>What is SelectBoxIt?</h2>
+
+<p><select id="test" name="test">
+<option value="SelectBoxIt is:">SelectBoxIt is:</option>
+<option value="a jQuery Plugin">a jQuery Plugin</option>
+<option value="a Select Box Replacement">a Select Box Replacement</option>
+<option value="a Stateful UI Dropdown Widget">a Stateful UI Dropdown Widget</option>
+</select></p>
+
+<br /><br />
+
+
+<p>A jQuery plugin that progressively enhances an HTML Select Box into a <strong>single option</strong> dropdown list.  The dropdown list can be optionally styled with <strong>ThemeRoller</strong> (<em>Preview a Theme Below</em>) and <strong>jQueryUI/custom image icons</strong>, and optionally animated with <strong>jQueryUI show/hide effects</strong> (<em>Preview a jQueryUI Effect Below</em>).</p>
+
+<div style="float:left;padding-right:100px;"><em>Preview a Theme</em>  <div id="switcher"></div></div>
+
+
+<div style="float:left;"><em>Preview a jQueryUI Effect</em>
+<br />
+<select class="effects" name="effects" id="effectsDropDown">
+<option value="blind">blind</option>
+<option value="bounce">bounce</option>
+<option value="clip">clip</option>
+<option value="drop">drop</option>
+<option value="explode">explode</option>
+<option value="fold">fold</option>
+<option value="highlight">highlight</option>
+<option value="puff">puff</option>
+<option value="scale">scale</option>  
+<option value="shake">shake</option>
+<option value="size">size</option>
+<option value="slide">slide</option>
+</select>
+
+<button id="effectsButton" class="ui-button ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+    <span class="ui-button-text">Run Effect</span>
+</button>
+</div>
+
+
+<br /><br /><br /><br />
+
+
+<p>The project is hosted on <a href="https://github.com/gfranko/jQuery.selectBoxIt.js" target="_blank" class="projectLinks">Github</a>, has a <a href="http://www.selectboxit.com" target="_blank">project page</a> the <a href="/docs/jQuery.selectBoxIt.html" target="_blank" class="projectLinks">annotated source code</a> is available, and an <a href="/test/SpecRunner.html" target="_blank" class="projectLinks">online test suite</a> is also available.  SelectBoxIt is available for use under the <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/blob/master/MIT-LICENSE.txt" target="_blank" class="projectLinks">MIT software license</a>.  You can report bugs and discuss features on the <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/issues?sort=created&direction=desc&state=open" target="_blank">GitHub issues page</a>, or send tweets to <a href="http://www.twitter.com/gregfranko" target="_blank">@gregfranko</a>.</p>
+
+<br />
+
+
+<!-- more -->
+
+
+<h2>Table of Contents</h2>
+
+<ul id="toc" style="list-style:none;background:#F0F0F0;"></ul>
+
+
+<h2>Downloads and Dependencies</h2>
+
+<p>SelectBoxIt depends on jQuery 1.6.1+ (It is always recommended to use the latest version of jQuery) and the latest version of the jQueryUI Widget Factory.  If you want to style your dropdown list with jQueryUI, download a default <a href="http://jqueryui.com/themeroller/" target="_blank">jQueryUI CSS Theme</a> or create your own theme.  If you want to use jQueryUI for advanced show/hide effects, download the latest version of the <a href="http://jqueryui.com/download" target="_blank">jQueryUI effects</a> (only the custom <strong>Effects</strong> you use are required).</p>
+
+<p><a href="https://raw.github.com/gfranko/jQuery.selectBoxIt.js/master/src/javascripts/jQuery.selectBoxIt.js" target="_blank" style="display:inline-block;">
+<button id="effectsButton" class="ui-button ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false" style="margin:0;width:200px;font-size:16px;padding:0px;">
+<span class="ui-button-text">Development Version</span>
+</button>
+</a>
+<span class="ui-button-text">72kb, Full source, lots of comments</span></p>
+
+<p><a href="https://raw.github.com/gfranko/jQuery.selectBoxIt.js/master/src/javascripts/jquery.selectBoxIt.min.js" target="_blank" style="display:inline-block;">
+<button id="effectsButton" class="ui-button ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false" style="margin:0;width:200px;font-size:16px;padding:0px;">
+<span class="ui-button-text">Production Version</span>
+</button>
+</a>
+<span class="ui-button-text">3.5kb, Packed and gzipped</span></p>
+
+<br />
+
+
+<h2>Why Use SelectBoxIt?</h2>
+
+<p><a href="http://jqueryui.com/themeroller/" target="_blank"><img class="images" src="/images/themeroller.png" width="120" height="130" title="jQueryUI Themeroller" ></a> <a href="http://docs.jquery.com/UI/Effects/" target="_blank"><img class="images" src="/images/jqueryui.png" width="120" height="130" title="jQueryUI Effects" ></a>
+<strong>SelectBoxIt</strong> gives you full control to style and customize your HTML Select Box to fit the look and feel of your site.  Integration with <strong>jQueryUI</strong> is built-in to provide advanced stying and custom effects.</p>
+
+<p>SelectBoxIt was built to make a developers life easier, not harder.  All of your current JavaScript validation code will continue to work.  If you want to enhance your validation/UI logic, you can listen to the over <strong>20 events</strong> and call the <strong>14 methods</strong> provided by SelectBoxIt.</p>
+
+<br />
+
+
+<h2>Notable Features</h2>
+
+<p>-Built-in <strong>ARIA support</strong> (Accessible Rich Internet Applications)<br /><br />
+-Full <strong>keyboard search and navigation support</strong><br /><br />
+-Handful of <strong>customizable options</strong><br /><br />
+-An <strong>event API</strong> triggered on the original select box element that calls the plugin<br /><br />
+-A <strong>method API</strong> providing developers with methods to interact with the dropdown list (i.e. Search, Open, Disable, Set Options).<br /><br />
+-<strong>Selected</strong>, <strong>disabled</strong>, and <strong>optgroup</strong> support<br /><br />
+-Easily <strong>extendable</strong> to allow developers to create new widgets</p>
+
+<br />
+
+
+<h2>Browser Support</h2>
+
+<p>Tested in IE7+, Firefox 4+, Chrome, Safari 4+, and Opera 11+.</p>
+
+<p>Accessibility Testing was done in IE7+ and Firefox 4+ using JAWS 12, a proprietary screen reader.</p>
+
+<br />
+
+
+<h2>Getting Started</h2>
+
+<p><strong>1.</strong>  Download the latest <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/zipball/master">SelectBoxIt Project Folder</a>.  All of the plugin files are in the <code>src</code> directory (this includes both the JavaScript and CSS files).  If you want to see an example page with all of the files included, look in the <code>demos</code> directory.</p>
+
+<p><strong>2.</strong>  Go to the <a href="http://jqueryui.com/download" target="_blank">jQueryUI Custom Download Page</a>.  This is where we will be downloading the jQueryUI Widget Factory and potentially a jQueryUI CSS Theme and jQueryUI show/hide animations.</p>
+
+<p>-Once you are at the jQueryUI custom download page, check the box to download the <a href="http://jqueryui.com/download" target="_blank">jQueryUI Widget Factory</a>.</p>
+
+<p><a href="http://jqueryui.com/download" target="_blank">
+<img src="/images/widgetFactory.PNG" width="800" height="530" title="jQueryUI Widget Factory" >
+</a></p>
+
+<p>-Next, If you are going to use jQueryUI to style your dropdown list (you should), then make sure to pick a jQueryUI CSS theme to download.  Alternatively, you can create your own theme or look at all of the jQueryUI default themes with <a href="http://jqueryui.com/themeroller/" target="_blank">jQueryUI ThemeRoller</a>.</p>
+
+<p><a href="http://jqueryui.com/download" target="_blank">
+<img src="/images/theme.PNG" width="250" height="230" title="jQueryUI Theme" >
+</a></p>
+
+<p>You may also use a Google or Microsoft CDN hosted version of a default jQueryUI CSS theme instead of downloading a copy locally to your computer.  Replace the <code>[UI.VERSION]</code> with the jQueryUI version you are using (i.e. <em>1.8.18</em>) and also replace the <code>[THEME-NAME]</code> with the default theme name you are using (i.e. <em>smoothness</em>).</p>
+
+<p><strong>Google</strong>: <code>http://ajax.googleapis.com/ajax/libs/jqueryui/[UI.VERSION]/themes/[THEME-NAME]/jquery-ui.css</code></p>
+
+<br />
+
+
+<p><strong>Microsoft</strong>
+<code>http://ajax.aspnetcdn.com/ajax/jquery.ui/[UI.VERSION]/themes/[THEME-NAME]/jquery-ui.css</code></p>
+
+<p>Next, if you are using jQueryUI for custom show/hide effects, then make sure to check the <code>Effects Core</code> box, and any of the custom animations you would like to use.</p>
+
+<p>Finally, click the <code>Download</code> button to download your custom jQueryUI files!</p>
+
+<p><a href="http://jqueryui.com/download" target="_blank">
+<img src="/images/jqueryUIEffects.png" width="800" height="530" title="jQueryUI Effects" >
+</a></p>
+
+<p><strong>3.</strong></p>
+
+<h3>HTML</h3>
+
+<p>Create an HTML select box with <code>id</code> and <code>name</code> attributes.  The <code>name</code> attribute from the HTML select box will be copied to the new dropdown list that the plugin creates (this allows you to easily interact with the new dropdown list without having to know a new <code>id</code> or <code>class</code> attribute).  Each select box option should have a <code>value</code> attribute.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;test&quot;</span> <span class="na">name=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SelectBoxIt is:&quot;</span><span class="nt">&gt;</span>SelectBoxIt is:<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a jQuery Plugin&quot;</span><span class="nt">&gt;</span>a jQuery Plugin<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a Select Box Replacement&quot;</span><span class="nt">&gt;</span>a Select Box Replacement<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a Stateful UI Dropdown Widget&quot;</span><span class="nt">&gt;</span>a Stateful UI Dropdown Widget<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Your select box option <code>value</code> attributes and text also do not have to be the same.  This would also work:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;test&quot;</span> <span class="na">name=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;someValue&quot;</span><span class="nt">&gt;</span>SelectBoxIt is:<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;jQuery&quot;</span><span class="nt">&gt;</span>a jQuery Plugin<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;select box&quot;</span><span class="nt">&gt;</span>a Select Box Replacement<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;widget&quot;</span><span class="nt">&gt;</span>a Stateful UI Dropdown Widget<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>SelectBoxIt</strong> also supports the <code>selected</code> and <code>disabled</code> HTML properties.  Keep in mind that the last select box option to contain the <code>selected</code> property will be the select box option that the dropdown list uses as it's default option.  Also, the <code>disabled</code> property can be used to disable the entire dropdown or specific dropdown options.</p>
+
+<p>Here is an example of setting a select box option as the <code>selected</code> option:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;test&quot;</span> <span class="na">name=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;someValue&quot;</span><span class="nt">&gt;</span>SelectBoxIt is:<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;jQuery&quot;</span><span class="nt">&gt;</span>a jQuery Plugin<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;select box&quot;</span><span class="nt">&gt;</span>a Select Box Replacement<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;widget&quot;</span> <span class="na">selected</span><span class="nt">&gt;</span>a Stateful UI Dropdown Widget<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here is an example of setting the <code>disabled</code> property for multiple select box options:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;test&quot;</span> <span class="na">name=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;someValue&quot;</span><span class="nt">&gt;</span>SelectBoxIt is:<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;jQuery&quot;</span> <span class="na">disabled</span><span class="nt">&gt;</span>a jQuery Plugin<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;select box&quot;</span><span class="nt">&gt;</span>a Select Box Replacement<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;widget&quot;</span> <span class="na">disabled</span><span class="nt">&gt;</span>a Stateful UI Dropdown Widget<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>4.</strong></p>
+
+<h3>CSS</h3>
+
+<p>-Customize <strong>jquery.selectBoxIt.css</strong> (Downloaded in Step 1) and then add it to the <em>head</em> section of your HTML page.  The CSS file by default expects a select box element with an <code>id</code> attribute of <em>test</em>.  Replace the word <em>test</em> in all of the CSS selectors with the unique <code>id</code> attribute of your HTML select box (if you don't use <em>test</em> as your <code>id</code> attribute).</p>
+
+<p>-If you are using jQueryUI to style your dropdown list, then add the latest <strong>jQueryUI CSS file</strong> (i.e. <em>jquery-ui-1.8.18.custom.css</em>) to the <em>head</em> section of your HTML page.  This is downloaded in Step 2.  If you are using a Google or Microsoft CDN hosted version of a default jQueryUI theme, then you do not need to download anything, just include the hosted css file in the <em>head</em> section of your HTML page.</p>
+
+<p>-If you are using jQueryUI to style your dropdown list, then add all of the jQueryUI images to your images folder.  Keep in mind that depending on your folder structure, you may need to update the image paths inside of the jQueryUI CSS file.</p>
+
+<p><strong>Note:</strong>  This assumes that you have downloaded both of the css files to the same folder as your HTML page.  Modify the <code>href</code> attribute if you do not store the CSS files in the same folder as your HTML page.  Also, if you are <strong>not</strong> using jQueryUI to style your dropdown list, then you will most likely want to add additional CSS attributes to <strong>jquery.selectBoxIt.css</strong> to compensate.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;link</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;jquery.selectBoxIt.css&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;link</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;jquery-ui-1.8.18.custom.css&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>6.</strong></p>
+
+<h3>JavaScript</h3>
+
+<p>-If you are not already including <strong>jQuery</strong> in your HTML page, download <a href="http://jquery.com/" target="_blank">jQuery</a>, and add it immediately before the closing <code>body</code> tag.</p>
+
+<p>-Next, add your custom <strong>jQueryUI</strong> JavaScript file (i.e. <em>jquery-ui-1.8.19.custom.min.js</em>) after <strong>jQuery</strong>.  This was downloaded in Step 2.</p>
+
+<p>-Add <strong>jquery.selectBoxIt.min.js</strong> (downloaded in Step 1) after your custom <strong>jQueryUI</strong> JavaScript file.</p>
+
+<p><strong>Note:</strong>  Order Matters.  Include these files in the same order as shown.  The jQueryUI Widget Factory and jQueryUI show/hide effects were included in the same file (jquery-ui-1.8.19).  You can find this file in the <code>SelectBoxIt</code> Github Repository under the <code>libs/jqueryUI</code> directory.  Also, this assumes that you have downloaded all of the JavaScript files to the same folder as your HTML page.  Modify the <code>src</code> attribute if you do not store the JavaScript files in the same folder as your HTML page.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>//Your other markup...<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;jquery-1.7.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;jquery-ui-1.8.19.custom.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;jquery.selectBoxIt.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Call the plugin</strong></p>
+
+<p>In your JavaScript code, call the selectBoxIt method on your HTML select box.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">//Executes your code when the DOM is ready.  Acts the same as $(document).ready().</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">//Calls the selectBoxIt method on your HTML select box.</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Options API</h2>
+
+<p>The Options API allows you to customize the dropdown list by setting custom options.  All options can be set when the plugin is called, or after the plugin is called, using the <code>setOption()</code> or <code>setOptions()</code> methods.</p>
+
+<p>Here is an example of setting the options when the plugin is called:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">({</span> <span class="nx">showEffect</span><span class="o">:</span> <span class="s2">&quot;fadeIn&quot;</span><span class="p">,</span> <span class="nx">showEffectSpeed</span><span class="o">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="nx">hideEffect</span><span class="o">:</span> <span class="s2">&quot;fadeOut&quot;</span><span class="p">,</span> <span class="nx">hideEffectSpeed</span><span class="o">:</span> <span class="s2">&quot;medium&quot;</span> <span class="p">}).</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here is an example of setting the options after the plugin is called using the <code>setOptions()</code> method:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">selectBox</span><span class="p">.</span><span class="nx">setOptions</span><span class="p">({</span> <span class="nx">showEffect</span><span class="o">:</span> <span class="s2">&quot;fadeIn&quot;</span><span class="p">,</span> <span class="nx">showEffectSpeed</span><span class="o">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="nx">hideEffect</span><span class="o">:</span> <span class="s2">&quot;fadeOut&quot;</span><span class="p">,</span> <span class="nx">hideEffectSpeed</span><span class="o">:</span> <span class="s2">&quot;medium&quot;</span> <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here is an example of setting a single option after the plugin is called using the <code>setOption()</code> method:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">selectBox</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="s2">&quot;showEffect&quot;</span><span class="p">,</span> <span class="s2">&quot;fadeIn&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>All of the custom options are described below:</p>
+
+<p><strong>showEffect</strong>: Accepts a String: <code>none</code>, <code>fadeIn</code>, <code>show</code>, <code>slideDown</code>, or any of the <a href="http://jqueryui.com/demos/show/" target="_blank"> jQueryUI show effects</a> (i.e. <code>bounce</code>).  Default is <code>none</code></p>
+
+<p><strong>showEffectOptions</strong>: Accepts an object literal.  All of the available properties are based on the <a href="http://docs.jquery.com/UI/Effects/" target="_blank">jqueryUI effect options</a>(i.e. {direction: <code>down</code>}).  Default is <code>{}</code></p>
+
+<p><strong>showEffectSpeed</strong>: Accepts a Number (milliseconds) or a String: <code>slow</code>, <code>medium</code>, or <code>fast</code>.  Default is <code>medium</code></p>
+
+<p><strong>hideEffect</strong>: Accepts String: <code>none</code>, <code>fadeOut</code>, <code>hide</code>, <code>slideUp</code>, or any of the <a href="http://jqueryui.com/demos/hide/" target="_blank"> jQueryUI hide effects</a> (i.e. <code>bounce</code>). Default is <code>none</code></p>
+
+<p><strong>hideEffectOptions</strong>: Accepts an object literal.  All of the available properties are based on the <a href="http://docs.jquery.com/UI/Effects/" target="_blank">jqueryUI effect options</a>(i.e. {direction: <code>up</code>}).  Default is <code>{}</code></p>
+
+<p><strong>hideEffectSpeed</strong>: Accepts a Number (milliseconds) or a String: <code>slow</code>, <code>medium</code>, or <code>fast</code>.  Default is <code>medium</code></p>
+
+<p><strong>keyboardSearch</strong>: Allows users to search for dropdown options.  Accepts a Boolean: true or false.  Default is <code>true</code></p>
+
+<p><strong>keyboardNavigation</strong>: Allows keyboard navigation using the <code>up</code> and <code>down</code> keyboard arrow keys.  Accepts a Boolean: true or false.  Default is <code>true</code></p>
+
+<p><strong>showFirstOption</strong>: Shows the first select box option within the dropdown options list. Accepts a Boolean: true or false.  Default is <code>true</code></p>
+
+<p><strong>defaultText</strong>: Overrides the text, used by the dropdown list, to allow a user to specify custom text.  Accepts a String.  Default is <code>""</code>.</p>
+
+<p><strong>defaultIcon</strong>: Overrides the icon, used by the dropdown list selected option, to allow a user to specify a custom icon.
+Accepts a String.  Default is <code>""</code>.</p>
+
+<p><strong>downArrowIcon</strong>: Overrides the default down arrow, used by the dropdown list, to allow a user to specify a custom image.
+Accepts a String.  Default is <code>"ui-icon ui-icon-triangle-1-s"</code>, which are the jQueryUI class names for the down arrow icon.</p>
+
+<h2>Events API</h2>
+
+<p>All custom/default events are <strong>triggered on the original select box element</strong> (not the new dropdown list).  The original select box <code>value</code> attribute is also synced with the new dropdown list, so if a user selects a new value from the dropdown list, the original select box value will also be updated.  This allows your existing code to continue working inside of forms.</p>
+
+<p>You can catch <strong>Default Events</strong> by using the jQuery <code>bind()</code> or <code>on()</code> methods, or by using jQuery convenience methods such as <code>click</code>, <code>change</code>, etc.  You <strong>must</strong> use the jQuery <code>bind()</code> or <code>on()</code> methods to catch <strong>Custom Events</strong>.</p>
+
+<p>Here is an example of catching a <strong>Default Event</strong> by using the jQuery <code>bind()</code> method:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="s2">&quot;focus&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//Do something here</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here is an example of catching a <strong>Default Event</strong> by using a jQuery convenience method:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">focus</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">//Do something here</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Here is an example of catching a <strong>Custom Event</strong> by using the jQuery <code>bind()</code> method:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//Do something here</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Note:</strong>  <em>SelectBoxIt</em> also provides <code>$(":selectBox-selectBoxIt")</code>, a custom jQuery pseudo selector, that returns all select box elements that use the SelectBoxIt plugin (useful if you are using the plugin to enhance multiple select box elements and want to catch events on all select box elements).</p>
+
+<h3>Default Events</h3>
+
+<p><code>focus</code> - A focus event will be triggered when a user either clicks or tabs to the dropdown list.</p>
+
+<p><code>focusin</code> - A focusin event will be triggered when a user either clicks or tabs to the dropdown list.  Focus and focusin events are closely related, but the focusin event bubbles up the DOM tree and the focus event does not bubble.  If you are using a library such as <strong>Backbone.js</strong>, which uses event delegation, use the focusin event to determine when the select box element gains focus.</p>
+
+<p><code>click</code> - A click event will be triggered when a user clicks on the dropdown list.</p>
+
+<p><code>blur</code> - A blur event will be triggered when the dropdown list loses focus.</p>
+
+<p><code>focusout</code> - A focusout event will be triggered when the dropdown list loses focus.  Blur and focusout events are closely related, but the focusout event bubbles up the DOM tree and the blur event does not bubble.  If you are using a library such as <strong>Backbone.js</strong>, which uses event delegation, use the focusout event to determine when the select box element loses focus.</p>
+
+<p><code>change</code> - A change event will be triggered when a user selects a new dropdown list option.</p>
+
+<p><code>mouseenter</code> - A mouseenter event will be triggered when a user's mouse enters an element.  jQuery uses both mouseenter and mouseleave to simulate a hover event.</p>
+
+<p><code>mouseleave</code> - A mouseleave event will be triggered when a user's mouse leaves an element.  jQuery uses both mouseenter and mouseleave to simulate a hover event.</p>
+
+<h3>Custom Events</h3>
+
+<p><code>open</code> - An open event will be triggered when a user opens the dropdown list.</p>
+
+<p><code>close</code> - A close event will be triggered when a user closes the dropdown list.</p>
+
+<p><code>moveDown</code> - A moveDown event will be triggered when a user presses the down arrow key to select a dropdown list option directly beneath the currently selected option.</p>
+
+<p><code>moveUp</code> - A moveUp event will be triggered when a user presses the up arrow key to select a dropdown list option directly above the currently selected option.</p>
+
+<p><code>search</code> - A search event will be triggered when a user does a text search that matches a dropdown list option.  Keep in mind that this event will be fired only when a search match is found.</p>
+
+<p><code>enter</code> - An enter event will be triggered when a user presses the enter key while the dropdown list is focused.</p>
+
+<p><code>tabFocus</code> - A tabFocus event will be triggered when a user presses the tab key to focus the dropdown list.</p>
+
+<p><code>tabBlur</code> - A tabBlur event will be triggered when a user presses the tab key to blur the dropdown list.</p>
+
+<p><code>backspace</code> - A backspace event will be triggered when a user presses the backspace key while the dropdown list is focused.</p>
+
+<p><code>disable</code> - A disable event will be triggered if a dropdown list becomes disabled.</p>
+
+<p><code>enable</code> - An enable event will be triggered if a dropdown list becomes enabled, or in other words, no longer disabled.</p>
+
+<p><code>destroy</code> - A destroy event will be triggered if a dropdown list is destroyed.</p>
+
+<p><code>create</code> - A create event will be triggered if a dropdown list is created.</p>
+
+<h2>Method API</h2>
+
+<p>The Method API allows you to programmatically interact with the dropdown list after it is created.  All methods can be called individually or chained.  Here is an example of chaining:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">selectBox</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">close</span><span class="p">().</span><span class="nx">moveDown</span><span class="p">().</span><span class="nx">disable</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If you want to provide a delay (in milleseconds) before your methods are called, use the <strong>wait()</strong> method.  Here is an example of the <strong>wait()</strong> method.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">//Opens the dropdown list for two seconds before closing the dropdown list</span>
+</span><span class='line'><span class="nx">selectBox</span><span class="p">.</span><span class="nx">open</span><span class="p">().</span><span class="nx">wait</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span> <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Note:</strong> You can pass a callback function to all of the methods.  Inside of the callback function, the <code>this</code> keyword refers to the plugin object, which allows you to call another plugin method like so:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">selectBox</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">moveDown</span><span class="p">();</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>open()</strong>: Opens the dropdown options list.</p>
+
+<p><strong>close()</strong>: Closes the dropdown options list.</p>
+
+<p><strong>moveDown()</strong>: Selects the dropdown option directly beneath the currently selected option.</p>
+
+<p><strong>moveUp()</strong>: Selects the dropdown option directly above the currently selected option.</p>
+
+<p><strong>search(String searchTerm)</strong>: Selects the dropdown option that most closely matches the text passed into the method.  If a pattern match is found, the dropdown text value changes.  If a pattern match is not found, then the dropdown text value does not change.</p>
+
+<p><strong>setOption(String key, String value)</strong>: Sets a single plugin option.</p>
+
+<p><strong>setOptions(Object newOptions)</strong>: Sets or adds new plugin option settings.</p>
+
+<p><strong>disable()</strong>: Disables the dropdown/select box.</p>
+
+<p><strong>enable()</strong>: Enables the dropdown/select box.</p>
+
+<p><strong>destroy()</strong>: Removes the dropdown from the DOM and makes the original select box element visible.</p>
+
+<p><strong>wait(Number time, Function callback)</strong>: Delays execution of the callback function by the amount of time (milleseconds) specified by the <code>time</code> parameter.</p>
+
+<h2>Getting Options</h2>
+
+<p>You can get the current options used by <code>SelectBoxIt</code> two different ways:</p>
+
+<p><strong>Example 1:</strong> Retrieving a single plugin option</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBoxIt</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">selectBoxIt</span><span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s2">&quot;showFirstOption&quot;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Example 2:</strong> Retrieving all of the plugin options
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">selectBoxIt</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">selectBoxIt</span><span class="p">.</span><span class="nx">options</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Optgroup Support</h2>
+
+<p><strong>SelectBoxIt</strong> supports optgroups.  You have full control to style the optgroups by using the <code>optgroupHeader</code> and <code>optgroupOption</code> CSS classes.</p>
+
+<p>Here is an example of a dropdown list that uses optgroups:</p>
+
+<p><select id="optgroups" name="optgroups">
+<option value="SelectBoxIt is:">SelectBoxIt is:</option>
+<optgroup label="Optgroup 1">
+  <option value="a jQuery Plugin">a jQuery Plugin</option>
+</optgroup>
+<optgroup label="Optgroup 2">
+  <option value="a Select Box Replacement">a Select Box Replacement</option>
+</optgroup>
+<optgroup label="Optgroup 3">
+  <option value="a Stateful UI Dropdown Widget">a Stateful UI Dropdown Widget
+  </option>
+</optgroup>
+</select></p>
+
+<br /><br />
+
+
+<p>The HTML code from the above example looks like this:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;optgroups&quot;</span> <span class="na">name=</span><span class="s">&quot;optgroups&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SelectBoxIt is:&quot;</span><span class="nt">&gt;</span>SelectBoxIt is:<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Optgroup 1&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a jQuery Plugin&quot;</span><span class="nt">&gt;</span>a jQuery Plugin<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/optgroup&gt;</span>
+</span><span class='line'><span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Optgroup 2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a Select Box Replacement&quot;</span><span class="nt">&gt;</span>a Select Box Replacement<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/optgroup&gt;</span>
+</span><span class='line'><span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Optgroup 3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a Stateful UI Dropdown Widget&quot;</span><span class="nt">&gt;</span>a Stateful UI Dropdown Widget
+</span><span class='line'>  <span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/optgroup&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;&lt;br/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Using Icons</h2>
+
+<p><strong>SelectBoxIt</strong> supports jQueryUI/custom image icons.  You can specify the class names that you want to use to show the appropriate icon(s) (set the <code>background</code> property inside of your CSS).  There are two ways to specify CSS class names (adding HTML5 data attributes or SelectBoxIt options).  View the <strong>Options API</strong> and <strong>HTML5 Data Attributes</strong> Sections for more documentation.</p>
+
+<p>Here is an example of a dropdown list that uses jQueryUI icons:</p>
+
+<br />
+
+
+<p><select id="icons" name="test">
+<option value="SelectBoxIt is:" data-icon="ui-icon ui-icon-search">SelectBoxIt is:</option>
+<option value="a jQuery Plugin" data-icon="ui-icon ui-icon-check">a jQuery Plugin</option>
+<option value="a Select Box Replacement" data-icon="ui-icon ui-icon-check">a Select Box Replacement</option>
+<option value="a Stateful UI Dropdown Widget" data-icon="ui-icon ui-icon-check">a Stateful UI Dropdown Widget</option>
+</select></p>
+
+<br />
+
+
+<p>The HTML code from the above example looks like this:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;icons&quot;</span> <span class="na">name=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SelectBoxIt is:&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;ui-icon ui-icon-search&quot;</span><span class="nt">&gt;</span>SelectBoxIt is:<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a jQuery Plugin&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;ui-icon ui-icon-check&quot;</span><span class="nt">&gt;</span>a jQuery Plugin<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a Select Box Replacement&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;ui-icon ui-icon-check&quot;</span><span class="nt">&gt;</span>a Select Box Replacement<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;a Stateful UI Dropdown Widget&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;ui-icon ui-icon-check&quot;</span><span class="nt">&gt;</span>a Stateful UI Dropdown Widget<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'><span class="nt">&lt;/select&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>By specifying a <code>data-icon</code> HTML5 data attribute for each select box option, I am able to tell SelectBoxIt which CSS classes to use to show a custom image for each of my individual options.  The <code>ui-icon</code> and <code>ui-icon-search</code> CSS classes are both given by the jQueryUI CSS framework (these image icons are included in the <strong>ThemeRoller</strong> download folder).</p>
+
+<p><strong>Note:</strong> If you had just specified a <code>data-icon</code> attribute on the select box, and not on any of the individual options, the dropdown list will use the <code>data-icon</code> attribute as a default icon image, and will not change it's icon when options are selected.</p>
+
+<p>If you want to use custom icons, then you need to create custom CSS properties in <strong>jquery.selectBoxIt.css</strong> similar to this:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.someImage</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">Width</span> <span class="n">and</span> <span class="k">height</span> <span class="n">of</span> <span class="n">your</span> <span class="k">icon</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">16px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">16px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">File</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="k">icon</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="sx">url(../someimage.png)</span> <span class="k">no-repeat</span> <span class="k">top</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There are a few other goodies provided, including a way for you to change the default icon image using the <code>defaultIcon</code> option, and also a way for you to customize the dropdown down arrow to be a different icon.</p>
+
+<p>Here is an example of a dropdown list that uses jQueryUI icons like the above example, but also updates the dropdown down arrow to be an up arrow when the dropdown list is opened.</p>
+
+<p><select id="upArrow" name="test">
+<option value="SelectBoxIt is:" data-icon="ui-icon ui-icon-search">SelectBoxIt is:</option>
+<option value="a jQuery Plugin" data-icon="ui-icon ui-icon-check">a jQuery Plugin</option>
+<option value="a Select Box Replacement" data-icon="ui-icon ui-icon-check">a Select Box Replacement</option>
+<option value="a Stateful UI Dropdown Widget" data-icon="ui-icon ui-icon-check">a Stateful UI Dropdown Widget</option>
+</select></p>
+
+<br /><br />
+
+
+<p>Here is the jQuery snippet from the above example:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">upArrowSelectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#upArrow&quot;</span><span class="p">).</span><span class="nx">selectBoxIt</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;selectBoxIt&quot;</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#upArrow&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">upArrowSelectBox</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="s2">&quot;downArrowIcon&quot;</span><span class="p">,</span> <span class="s2">&quot;ui-icon ui-icon-triangle-1-n&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'><span class="s2">&quot;close&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">upArrowSelectBox</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="s2">&quot;downArrowIcon&quot;</span><span class="p">,</span> <span class="s2">&quot;ui-icon ui-icon-triangle-1-s&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If you are interested in other jQueryUI icon images, check out the <a href="http://jquery-ui.googlecode.com/svn/tags/1.6rc5/tests/static/icons.html" target="_blank">jQueryUI Icons Test Page</a></p>
+
+<h2>HTML5 Data Attributes</h2>
+
+<p><strong>data-icon</strong> - Specifies the custom or jQueryUI CSS classes you want to use to show icon images for the dropdown list and/or dropdown list individual options</p>
+
+<p><strong>data-downarrow</strong> - Specifies the custom or jQueryUI CSS classes you want to use to replace the default down arrow icon image</p>
+
+<p><strong>data-text</strong> - Specifies the custom text that you want to use for the dropdown list</p>
+
+<h2>CSS Guide</h2>
+
+<p><strong>SelectBoxIt</strong> dynamically creates new HTML elements to replace your original select box.  Each new HTML element has a dynamic <code>id</code> attribute generated for it.  Each CSS selector in the default CSS file expects a select box with an <code>id</code> of <strong>test</strong>, but if you are using a different <code>id</code> attribute for your select box (which you probably are), just replace the word <strong>test</strong> with the <code>id</code> attribute of your select box.</p>
+
+<p><strong>Note:</strong> It is highly recommended to use a jQueryUI theme to help style your <strong>SelectBoxIt</strong> dropdown list, but it is not required.  Also, keep in mind that the CSS file is heavily commented to help you easily understand where to place your custom CSS attributes.</p>
+
+<p><strong>Element Overview</strong></p>
+
+<p><code>#testSelectBoxItContainer</code> - This selector is a <code>div</code> element that holds all of the HTML elements generated by <strong>SelectBoxIt</strong>.  If you want to horizontally or vertically position your dropdown list on the page (i.e. float: left;), do that using this element.</p>
+
+<p><code>#testSelectBoxIt</code> - This selector is a <code>div</code> element that acts as the new dropdown list.  It contains the dropdown list selected text, and also the down arrow image (provided by jQueryUI).  If you want to increase the height of the dropdown list, use this element.</p>
+
+<p><code>#testSelectBoxItDefaultIcon</code> - If you are using an image with your dropdown list, this selector allows you to adjust the positioning of the image.</p>
+
+<p><code>#testSelectBoxItText</code> - This selector is a <code>span</code> element that holds the dropdown list selected text.  If you want to change the font or text positioning of the dropdown list selected text, use this element.</p>
+
+<p><code>#testSelectBoxItArrowContainer</code> - This selector is a <code>span</code> element that holds the dropdown list down arrow image.  If you want to alter the positioning of the down arrow or enclose the down arrow inside of a box (by adding a <code>border-left</code> CSS attribute), use this element.</p>
+
+<p><code>#testSelectBoxItOptions .optgroupHeader</code> - This selector is an <code>li</code> element that styles all of the dropdown lists optgroup header text (if you are using optgroups).</p>
+
+<p><code>#testSelectBoxItOptions .optgroupOption</code> - This selector is an <code>li</code> element that styles all of the dropdown lists optgroup options text (if you are using optgroups).</p>
+
+<p><code>#testSelectBoxItOptions</code> - This selector is a <code>ul</code> element that holds all of the dropdown list options.  If you want to limit how many dropdown list options are visible when the dropdown list is opened, change the <code>max-height</code> attribute of this element.</p>
+
+<p><code>#testSelectBoxItOptions li</code> - This selector is all of the <code>li</code> elements that each hold one of the dropdown list options.  If you want to change anything (i.e. background-color, font) about the dropdown list options, use this element.</p>
+
+<p><code>#testSelectBoxItOptions li span</code> - If you are using image icons with your individual dropdown list options, this selector allows you to adjust the positioning of each icon.</p>
+
+<h2>Demos</h2>
+
+<p><strong>Note:</strong> Edit any of these demos by clicking the <span style="display:inline-block;*display:inline;zoom:1;" class="ui-icon ui-icon-plusthick"></span> button.  Re-run each demo by clicking the <span style="display:inline-block;*display:inline;zoom:1;" class="ui-icon ui-icon-play"></span>  button.</p>
+
+<p><strong>Basic</strong>- Uses the default options</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/mxvgx/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>Basic with Disabled Options</strong> - Uses the default options with multiple disabled dropdown options</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/qPfz3/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>jQuery Show/Hide Effects</strong>- Uses the jQuery <code>slide</code> effect.  All jQuery effects can be used (i.e. fade, show, etc)</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/w4kph/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>jQueryUI Show/Hide Effects with Special Show Effect Option</strong>- Pick a jQueryUI effect from the select box and then click on the <strong>Run Effect</strong> button to view the effect.</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/rXuRR/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>Using the Method API to open, close, move up, move down, and search</strong>- Click each button to see what happens</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/ghHEq/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>Using the Method API to disable, enable, and destroy the dropdown list</strong>- Click each button to see what happens</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/AqGJJ/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>Using the Events and Options API's</strong>- Hides the first dropdown list option (by changing the <code>showFirstOption</code> option to <code>false</code>) when a change event is triggered on the original select box.</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/c3rFP/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<p><strong>Using the Events API with custom events</strong>- Tracks a user's interaction with the dropdown list by printing out some of the custom events that are triggered by the plugin</p>
+
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/gSt2G/embedded/result,js,html,css/light/"></iframe></p>
+
+<br /><br />
+
+
+<h2>Contributing to SelectBoxIt</h2>
+
+<p>Take care to maintain the existing coding style. Add Jasmine unit tests for any new or changed functionality. Lint and test your code using <a href="https://github.com/cowboy/grunt">grunt</a>.</p>
+
+<p>If you plan to contribute to <code>SelectBoxIt</code> in the future, keep in mind that you should make sure your code passes the Grunt checks.  If you are on Windows (like me) remember you need to run the grunt command using <code>grunt.cmd</code>.  Also, if you have trouble getting the Jasmine Unit Tests to work with PhantomJS 1.5 (the current release), install PhantomJS 1.3.</p>
+
+<p>After you have verified your code, send a pull request to the <code>SelectBoxIt</code> dev branch.  After you send a pull request, you will hear back from me shortly after I review your code.</p>
+
+<p>You'll find source code in the "src" subdirectory!</p>
+
+<h2>Extending SelectBoxIt</h2>
+
+<p>If you find that you need a feature that SelectBoxIt does not currently support, either let me know via the <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/issues" target="_blank">Github issue tracker</a>, or <a href="https://github.com/gfranko/jQuery.selectBoxIt.js" target="_blank">fork</a> the project and and easily extend SelectBoxIt to create your own widget!</p>
+
+<p><strong>Note:</strong> Remember that you need to include <strong>jQuery</strong>, the <strong>jQueryUI Widget Factory</strong>, and <strong>jquery.selectBoxIt.min.js</strong> before you include your new plugin file, since your plugin will depend on SelectBoxIt and all of its dependencies.</p>
+
+<p><strong>Example: Extending SelectBoxIt</strong></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Plugin setup</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">widget</span><span class="p">(</span><span class="s1">&#39;a.newPlugin&#39;</span><span class="p">,</span> <span class="nx">$</span><span class="p">.</span><span class="nx">selectBox</span><span class="p">.</span><span class="nx">selectBoxIt</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Changing SelectBoxIt&#39;s default showEffect from &#39;none&#39; to &#39;slide&#39;</span>
+</span><span class='line'>    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">showEffect</span><span class="o">:</span> <span class="s2">&quot;slide&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Overwriting the SelectBoxIt open method</span>
+</span><span class='line'>    <span class="nx">open</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Calling the default SelectBoxIt open method</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">.</span><span class="nx">selectBox</span><span class="p">.</span><span class="nx">selectBoxIt</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">open</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Adding new logic</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Just opened my new plugin!&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Then call your new plugin like this</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">selectBox</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;select#test&quot;</span><span class="p">).</span><span class="nx">newPlugin</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;newPlugin&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}(</span><span class="nx">jQuery</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Change Log</h2>
+
+<p><code>0.9.0</code> - May 21, 2012 <em>Approaching a stable 1.0 release</em></p>
+
+<pre><code>- IE7 and IE8 bug fix: A special thanks to lhwparis
+</code></pre>
+
+<p><code>0.8.0</code> - May 15, 2012 <em>Approaching a stable 1.0 release</em></p>
+
+<pre><code>- Bug fixes for the `disabled` use cases
+</code></pre>
+
+<p><code>0.7.0</code> - May 10, 2012</p>
+
+<pre><code>- Added optgroup support to allow dropdown list options to be put in subgroups.
+
+- Bug fixes to the `change` and `focus` Event API handlers
+</code></pre>
+
+<p><code>0.6.0</code> - May 3, 2012</p>
+
+<pre><code>- Added jQueryUI and custom icon support to allow icons to be used for the dropdown list and also alongside individual dropdown options.  You can specify the class names that you want to use to show the appropriate icon (set the background-image property inside of your CSS).  There are two new ways to do this (HTML5 data attributes or plugin options)
+
+    * Added support for three new HTML5 data attributes to be used with the original select box element.  Use cases for each are described below.
+        * data-icon - Specifies the custom or jQueryUI CSS classes you want to use to show icon images for the dropdown list and/or dropdown list individual options
+        * data-downarrow - Specifies the custom or jQueryUI CSS classes you want to use to replace the default down arrow icon image
+        * data-text - Specifies the custom text that you want to use for the dropdown list
+
+    * Added support for two new options.  Use cases for each are described below.
+        * defaultIcon - An alternative to the `data-icon` HTML5 data attribute
+        * downArrowIcon - An alternative to the `data-downarrow` HTML5 data attribute
+</code></pre>
+
+<p><code>0.5.0</code> - April 29, 2012 <strong>MAJOR REWRITE</strong></p>
+
+<pre><code>- SelectBoxIt has been rewritten using the jQueryUI Widget Factory!  This means that SelectBoxIt now depends on both jQuery and the jQueryUI Widget Factory.  This also means that there are a few API changes that are not backwards compatible...
+    * getOption(), getOptions(), and create() were all removed from the Method API
+    * To use the custom pseudo selector, you must now use $(":selectBox-selectBoxIt")
+
+- SelectBoxIt now uses [grunt](https://github.com/cowboy/grunt) to run jsHint for code quality checking, Jasmine for unit testing, and UglifyJS for minification.
+
+- Removed AMD Support
+</code></pre>
+
+<p><code>0.4.0</code> - April 28, 2012</p>
+
+<pre><code>- `AMD Support`.  If `AMD` support is found, SelectBoxIt is wrapped in a define `module`.
+
+  [UMD Patterns](https://github.com/umdjs/umd/blob/master/jqueryPlugin.js)
+
+- `Bug fixes for supporting the `disabled` HTML property for individual select box options
+</code></pre>
+
+<p><code>0.3.0</code> - April 25, 2012</p>
+
+<pre><code>- A new option, defaultText, was added to allow users to specify the default text of the dropdown list that is not linked to a specific select box option
+
+- The disabled HTML property is now supported for individual select box options
+
+- When a user presses the esc keyboard key, the dropdown options list will now close (become hidden)
+</code></pre>
+
+<p><code>0.2.0</code> - April 24, 2012</p>
+
+<pre><code>- This release requires you to use jQuery 1.6.1+.
+
+- You are no longer required to have select box option values be the same as the select box option text.
+
+- IE bug fix to prevent default dropdown text from being selectable
+</code></pre>
+
+<p><code>0.1.0</code> - April 14, 2012</p>
+
+<pre><code>- Initial SelectBoxIt release.  Added annotated source code, unit tests, and documentation
+</code></pre>
+
+<h2>Frequently Asked Questions</h2>
+
+<p>Questions will be added here from the <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/issues" target="_blank">Github Issues Page</a> and from the comments below.  Also, more demos/documentation will be provided on request.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="Please, Just Give Me What I Want Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <style>
+    #blog {
+        background: #08C;
+    }
+</style>
+<div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/">Creating Custom Project Builds With DownloadBuilder.js</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T14:52:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="left" src="http://gregfranko.com/DownloadBuilder.js/img/html5.png" width="205"></p>
+
+<br /><br /><br /><br /><br /><br />
+
+
+<h3>Please, Just Give Me What I Want</h3>
+
+<p>Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important for users.  Since it is nearly impossible to create a project that is a perfect fit for all users, many OS projects provide a custom build option.  This allows users to specify which parts of a project he/she wants and then download only those parts (thus minimizing file size).</p>
+
+<p><em>Examples of popular OS projects that are providing custom build options now include jQuery (recent addition in version 1.8), jQueryUI, Modernizr, Twitter Bootstrap, Can.js, etc.</em></p>
+
+<p>After reviewing the custom build processes of the above OS projects, it seemed that each project had developed its own custom back-end build process from scratch.  This architecture seemed to work well for projects with many contributors/organizational backing, but I wanted an easy solution that I could use for my own OS projects where I was the only main contributor.  Since I could not find any existing OS projects that fit the bill, I created <strong>DownloadBuilder.js</strong>.</p>
+
+<h3>DownloadBuilder.js</h3>
+
+<h4>Description</h4>
+
+<p><a href="http://gregfranko.com/DownloadBuilder.js/">DownloadBuilder.js</a> is a JavaScript library that uses the HTML5 Filesystem API to create concatenated single file custom builds for front-end projects.  Since the project uses the HTML5 Filesystem API, all of its features only currently work in Chrome 21+, although it can still be used in all other modern browsers(Firefox, IE8+) to create a generated concatenated project file.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/backbone-dot-js-convincing-the-boss-guide/">Backbone.js: Convincing the Boss Guide</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T10:00:00-04:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="left" src="http://backbonejs.org/docs/images/backbone.png" width="405"></p>
+
+<br /><br /><br /><br /><br />
+
+
+<h3>Year of the JavaScript MV* Frameworks</h3>
+
+<p>I am officially pronouncing <strong>2012 as the year of the JavaScript MV* frameworks</strong>.  Although many people complain that the JavaScript MV* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let&#8217;s look at the glass half full.  The influx of JavaScript MV* frameworks has created new design patterns that have promoted <strong>JavaScript as a language that you should care about</strong>.  JavaScript codebase consistency, maintainability, and performance have never been scrutinized more.  This intensified focus is helping the web become an even better place to spend your time.</p>
+
+<p>Although 2012 has been a big win for the JavaScript community, there is still much work to be done.  Much of that work consists of educating developers, who may not be JavaScript wizards (seriously not everyone can be <a href="http://paulirish.com/">Paul Irish</a>, <a href="http://addyosmani.com/">Addy Osmani</a>, etc), that organizing their front-end codebases deserves their full time and attention.</p>
+
+<p>A common argument against using JavaScript MV* frameworks by non-JavaScript wizards is that most &#8220;apps&#8221; are not complex enough to warrent using these &#8220;bloated MV Whatever frameworks&#8221; (their words not mine).  Before you start screaming at your computer, let&#8217;s look at this argument in more detail using <a href="http://backbonejs.org">Backbone.js</a>, one of the most popular JavaScript MV* frameworks, and <a href="http://gregfranko.com/backbone/customBuild/">custom Backbone.js builds</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/backbone-dot-js-convincing-the-boss-guide/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/require-dot-js-2-dot-0-shim-configuration/">Require.js 2.0 Shim Configuration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-29T15:40:00-04:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="left" src="http://requirejs.org/i/logo.png" width="164"></p>
+
+<br /><br /><br /><br /><br /><br />
+
+
+<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
+
+<p>The <code>Shim</code> configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post <a href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js with Require.js</a>, I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/require-dot-js-2-dot-0-shim-configuration/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js With Require.js</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-24T17:30:00-04:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="left" src="http://backbonejs.org/docs/images/backbone.png" width="405"><img class="left" src="http://requirejs.org/i/logo.png" width="124"></p>
+
+<br /><br /><br /><br /><br />
+
+
+<p><strong>Backbone.js</strong> is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it&#8217;s objects to trigger and bind to events.</p>
+
+<p>Backbone <strong>Views</strong> act as a combination of traditional MVC Views and Controllers, since they allow you to organize all of your JavaScript event handlers while also providing a mechanism for adding dynamic HTML to your page through the optional use of JavaScript templates.  Views will also often be where you set data on your Models.</p>
+
+<p>Here is an example Backbone View class:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="kd">var</span> <span class="nx">View</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Represents the actual DOM element that corresponds to your View (There is a one to one relationship between View Objects and DOM elements)</span>
+</span><span class='line'>        <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Constructor</span>
+</span><span class='line'>        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">//Setting the view&#39;s model property.  This assumes you have created a model class and stored it in the Model variable</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Event Handlers</span>
+</span><span class='line'>        <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="s2">&quot;click #example&quot;</span><span class="o">:</span> <span class="s2">&quot;promptUser&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Updates the text of the element with an ID attribute of example            </span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;#example&quot;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;This is an example&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">promptUser</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Isn&#39;t this great?&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes, yes it is&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/using-backbone-dot-js-with-require-dot-js/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/creating-a-jquery-plugin-using-jqboilerplate/">Creating a jQuery Plugin Using jqBoilerplate</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-22T20:04:00-04:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>What is a jQuery Plugin?</h2>
+
+<p>A typical jQuery plugin is a method that is added to the jQuery prototype object, <code>fn</code>, that interacts with one or more DOM elements wrapped in a jQuery object.  Something like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">//Adding the tooltip method to the jQuery prototype</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">options</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">//Plugin logic</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then the jQuery plugin can be used like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">//Calls the jQuery tooltip plugin on a DOM element</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input#firstName&quot;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/creating-a-jquery-plugin-using-jqboilerplate/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/javascript-logical-operators/">JavaScript Logical Operators</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-19T23:03:00-04:00" pubdate data-updated="true">Apr 19<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you ever written code like this?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">something</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="nx">somethingElse</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">something</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">somethingElse</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">something</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you have, then you need to be using <strong>JavaScript logical operators</strong>.  The previous code can be rewritten like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">something</span> <span class="o">=</span> <span class="nx">somethingElse</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br />
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/javascript-logical-operators/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/introducing-the-jquery-plugin-selectboxit/">Introducing the jQuery Plugin SelectBoxIt</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-14T00:11:00-04:00" pubdate data-updated="true">Apr 14<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><link href="/stylesheets/jQuery.selectBoxIt.css" rel="stylesheet" type="text/css"></p>
+
+<script src="/javascripts/jQuery.selectBoxIt.min.js" type="text/javascript"></script>
+
+
+<script src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+
+
+<script src="/javascripts/jquery.tableofcontents.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#toc").tableOfContents(null, { startLevel: "2", depth: "2" }); 
+        var selectBox = $("select#test, select#icons").selectBoxIt({ showEffect: "fadeIn", showEffectSpeed: 300, hideEffect: "fadeOut", hideEffectSpeed: 300 }).data("selectBoxIt");
+        $("#switcher").themeswitcher();
+        var effectsSelectBox = $("select#effectsDropDown").selectBoxIt().data("selectBoxIt");
+        $("#effectsButton").click(function() {
+            var effect = $("select#effectsDropDown").val();
+            selectBox.setOptions({ showEffect: effect, hideEffect: effect });
+            if(!selectBox.list.is(":visible")) {
+                selectBox.open();
+            }
+            else {
+                selectBox.close();   
+            }
+        });
+        $(".ui-button").mouseenter(function() {
+            $(this).addClass("ui-state-hover");
+        });
+        $(".ui-button").mouseleave(function() {
+            $(this).removeClass("ui-state-hover");
+        });
+        var upArrowSelectBox = $("select#upArrow").selectBoxIt().data("selectBoxIt");
+
+        $("select#upArrow").bind({
+            "open": function() {
+                upArrowSelectBox.setOption("downArrowIcon", "ui-icon ui-icon-triangle-1-n");
+            },
+            "close": function() {
+                upArrowSelectBox.setOption("downArrowIcon", "ui-icon ui-icon-triangle-1-s");
+            }
+        });
+
+        var optgroupsSelectBox = $("select#optgroups").selectBoxIt().data("selectBoxIt");
+    });
+</script>
+
+
+<h2>What is SelectBoxIt?</h2>
+
+<p><select id="test" name="test">
+<option value="SelectBoxIt is:">SelectBoxIt is:</option>
+<option value="a jQuery Plugin">a jQuery Plugin</option>
+<option value="a Select Box Replacement">a Select Box Replacement</option>
+<option value="a Stateful UI Dropdown Widget">a Stateful UI Dropdown Widget</option>
+</select></p>
+
+<br /><br />
+
+
+<p>A jQuery plugin that progressively enhances an HTML Select Box into a <strong>single option</strong> dropdown list.  The dropdown list can be optionally styled with <strong>ThemeRoller</strong> (<em>Preview a Theme Below</em>) and <strong>jQueryUI/custom image icons</strong>, and optionally animated with <strong>jQueryUI show/hide effects</strong> (<em>Preview a jQueryUI Effect Below</em>).</p>
+
+<div style="float:left;padding-right:100px;"><em>Preview a Theme</em>  <div id="switcher"></div></div>
+
+
+<div style="float:left;"><em>Preview a jQueryUI Effect</em>
+<br />
+<select class="effects" name="effects" id="effectsDropDown">
+<option value="blind">blind</option>
+<option value="bounce">bounce</option>
+<option value="clip">clip</option>
+<option value="drop">drop</option>
+<option value="explode">explode</option>
+<option value="fold">fold</option>
+<option value="highlight">highlight</option>
+<option value="puff">puff</option>
+<option value="scale">scale</option>  
+<option value="shake">shake</option>
+<option value="size">size</option>
+<option value="slide">slide</option>
+</select>
+
+<button id="effectsButton" class="ui-button ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+    <span class="ui-button-text">Run Effect</span>
+</button>
+</div>
+
+
+<br /><br /><br /><br />
+
+
+<p>The project is hosted on <a href="https://github.com/gfranko/jQuery.selectBoxIt.js" target="_blank" class="projectLinks">Github</a>, has a <a href="http://www.selectboxit.com" target="_blank">project page</a> the <a href="/docs/jQuery.selectBoxIt.html" target="_blank" class="projectLinks">annotated source code</a> is available, and an <a href="/test/SpecRunner.html" target="_blank" class="projectLinks">online test suite</a> is also available.  SelectBoxIt is available for use under the <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/blob/master/MIT-LICENSE.txt" target="_blank" class="projectLinks">MIT software license</a>.  You can report bugs and discuss features on the <a href="https://github.com/gfranko/jQuery.selectBoxIt.js/issues?sort=created&direction=desc&state=open" target="_blank">GitHub issues page</a>, or send tweets to <a href="http://www.twitter.com/gregfranko" target="_blank">@gregfranko</a>.</p>
+
+<br />
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/introducing-the-jquery-plugin-selectboxit/">Read More &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

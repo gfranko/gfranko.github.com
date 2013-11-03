@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Documenting Your Open Source Projects - Greg Franko</title>
+  <meta name="author" content="Greg Franko">
+
+  
+  <meta name="description" content="DownloadBuilder.js helps you create custom project builds for your open source projects">
+  <meta name="keywords" content="Open Source, Documentation, Documenting Open Source, OS, Tocify, Document-Bootstrap">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href='http://fonts.googleapis.com/css?family=Kameron:400,700|Sansita+One' rel='stylesheet' type='text/css'>
+  <link rel="canonical" href="http://gfranko.github.com/blog/documenting-your-open-source-projects">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/GregFranko" rel="alternate" title="Greg Franko" type="application/atom+xml">
+  <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30888305-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+</ul>
+  
+  
+<section>
+<a href="/" class="category-buttons" id="blog"><img src="/images/glyphicons_030_pencil.png" />Blog</a>
+<a href="/blog/archives" class="category-buttons" id="archives"><img src="/images/glyphicons_144_folder_open.png" />Archives</a>
+<a href="/contact" class="category-buttons" id="contact"><img src="/images/glyphicons_010_envelope.png" />&nbsp;Contact</a>
+</section>
+
+</nav>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Greg Franko</a></h1>
+  
+    <h4>Web Development is Fun.  Let's Talk About It.</h4>
+  
+</hgroup>
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Documenting Your Open Source Projects</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T10:14:00-04:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="left" src="http://opensource.org/files/garland_logo.png" width="105"></p>
+
+<br /><br /><br /><br /><br /><br />
+
+
+<h3>What?  I Actually Have to Show People How to Use My Project?</h3>
+
+<p>Popular Open Source (OS) projects are self promoted by their easy to read, organized, and exhaustive documentation.  Great examples include Backbone.js, Can.js, jQuery++, Underscore.js, jQuery, HTML5 Boilerplate, Require.js, Twitter Bootstrap, and many more.</p>
+
+<p>These projects realize that users expect their documentation to follow a common format that includes a table of contents that houses, at the very least, a <em>Getting Started</em> guide, a <em>Demos/Examples</em> section, and a <em>forum</em> section to ask questions.  Additional sections (ie. <em>annotated source code</em>, <em>Contributor Guide</em>) targeting potential core project contributors may also be included.</p>
+
+<p>All OS developers should take note of these documentation practices and follow them when promoting their own projects.  When patrolling Github to find new and interesting projects, I often find myself dismissing a project right away if there is a lack of documentation.</p>
+
+<p><strong>The project could have the most readable, brilliant, and performant code known to man, yet I (and many other developers) would never know.</strong></p>
+
+<h3>But Documentation Takes Too Long to Write!</h3>
+
+<p>It&#8217;s true, documenting your project may take longer than writing the project code itself.  But there are open source tools that can help expediate the process&#8230;</p>
+
+<!-- more -->
+
+
+<h4><a href="http://gregfranko.com/jquery.tocify.js/">Tocify.js</a> - a jQuery plugin</h4>
+
+<p>Tocify is &#8220;a jQuery plugin that dynamically generates a table of contents (TOC). Tocify can be optionally styled with Twitter Bootstrap or jQueryUI Themeroller, and optionally animated with jQuery show/hide effects&#8221;.</p>
+
+<p>Tocify also optionally provides support for smooth scrolling, scroll highlighting, scroll page extending, and the HTML5 pushstate API via History.js.</p>
+
+<p>Tocify works by looking at all of the header elements on an HTML page and constructing a TOC based on the page structure.  Tocify was inspired by the Can.js and jQuery++ documentation created by <a href="http://bitovi.com/">Bitovi</a>, so it allows you to have complex nested TOC structures along with slick show/hide effects.</p>
+
+<h4><a href="http://gregfranko.com/Document-Bootstrap/">Document-Bootstrap</a> - a Boilerplate Project</h4>
+
+<p>Document-Bootstrap is &#8220;a boilerplate project that incorporates JavaScript libraries, jQuery plugins, and Twitter Bootstrap to save developers time when creating project pages and providing users with custom project builds&#8221;.</p>
+
+<p>Document-Bootstrap serves as a great starting point for creating a OS project page.  Document-Bootstrap allows you to stop worrying about the design of your project page and instead focus on the content.</p>
+
+<p><strong>Note:</strong> Document-Bootstrap includes Tocify</p>
+
+<h4><a href="http://jashkenas.github.com/docco/">Docco</a> - an Annotated Source Code Generator</h4>
+
+<p>Docco &#8220;produces HTML that displays your comments alongside your code. Comments are passed through Markdown, and code is passed through Pygments syntax highlighting.&#8221;</p>
+
+<p>As long as your codebase adheres to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> standards, Docco will automatically create an annotated source code HTML page for your project.  Annotated source code is much cleaner and easier to read than regular source code, in my opinion.</p>
+
+<p><strong>Note:</strong> Docco can be used to process CoffeeScript, JavaScript, Ruby, Python, or TeX files</p>
+
+<h4>Summary</h4>
+
+<p>I find that as a developer I read more documentation than I write code.  Please help my eyes by creating awesome documentation.  Happy documenting!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Greg Franko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T10:14:00-04:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://gfranko.github.com/blog/documenting-your-open-source-projects/" data-via="GregFranko" data-counturl="http://gfranko.github.com/blog/documenting-your-open-source-projects/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/" title="Previous Post: Creating Custom Project Builds with DownloadBuilder.js">&laquo; Creating Custom Project Builds with DownloadBuilder.js</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/backbone-dot-validateall-plugin/" title="Next Post: Backbone.validateAll plugin">Backbone.validateAll plugin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
+</section>
+<section id="headerSocialIcons">
+<a href="https://github.com/gfranko" target="_blank">
+<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+</a><br />
+<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+</a><br />
+<a href="https://twitter.com/#!/GregFranko" target="_blank">
+<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+</a><br />
+<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+</a><br><br><br><br>
+</section>
+<section>
+  <h1>Greg Franko</h1>
+  <p id="asideDescription">I am a Front-end Software Engineer that loves JavaScript and the open-source community.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<br /><br />
+<section>
+  <br /><br />
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/javascript-design-patterns/">JavaScript Design Patterns</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/javascript-performance-tips/">JavaScript Performance Tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/modular-jquery-plugins/">Modular jQuery Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/instant-dependency-management-with-requirejs/">Instant Dependency Management with RequireJS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/jquery-best-practices/">jQuery Best Practices</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregfranko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gfranko.github.com/blog/documenting-your-open-source-projects/';
+        var disqus_url = 'http://gfranko.github.com/blog/documenting-your-open-source-projects/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
