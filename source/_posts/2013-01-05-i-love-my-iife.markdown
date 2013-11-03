@@ -44,7 +44,7 @@ A function, without a name, is created and then called (invoked) immediately via
 
 You might be wondering why we need to wrap the immediately invoked anonymous function inside of parentheses.  Before I explain why, try the above code inside of a console window.  Get a syntax error?
 
-By wrapping the anonymous function inside of parentheses, the JavaScript parser knows to treat the anonymous function as a function expression instead of a function declaration, since JavaScript does not allow statements inside of parentheses.  A function expression can be called (invoked) immediately by using a set of parentheses, but a function declaration cannot be. 
+By wrapping the anonymous function inside of parentheses, the JavaScript parser knows to treat the anonymous function as a function expression instead of a function declaration.  A function expression can be called (invoked) immediately by using a set of parentheses, but a function declaration cannot be. 
 
 <!-- more -->
 

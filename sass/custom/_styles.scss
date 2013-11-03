@@ -302,3 +302,18 @@ img { -ms-interpolation-mode: bicubic; }
 #asideDescription {
     text-align: left;
 }
+
+aside.sidebar.thirds section {
+  width: auto !important;
+}
+
+@media only screen and (max-width: 768px) {
+  article p {
+    clear: left;
+  }
+}
+
+.side-shadow-border, aside.sidebar section h1, aside.sidebar li {
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
