@@ -6,6 +6,7 @@ comments: true
 categories: [JavaScript, Backbone.js, Require.js]
 description: "A walk-through of Backbone-Require-Boilerplate, the popular Backbone.js and Require.js boilerplate library."
 keywords: "Greg Franko, Backbone.js, Require.js, Backbone.js and Require.js boilerplate"
+cover: "/images/rubik.png"
 ---
 
 [Backbone-Require-Boilerplate](https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate) is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.

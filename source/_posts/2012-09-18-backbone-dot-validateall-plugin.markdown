@@ -5,7 +5,8 @@ date: 2012-09-18 14:56
 comments: true
 categories: [JavaScript, Backbone.js]
 description: "Backbone.js plugin that provides an option to only validate Model properties that are currently being set or saved"
-keywords: "Greg Franko, Backbone.js, Backbone.js validateAll" 
+keywords: "Greg Franko, Backbone.js, Backbone.js validateAll"
+cover: "/images/backbone.png"
 ---
 
 **[Backbone.validateAll](https://github.com/gfranko/Backbone.validateAll)** is a small Backbone.js plugin that provides an option to only validate Model properties that are currently being set or saved.

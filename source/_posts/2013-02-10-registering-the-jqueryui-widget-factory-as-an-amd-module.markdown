@@ -6,6 +6,7 @@ comments: true
 categories: [jQuery, jQueryUI Widget Factory, Require.js]
 description: "Register the jQueryUI Widget Factory as a named AMD module so that other jQuery plugins that depend on the Widget Factory can provide AMD support"
 keywords: "Greg Franko, jQueryUI, jQueryUI Widget Factory, Require.js, jQuery"
+cover: "/images/jqueryui.png"
 ---
 
 **AMD** (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.

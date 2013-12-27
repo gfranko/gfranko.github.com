@@ -2,12 +2,13 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://gfranko.github.com
+url: http://gregfranko.com
 title: Greg Franko
 subtitle: Web Development is Fun.  Let's Talk About It.
 author: Greg Franko
 simple_search: http://google.com/search
 description: A blog that provides Javascript, jQuery, HTML5, CSS, and other articles/screencasts.
+cover: /images/JavaScript-logo-small.png
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in

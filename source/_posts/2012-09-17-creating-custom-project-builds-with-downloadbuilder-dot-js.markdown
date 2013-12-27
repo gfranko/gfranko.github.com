@@ -5,7 +5,8 @@ date: 2012-09-17 14:52
 comments: true
 categories: [JavaScript]
 description: "DownloadBuilder.js helps you create custom project builds for your open source projects"
-keywords: "Greg Franko, DownloadBuilder.js, Custom Project Builds" 
+keywords: "Greg Franko, DownloadBuilder.js, Custom Project Builds"
+cover: "/images/html5.png"
 ---
 
 Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important for users.  Since it is nearly impossible to create a project that is a perfect fit for all users, many OS projects provide a custom build option.  This allows users to specify which parts of a project he/she wants and then download only those parts (thus minimizing file size).

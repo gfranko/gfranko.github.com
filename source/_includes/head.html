@@ -26,4 +26,10 @@
   <script src="{{ root_url }}/javascripts/octopress.js" type="text/javascript"></script>
   {% include custom/head.html %}
   {% include google_analytics.html %}
+  <meta property='og:site_name' content='{{ site.title }}'>
+  <meta property='og:type' content='article'>
+  <meta property='og:url' content='{{ site.url }}{{ page.url }}'>
+  <meta property='og:image' content='{{ site.url }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}'>
+  <meta property='og:title' content='{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}'>
+  <meta property='og:description' content='{{ description }}'>
 </head>

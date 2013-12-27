@@ -6,6 +6,7 @@ comments: true
 categories: [jQuery]
 description: "Register the jQueryUI Widget Factory as a named AMD module so that other jQuery plugins that depend on the Widget Factory can provide AMD support"
 keywords: "Greg Franko, jQuery, jQuery Best Practices"
+cover: "/images/jquery.png"
 ---
 
 Back in February 2013, I presented about jQuery best practices at the [Nova Web Development User Group](http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/) meetup.  Let's take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.

@@ -5,7 +5,8 @@ date: 2012-09-17 10:00
 comments: true
 categories: [JavaScript, Backbone.js]
 description: "Creating Backbone.js Custom Builds to help convince the boss to use Backbone.js"
-keywords: "Greg Franko, Backbone.js, Backbone.js Custom Builds, Backbone.js Convincing the Boss Guide" 
+keywords: "Greg Franko, Backbone.js, Backbone.js Custom Builds, Backbone.js Convincing the Boss Guide"
+cover: "/images/backbone.png"
 ---
 
 I am officially pronouncing **2012 as the year of the JavaScript MV\* frameworks**.  Although many people complain that the JavaScript MV\* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let's look at the glass half full.

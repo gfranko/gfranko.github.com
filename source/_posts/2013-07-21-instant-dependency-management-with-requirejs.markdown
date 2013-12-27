@@ -6,6 +6,7 @@ comments: true
 categories: [JavaScript, Require.js]
 description: "Instant Dependency Management with RequireJS covers how to improve the performance and maintainability of your JavaScript applications with RequireJS. You will learn simple to advanced techniques for converting your JavaScript application to an AMD workflow."
 keywords: "Greg Franko, Require.js"
+cover: "/images/amd_and_require.jpg"
 ---
 
 In May 2013, Packt Publishing published my Require.js book, [Instant Dependency Management with RequireJS](http://www.packtpub.com/dependency-management-with-requirejs-how-to/book).  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.

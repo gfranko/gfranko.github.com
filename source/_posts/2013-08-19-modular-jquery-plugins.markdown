@@ -6,6 +6,7 @@ comments: true
 categories: [jQuery, Grunt, Require.js]
 description: "jQuery Plugin Architecture"
 keywords: "Greg Franko, jQuery, Modular jQuery Plugins"
+cover: "/images/constructionhat.png"
 ---
 
 In June 2013, I presented about modular jQuery plugins at the [jQuery Portland 2013](http://events.jquery.org/2013/portland/) conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.

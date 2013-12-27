@@ -5,7 +5,8 @@ date: 2012-05-24 17:30
 comments: true
 categories: [JavaScript, Backbone.js, Require.js]
 description: "Use Backbone.js and Require.js together to decouple your JavaScript into modules, separate business logic from application logic using Models and Views, reuse your JavaScript between Desktop and Mobile Web versions, include non-AMD Compatible Third Party Scripts in your project, and optimize all of your JavaScript (minify, concatenate, etc)."
-keywords: "Greg Franko, Backbone.js, Require.js, Using Backbone and Require Together, Backbone, Require, Greg Franko" 
+keywords: "Greg Franko, Backbone.js, Require.js, Using Backbone and Require Together, Backbone, Require, Greg Franko"
+cover: "/images/backbone.png"
 ---
 
 **Backbone.js** is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it's objects to trigger and bind to events.

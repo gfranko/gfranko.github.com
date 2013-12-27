@@ -6,6 +6,7 @@ comments: true
 categories: [JavaScript, AddThis]
 description: "JavaScript design patterns used for AddThis Smart Layers"
 keywords: "Greg Franko, Design Patterns, AddThis"
+cover: "/images/smartlayers.png"
 ---
 
 JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.

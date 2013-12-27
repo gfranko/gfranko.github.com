@@ -5,7 +5,8 @@ date: 2012-05-29 15:40
 comments: true
 categories: [JavaScript, Backbone.js, Require.js]
 description: "Require.js 2.0 Shim Configuration Now Supports Loading Non-AMD Compatible Scripts"
-keywords: "Greg Franko, Require.js, Require.js 2.0, Loading Non-AMD Compatible Scripts, Greg Franko" 
+keywords: "Greg Franko, Require.js, Require.js 2.0, Loading Non-AMD Compatible Scripts, Greg Franko"
+cover: "/images/requirejs.png"
 ---
 
 Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new `Shim` configuration.

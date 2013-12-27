@@ -6,6 +6,7 @@ comments: true
 categories: [JavaScript]
 description: "DownloadBuilder.js helps you create custom project builds for your open source projects"
 keywords: "Open Source, Documentation, Documenting Open Source, OS, Tocify, Document-Bootstrap" 
+cover: "/images/opensource.png"
 ---
 
 Popular Open Source (OS) projects are self promoted by their easy to read, organized, and exhaustive documentation.  Great examples include Backbone.js, Can.js, jQuery++, Underscore.js, jQuery, HTML5 Boilerplate, Require.js, Twitter Bootstrap, and many more.

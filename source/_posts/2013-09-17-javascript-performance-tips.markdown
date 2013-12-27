@@ -6,6 +6,7 @@ comments: true
 categories: [JavaScript, Performance, AddThis]
 description: "jQuery Plugin Architecture"
 keywords: "Greg Franko, Performance, AddThis"
+cover: "http://farm4.staticflickr.com/3742/9776421873_0d5795a966_z.jpg"
 ---
 
 It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.
