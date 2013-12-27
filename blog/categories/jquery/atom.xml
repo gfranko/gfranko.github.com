@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jQuery | Greg Franko]]></title>
   <link href="http://gfranko.github.com/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://gfranko.github.com/"/>
-  <updated>2013-11-03T12:05:57-05:00</updated>
+  <updated>2013-12-27T14:22:11-05:00</updated>
   <id>http://gfranko.github.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -18,17 +18,12 @@
     <link href="http://gfranko.github.com/blog/modular-jquery-plugins/"/>
     <updated>2013-08-22T20:54:00-04:00</updated>
     <id>http://gfranko.github.com/blog/modular-jquery-plugins</id>
-    <content type="html"><![CDATA[<p><a href="blog/modular-jquery-plugins/" target="_blank" title="Modular jQuery Plugins"><img class="left" src="/images/constructionhat.png" width="250"></a></p>
-
-<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
+    <content type="html"><![CDATA[<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
 
 <!-- more -->
 
 
-
-
-<br><br>
-
+<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div></p>
 
 <h2>What Does Modular Mean to You?</h2>
 
@@ -160,7 +155,7 @@
 
 <h2>jQueryUI Widget Factory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif" width="500"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif"></a></p>
 
 <p>Provides a <strong>consistent foundation and API</strong> for building jQuery plugins</p>
 
@@ -208,7 +203,7 @@
 
 <h2>jqfactory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png" width="400"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png"></a></p>
 
 <p>Supports <strong>widget inheritance</strong> using object literals</p>
 
@@ -356,7 +351,7 @@
 
 <h2>What is Grunt?</h2>
 
-<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png" width="200"></a>
+<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png"></a>
 JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>Perfect for <strong>automating repetitive tasks</strong></p>
@@ -561,7 +556,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>If you had wanted to exclude a file from the build (let's assume there is an optional customMethod.js file), then you could type: <code>grunt customBuild:customMethod</code></p>
 
-<p><img class="center" src="/images/gruntcustombuild.png" width="400"></p>
+<p><img class="center" src="/images/gruntcustombuild.png"></p>
 
 <p><strong>Success!</strong></p>
 
@@ -574,8 +569,6 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 <p>Also, if you would like to learn how to create custom web UI builds for your users, then check out the rest of <a href="http://gregfranko.com/modular-jquery-plugins-talk/#32">jQuery Portland Slide Deck</a> that covers my open source library, <a href="http://gregfranko.com/DownloadBuilder.js/">DownloadBuilder.js</a></p>
 
 <p>Happy jQuery plugin building!</p>
-
-<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div></p>
 ]]></content>
   </entry>
   
@@ -584,21 +577,18 @@ JavaScript (Node.js) Command-Line Task Runner</p>
     <link href="http://gfranko.github.com/blog/jquery-best-practices/"/>
     <updated>2013-07-20T11:24:00-04:00</updated>
     <id>http://gfranko.github.com/blog/jquery-best-practices</id>
-    <content type="html"><![CDATA[<p><a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank"><img class="left" src="/images/jquery.png" width="300"></a></p>
-
-<p>Back in February 2013, I presented about jQuery best practices at the <a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/">Nova Web Development User Group</a> meetup.  Let's take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.</p>
+    <content type="html"><![CDATA[<p>Back in February 2013, I presented about jQuery best practices at the <a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/">Nova Web Development User Group</a> meetup.  Let's take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.</p>
 
 <!-- more -->
 
 
-
-
-<br><br>
-
+<p><a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/" target="_blank"><img class="center" src="/images/novameetup.jpeg"></a></p>
 
 <h2>IIFEs</h2>
 
 <p>IIFEs are an ideal solution for locally scoping global variables/properties and protecting your JavaScript codebase from outside interference (e.g. third-party libraries).  If you are writing jQuery code that will be run in many different environments (e.g. jQuery plugins), then it is important to use an IIFE to locally scope jQuery.</p>
+
+<p><a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank"><img class="center" src="/images/jquery.png"></a></p>
 
 <blockquote><p>You can't assume everyone is using the $ to alias jQuery.</p></blockquote>
 
@@ -1040,16 +1030,9 @@ To read more about IIFEs, you can read my blog post titled, <a href="/blog/i-lov
     <link href="http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
     <updated>2013-02-10T09:39:00-05:00</updated>
     <id>http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
-    <content type="html"><![CDATA[<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="left" src="/images/jqueryui.png" width="200"></a></p>
-
-<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
+    <content type="html"><![CDATA[<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
 
 <!-- more -->
-
-
-
-
-<br><br>
 
 
 <p>Unfortunately, AMD script loaders, such as <a href="http://requirejs.org/">Require.js</a>, are not drop-in solutions.  To use an AMD module system, you must make sure every other JavaScript library used in your application is <em>AMD Compatible</em>.</p>
@@ -1370,6 +1353,8 @@ No!  Although the <code>shim</code> configuration works for the most common uses
 <h3>jQueryUI Widget Factory Plugins</h3>
 
 <p>The above code example is a great solution for jQuery plugins to register themselves as anonymous AMD modules, but let's next look at jQuery plugins that depend on both jQuery and the <strong>jQueryUI Widget Factory</strong>.</p>
+
+<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="center" src="/images/jqueryui.png"></a></p>
 
 <p>In case you are not familiar, the jQueryUI Widget Factory <em>provides a flexible base for building complex, stateful plugins with a consistent API.</em> - per the jQueryUI website.</p>
 

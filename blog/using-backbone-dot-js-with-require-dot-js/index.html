@@ -26,8 +26,7 @@
   <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet" type="text/css">
 
   
   <script type="text/javascript">
@@ -95,12 +94,12 @@
   </header>
 
 
-<div class="entry-content"><p><img class="left" src="http://backbonejs.org/docs/images/backbone.png" width="405"><img class="left" src="http://requirejs.org/i/logo.png" width="124"></p>
+<div class="entry-content"><p><strong>Backbone.js</strong> is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it&#8217;s objects to trigger and bind to events.</p>
 
-<br /><br /><br /><br /><br />
+<!-- more -->
 
 
-<p><strong>Backbone.js</strong> is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it&#8217;s objects to trigger and bind to events.</p>
+<p><img class="center" src="/images/backbone.png"></p>
 
 <p>Backbone <strong>Views</strong> act as a combination of traditional MVC Views and Controllers, since they allow you to organize all of your JavaScript event handlers while also providing a mechanism for adding dynamic HTML to your page through the optional use of JavaScript templates.  Views will also often be where you set data on your Models.</p>
 
@@ -175,11 +174,6 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<!-- more -->
 
 
 <p>Backbone <strong>Models</strong> store all of your applications business logic and data. This allows you to organize all of your application&#8217;s data validation inside of your Models.  In most cases, Models should not know about any of your Views, or the DOM.  There are certain design patterns (eg. modelbinding) where Models are aware of the DOM and set data on it, but most patterns do not implement this strategy since it is beneficial for Model&#8217;s to be completely decoupled from other pieces of the application.</p>
@@ -464,6 +458,8 @@
 
 
 <p><strong>Require.js</strong> serves two different purposes than Backbone.js. Require.js is an AMD (Asynchronous Module Definition) script loader that asynchronously loads your JavaScript to improve page load performance, while also providing you the ability to organize your JavaScript into self contained modules.  Each JavaScript file represents a module.</p>
+
+<p><img class="center" src="/images/requirejs.png"></p>
 
 <p>Each module is enclosed in a define tag that lists the module&#8217;s file dependencies, and keeps the global namespace free (essentially acting as a JavaScript closure).  Since none of your modules are global, inside of each module, you need to declare which other modules are dependencies and pass them to your current module.  This provides a solution for limiting global variables and dependency management. This solution is much better then having many script tags in a single page, which can be cumbersome to keep track of which files depend on which other files.  It also encourages you to decouple your JavaScript logic (instead of the traditionally hard to read one page JavaScript application).</p>
 
@@ -769,23 +765,23 @@
 <section>
   <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
 </section>
-<section id="headerSocialIcons">
-<a href="https://github.com/gfranko" target="_blank">
-<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
-</a><br />
-<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
-<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
-</a><br />
-<a href="https://twitter.com/#!/GregFranko" target="_blank">
-<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
-</a><br />
-<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
-<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
-</a><br><br><br><br>
-</section>
 <section>
   <h1>Greg Franko</h1>
   <p id="asideDescription">I am a JavaScript Engineer, speaker, author, and open source enthusiast.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<section id="headerSocialIcons">
+	<a href="https://github.com/gfranko" target="_blank">
+		<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+	</a>
+	<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+		<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+	</a>
+	<a href="https://twitter.com/#!/GregFranko" target="_blank">
+		<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+	</a>
+	<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+		<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+	</a>
 </section>
 <br /><br />
 <section>

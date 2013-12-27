@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Greg Franko]]></title>
   <link href="http://gfranko.github.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://gfranko.github.com/"/>
-  <updated>2013-11-03T12:05:57-05:00</updated>
+  <updated>2013-12-27T14:22:11-05:00</updated>
   <id>http://gfranko.github.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -18,21 +18,16 @@
     <link href="http://gfranko.github.com/blog/javascript-design-patterns/"/>
     <updated>2013-10-05T11:43:00-04:00</updated>
     <id>http://gfranko.github.com/blog/javascript-design-patterns</id>
-    <content type="html"><![CDATA[<p><a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns"><img class="left" src="/images/architecture.jpg" width="300"></a></p>
-
-<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
+    <content type="html"><![CDATA[<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
 
 <!-- more -->
-
-
-
-
-<br><br>
 
 
 <h2>Use Case</h2>
 
 <p>Smart Layers is a product suite that currently includes 6 different UI widgets (including share, follow, recommended content). Although each widget contains unique functionality, there are many similarities between the widgets.</p>
+
+<p><a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns"><img class="center" src="/images/smartlayers.png"></a></p>
 
 <p>For example, all widgets create and append DOM elements, listen to events, support user-specified options, utilize CSS3 show/hide animations, etc. Once we put our code architect hats on, we realized that:</p>
 
@@ -415,9 +410,7 @@
     <link href="http://gfranko.github.com/blog/javascript-performance-tips/"/>
     <updated>2013-09-17T16:25:00-04:00</updated>
     <id>http://gfranko.github.com/blog/javascript-performance-tips</id>
-    <content type="html"><![CDATA[<p><a href="http://www.addthis.com/blog/2013/09/17/performance-optimizing-for-smart-layers/" target="_blank" title="JavaScript Performance Best Practices"><img class="left" src="http://farm4.staticflickr.com/3742/9776421873_0d5795a966_z.jpg" width="300"></a></p>
-
-<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
+    <content type="html"><![CDATA[<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
 
 <!-- more -->
 
@@ -431,8 +424,7 @@
 
 <p>With the increasing number of mobile web users using a 3g/4g connection, it’s more important than ever to only download what you need. To save unnecessary bytes from being downloaded, we dynamically load assets (JavaScript, CSS, etc).</p>
 
-<!-- more -->
-
+<p><a href="http://www.addthis.com/blog/2013/09/17/performance-optimizing-for-smart-layers/" target="_blank" title="JavaScript Performance Best Practices"><img class="center" src="http://farm4.staticflickr.com/3742/9776421873_0d5795a966_z.jpg"></a></p>
 
 <p>For example, Smart Layers uses the great <a href="https://github.com/douglascrockford/JSON-js" target="_blank">JSON2.js</a> JavaScript library, created by <a href="https://github.com/douglascrockford" target="_blank">Douglas Crockford</a>, to provide native JSON support for older browsers (IE6 and IE7). Instead of including JSON2.js for browsers that already support the native JSON methods, we make sure to only include JSON2.js for browsers that need the polyfill.</p>
 
@@ -517,17 +509,12 @@
     <link href="http://gfranko.github.com/blog/instant-dependency-management-with-requirejs/"/>
     <updated>2013-07-21T23:28:00-04:00</updated>
     <id>http://gfranko.github.com/blog/instant-dependency-management-with-requirejs</id>
-    <content type="html"><![CDATA[<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="left" src="/images/amd_and_require.jpg" width="300"></a></p>
-
-<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
+    <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
 <!-- more -->
 
 
-
-
-<br><br>
-
+<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="center" src="/images/amd_and_require.jpg"></a></p>
 
 <h2>Topics</h2>
 
@@ -546,22 +533,16 @@
     <link href="http://gfranko.github.com/blog/backbone-require-boilerplate-explained/"/>
     <updated>2013-01-05T15:53:00-05:00</updated>
     <id>http://gfranko.github.com/blog/backbone-require-boilerplate-explained</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="left" src="/images/rubik.png" width="200"></a></p>
-
-<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.  In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!</p>
+    <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
 
 <!-- more -->
 
 
+<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="center" src="/images/rubik.png"></a></p>
 
-
-<br><br>
-
+<p>In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!</p>
 
 <p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/L_kqGJmc1rY "></iframe></div></p>
-
-<!-- more -->
-
 
 <p>If you are also interested in incorporating the Backbone Marionette library into your stack, check out the <a href="https://github.com/BoilerplateMVC/Marionette-Require-Boilerplate" target="_blank">Marionette-Require-Boilerplate</a>. Happy boilerplating!</p>
 ]]></content>
@@ -572,17 +553,12 @@
     <link href="http://gfranko.github.com/blog/i-love-my-iife/"/>
     <updated>2013-01-05T14:29:00-05:00</updated>
     <id>http://gfranko.github.com/blog/i-love-my-iife</id>
-    <content type="html"><![CDATA[<p><a href="blog/i-love-my-iife"><img class="left" src="/images/JavaScript-logo-small.png" width="200"></a></p>
-
-<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
+    <content type="html"><![CDATA[<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
 
 <!-- more -->
 
 
-
-
-<br><br><br><br>
-
+<p><a href="blog/i-love-my-iife"><img class="center" src="/images/JavaScript-logo-small.png"></a></p>
 
 <p>In the words of <a href="http://james.padolsey.com/javascript/iife-argument-madness/">James Padolsey</a>:</p>
 

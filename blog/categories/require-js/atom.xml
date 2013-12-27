@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Require.js | Greg Franko]]></title>
   <link href="http://gfranko.github.com/blog/categories/require-js/atom.xml" rel="self"/>
   <link href="http://gfranko.github.com/"/>
-  <updated>2013-11-03T12:05:57-05:00</updated>
+  <updated>2013-12-27T14:22:11-05:00</updated>
   <id>http://gfranko.github.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -18,17 +18,12 @@
     <link href="http://gfranko.github.com/blog/modular-jquery-plugins/"/>
     <updated>2013-08-22T20:54:00-04:00</updated>
     <id>http://gfranko.github.com/blog/modular-jquery-plugins</id>
-    <content type="html"><![CDATA[<p><a href="blog/modular-jquery-plugins/" target="_blank" title="Modular jQuery Plugins"><img class="left" src="/images/constructionhat.png" width="250"></a></p>
-
-<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
+    <content type="html"><![CDATA[<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
 
 <!-- more -->
 
 
-
-
-<br><br>
-
+<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div></p>
 
 <h2>What Does Modular Mean to You?</h2>
 
@@ -160,7 +155,7 @@
 
 <h2>jQueryUI Widget Factory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif" width="500"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif"></a></p>
 
 <p>Provides a <strong>consistent foundation and API</strong> for building jQuery plugins</p>
 
@@ -208,7 +203,7 @@
 
 <h2>jqfactory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png" width="400"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png"></a></p>
 
 <p>Supports <strong>widget inheritance</strong> using object literals</p>
 
@@ -356,7 +351,7 @@
 
 <h2>What is Grunt?</h2>
 
-<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png" width="200"></a>
+<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png"></a>
 JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>Perfect for <strong>automating repetitive tasks</strong></p>
@@ -561,7 +556,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>If you had wanted to exclude a file from the build (let's assume there is an optional customMethod.js file), then you could type: <code>grunt customBuild:customMethod</code></p>
 
-<p><img class="center" src="/images/gruntcustombuild.png" width="400"></p>
+<p><img class="center" src="/images/gruntcustombuild.png"></p>
 
 <p><strong>Success!</strong></p>
 
@@ -574,8 +569,6 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 <p>Also, if you would like to learn how to create custom web UI builds for your users, then check out the rest of <a href="http://gregfranko.com/modular-jquery-plugins-talk/#32">jQuery Portland Slide Deck</a> that covers my open source library, <a href="http://gregfranko.com/DownloadBuilder.js/">DownloadBuilder.js</a></p>
 
 <p>Happy jQuery plugin building!</p>
-
-<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div></p>
 ]]></content>
   </entry>
   
@@ -584,17 +577,12 @@ JavaScript (Node.js) Command-Line Task Runner</p>
     <link href="http://gfranko.github.com/blog/instant-dependency-management-with-requirejs/"/>
     <updated>2013-07-21T23:28:00-04:00</updated>
     <id>http://gfranko.github.com/blog/instant-dependency-management-with-requirejs</id>
-    <content type="html"><![CDATA[<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="left" src="/images/amd_and_require.jpg" width="300"></a></p>
-
-<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
+    <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
 <!-- more -->
 
 
-
-
-<br><br>
-
+<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="center" src="/images/amd_and_require.jpg"></a></p>
 
 <h2>Topics</h2>
 
@@ -613,16 +601,9 @@ JavaScript (Node.js) Command-Line Task Runner</p>
     <link href="http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
     <updated>2013-02-10T09:39:00-05:00</updated>
     <id>http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
-    <content type="html"><![CDATA[<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="left" src="/images/jqueryui.png" width="200"></a></p>
-
-<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
+    <content type="html"><![CDATA[<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
 
 <!-- more -->
-
-
-
-
-<br><br>
 
 
 <p>Unfortunately, AMD script loaders, such as <a href="http://requirejs.org/">Require.js</a>, are not drop-in solutions.  To use an AMD module system, you must make sure every other JavaScript library used in your application is <em>AMD Compatible</em>.</p>
@@ -943,6 +924,8 @@ No!  Although the <code>shim</code> configuration works for the most common uses
 <h3>jQueryUI Widget Factory Plugins</h3>
 
 <p>The above code example is a great solution for jQuery plugins to register themselves as anonymous AMD modules, but let's next look at jQuery plugins that depend on both jQuery and the <strong>jQueryUI Widget Factory</strong>.</p>
+
+<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="center" src="/images/jqueryui.png"></a></p>
 
 <p>In case you are not familiar, the jQueryUI Widget Factory <em>provides a flexible base for building complex, stateful plugins with a consistent API.</em> - per the jQueryUI website.</p>
 
@@ -1290,22 +1273,16 @@ No!  Although the <code>shim</code> configuration works for the most common uses
     <link href="http://gfranko.github.com/blog/backbone-require-boilerplate-explained/"/>
     <updated>2013-01-05T15:53:00-05:00</updated>
     <id>http://gfranko.github.com/blog/backbone-require-boilerplate-explained</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="left" src="/images/rubik.png" width="200"></a></p>
-
-<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.  In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!</p>
+    <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
 
 <!-- more -->
 
 
+<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="center" src="/images/rubik.png"></a></p>
 
-
-<br><br>
-
+<p>In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!</p>
 
 <p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/L_kqGJmc1rY "></iframe></div></p>
-
-<!-- more -->
-
 
 <p>If you are also interested in incorporating the Backbone Marionette library into your stack, check out the <a href="https://github.com/BoilerplateMVC/Marionette-Require-Boilerplate" target="_blank">Marionette-Require-Boilerplate</a>. Happy boilerplating!</p>
 ]]></content>
@@ -1316,17 +1293,14 @@ No!  Although the <code>shim</code> configuration works for the most common uses
     <link href="http://gfranko.github.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
     <updated>2012-05-29T15:40:00-04:00</updated>
     <id>http://gfranko.github.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
-    <content type="html"><![CDATA[<p><img class="left" src="http://requirejs.org/i/logo.png" width="164"></p>
-
-<br /><br /><br /><br /><br /><br />
-
-
-<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
-
-<p>The <code>Shim</code> configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post <a href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js with Require.js</a>, I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.</p>
+    <content type="html"><![CDATA[<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
 
 <!-- more -->
 
+
+<p><img class="center" src="/images/requirejs.png"></p>
+
+<p>The <code>Shim</code> configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post <a href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js with Require.js</a>, I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.</p>
 
 <p>James Burke mentions Use.js as one of his inspirations for including the new Shim configuration.  Now, instead of including the Use.js plugin to load Backbone and Underscore, you can have a shim configuration in your main file like this:</p>
 

@@ -26,8 +26,7 @@
   <script src="/javascripts/jquery-1.8.1.min.js" type="text/javascript"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet" type="text/css">
 
   
   <script type="text/javascript">
@@ -95,17 +94,14 @@
   </header>
 
 
-<div class="entry-content"><p><img class="left" src="http://requirejs.org/i/logo.png" width="164"></p>
-
-<br /><br /><br /><br /><br /><br />
-
-
-<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
-
-<p>The <code>Shim</code> configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post <a href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js with Require.js</a>, I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.</p>
+<div class="entry-content"><p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
 
 <!-- more -->
 
+
+<p><img class="center" src="/images/requirejs.png"></p>
+
+<p>The <code>Shim</code> configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post <a href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js with Require.js</a>, I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.</p>
 
 <p>James Burke mentions Use.js as one of his inspirations for including the new Shim configuration.  Now, instead of including the Use.js plugin to load Backbone and Underscore, you can have a shim configuration in your main file like this:</p>
 
@@ -220,23 +216,23 @@
 <section>
   <img src="http://gravatar.com/avatar/71051943b7d373670dc11020896004bb?s=150&r=pg" alt="Greg Franko" title="Greg Franko" />
 </section>
-<section id="headerSocialIcons">
-<a href="https://github.com/gfranko" target="_blank">
-<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
-</a><br />
-<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
-<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
-</a><br />
-<a href="https://twitter.com/#!/GregFranko" target="_blank">
-<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
-</a><br />
-<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
-<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
-</a><br><br><br><br>
-</section>
 <section>
   <h1>Greg Franko</h1>
   <p id="asideDescription">I am a JavaScript Engineer, speaker, author, and open source enthusiast.  My favorite technologies/topics are Javascript, jQuery, Backbone.js, Require.js, Node.js, CSS3, Mobile (Mobile Web and Native), and Design Patterns.</p>
+</section>
+<section id="headerSocialIcons">
+	<a href="https://github.com/gfranko" target="_blank">
+		<img src="/images/Github32.png" alt="Github" title="Github" class="social" />
+	</a>
+	<a href="http://stackoverflow.com/users/1172750/greg-franko" target="_blank">
+		<img src="/images/stackoverflow.png" alt="Stackoverflow" title="Stackoverflow" class="social" />
+	</a>
+	<a href="https://twitter.com/#!/GregFranko" target="_blank">
+		<img src="/images/twitter.png" alt="Twitter" title="Twitter" class="social" />
+	</a>
+	<a href="http://www.linkedin.com/profile/view?id=62257421&trk=tab_pro" target="_blank">
+		<img src="/images/linkedin.png" alt="LinkedIn" title="LinkedIn" class="social" />
+	</a>
 </section>
 <br /><br />
 <section>

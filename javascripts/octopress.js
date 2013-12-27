@@ -83,13 +83,13 @@ function wrapFlashVideos() {
   $('object').each(function(object) {
     object = $(object);
     if ( $('param[name=movie]', object).length ) {
-      var wrapper = object.before('<div class="flash-video"><div>').previous();
+      var wrapper = object.before('<div class="flash-video"><div>').prev();
       $(wrapper).children().append(object);
     }
   });
   $('iframe[src*=vimeo],iframe[src*=youtube]').each(function(iframe) {
     iframe = $(iframe);
-    var wrapper = iframe.before('<div class="flash-video"><div>').previous();
+    var wrapper = iframe.before('<div class="flash-video"><div>').prev();
     $(wrapper).children().append(iframe);
   });
 }

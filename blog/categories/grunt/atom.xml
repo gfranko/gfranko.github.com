@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Grunt | Greg Franko]]></title>
   <link href="http://gfranko.github.com/blog/categories/grunt/atom.xml" rel="self"/>
   <link href="http://gfranko.github.com/"/>
-  <updated>2013-11-03T12:05:57-05:00</updated>
+  <updated>2013-12-27T14:22:11-05:00</updated>
   <id>http://gfranko.github.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -18,17 +18,12 @@
     <link href="http://gfranko.github.com/blog/modular-jquery-plugins/"/>
     <updated>2013-08-22T20:54:00-04:00</updated>
     <id>http://gfranko.github.com/blog/modular-jquery-plugins</id>
-    <content type="html"><![CDATA[<p><a href="blog/modular-jquery-plugins/" target="_blank" title="Modular jQuery Plugins"><img class="left" src="/images/constructionhat.png" width="250"></a></p>
-
-<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
+    <content type="html"><![CDATA[<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
 
 <!-- more -->
 
 
-
-
-<br><br>
-
+<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div></p>
 
 <h2>What Does Modular Mean to You?</h2>
 
@@ -160,7 +155,7 @@
 
 <h2>jQueryUI Widget Factory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif" width="500"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/jquery_ui_logo_small.gif"></a></p>
 
 <p>Provides a <strong>consistent foundation and API</strong> for building jQuery plugins</p>
 
@@ -208,7 +203,7 @@
 
 <h2>jqfactory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png" width="400"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="/images/constructionhat.png"></a></p>
 
 <p>Supports <strong>widget inheritance</strong> using object literals</p>
 
@@ -356,7 +351,7 @@
 
 <h2>What is Grunt?</h2>
 
-<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png" width="200"></a>
+<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="/images/nodejs.png"></a>
 JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>Perfect for <strong>automating repetitive tasks</strong></p>
@@ -561,7 +556,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>If you had wanted to exclude a file from the build (let's assume there is an optional customMethod.js file), then you could type: <code>grunt customBuild:customMethod</code></p>
 
-<p><img class="center" src="/images/gruntcustombuild.png" width="400"></p>
+<p><img class="center" src="/images/gruntcustombuild.png"></p>
 
 <p><strong>Success!</strong></p>
 
@@ -574,8 +569,6 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 <p>Also, if you would like to learn how to create custom web UI builds for your users, then check out the rest of <a href="http://gregfranko.com/modular-jquery-plugins-talk/#32">jQuery Portland Slide Deck</a> that covers my open source library, <a href="http://gregfranko.com/DownloadBuilder.js/">DownloadBuilder.js</a></p>
 
 <p>Happy jQuery plugin building!</p>
-
-<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/sC0JJRHuP5M "></iframe></div></p>
 ]]></content>
   </entry>
   

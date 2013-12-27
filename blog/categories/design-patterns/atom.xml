@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Design Patterns | Greg Franko]]></title>
   <link href="http://gfranko.github.com/blog/categories/design-patterns/atom.xml" rel="self"/>
   <link href="http://gfranko.github.com/"/>
-  <updated>2013-11-03T12:05:57-05:00</updated>
+  <updated>2013-12-27T14:22:11-05:00</updated>
   <id>http://gfranko.github.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -18,17 +18,12 @@
     <link href="http://gfranko.github.com/blog/i-love-my-iife/"/>
     <updated>2013-01-05T14:29:00-05:00</updated>
     <id>http://gfranko.github.com/blog/i-love-my-iife</id>
-    <content type="html"><![CDATA[<p><a href="blog/i-love-my-iife"><img class="left" src="/images/JavaScript-logo-small.png" width="200"></a></p>
-
-<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
+    <content type="html"><![CDATA[<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
 
 <!-- more -->
 
 
-
-
-<br><br><br><br>
-
+<p><a href="blog/i-love-my-iife"><img class="center" src="/images/JavaScript-logo-small.png"></a></p>
 
 <p>In the words of <a href="http://james.padolsey.com/javascript/iife-argument-madness/">James Padolsey</a>:</p>
 
