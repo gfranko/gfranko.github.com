@@ -8,13 +8,9 @@ description: "Register the jQueryUI Widget Factory as a named AMD module so that
 keywords: "Greg Franko, jQueryUI, jQueryUI Widget Factory, Require.js, jQuery"
 ---
 
-<a href="http://api.jqueryui.com/jQuery.widget/" target="_blank">{% img left /images/jqueryui.png 200 %}</a>
-
 **AMD** (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.
 
 <!-- more -->
-
-<br><br>
 
 Unfortunately, AMD script loaders, such as [Require.js](http://requirejs.org/), are not drop-in solutions.  To use an AMD module system, you must make sure every other JavaScript library used in your application is _AMD Compatible_.
 
@@ -193,6 +189,8 @@ require(["jquery", "example"],
 
 ###jQueryUI Widget Factory Plugins
 The above code example is a great solution for jQuery plugins to register themselves as anonymous AMD modules, but let's next look at jQuery plugins that depend on both jQuery and the **jQueryUI Widget Factory**.
+
+<a href="http://api.jqueryui.com/jQuery.widget/" target="_blank">{% img center /images/jqueryui.png %}</a>
 
 In case you are not familiar, the jQueryUI Widget Factory _provides a flexible base for building complex, stateful plugins with a consistent API._ - per the jQueryUI website.
 

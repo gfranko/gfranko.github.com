@@ -7,15 +7,14 @@ categories: [JavaScript, Backbone.js, Require.js]
 description: "Require.js 2.0 Shim Configuration Now Supports Loading Non-AMD Compatible Scripts"
 keywords: "Greg Franko, Require.js, Require.js 2.0, Loading Non-AMD Compatible Scripts, Greg Franko" 
 ---
-{% img left http://requirejs.org/i/logo.png 164 %}
-
-<br /><br /><br /><br /><br /><br />
 
 Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new `Shim` configuration.
 
-The `Shim` configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post [Using Backbone.js with Require.js](http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/), I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.
-
 <!-- more -->
+
+{% img center /images/requirejs.png %}
+
+The `Shim` configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post [Using Backbone.js with Require.js](http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/), I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.
 
 James Burke mentions Use.js as one of his inspirations for including the new Shim configuration.  Now, instead of including the Use.js plugin to load Backbone and Underscore, you can have a shim configuration in your main file like this:
 

@@ -8,19 +8,20 @@ description: "Creating Backbone.js Custom Builds to help convince the boss to us
 keywords: "Greg Franko, Backbone.js, Backbone.js Custom Builds, Backbone.js Convincing the Boss Guide" 
 ---
 
-{% img left http://backbonejs.org/docs/images/backbone.png 405 %}
-<br /><br /><br /><br /><br />
+I am officially pronouncing **2012 as the year of the JavaScript MV\* frameworks**.  Although many people complain that the JavaScript MV\* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let's look at the glass half full.
 
-###Year of the JavaScript MV\* Frameworks
-I am officially pronouncing **2012 as the year of the JavaScript MV\* frameworks**.  Although many people complain that the JavaScript MV\* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let's look at the glass half full.  The influx of JavaScript MV\* frameworks has created new design patterns that have promoted **JavaScript as a language that you should care about**.  JavaScript codebase consistency, maintainability, and performance have never been scrutinized more.  This intensified focus is helping the web become an even better place to spend your time.
+<!-- more -->
+
+The influx of JavaScript MV\* frameworks has created new design patterns that have promoted **JavaScript as a language that you should care about**.  JavaScript codebase consistency, maintainability, and performance have never been scrutinized more.  This intensified focus is helping the web become an even better place to spend your time.
 
 Although 2012 has been a big win for the JavaScript community, there is still much work to be done.  Much of that work consists of educating developers, who may not be JavaScript wizards (seriously not everyone can be [Paul Irish](http://paulirish.com/), [Addy Osmani](http://addyosmani.com/), etc), that organizing their front-end codebases deserves their full time and attention.
 
 A common argument against using JavaScript MV* frameworks by non-JavaScript wizards is that most "apps" are not complex enough to warrent using these "bloated MV Whatever frameworks" (their words not mine).  Before you start screaming at your computer, let's look at this argument in more detail using [Backbone.js](http://backbonejs.org), one of the most popular JavaScript MV\* frameworks, and [custom Backbone.js builds](http://gregfranko.com/backbone/customBuild/).
 
-<!-- more -->
-
 ###Backbone.js
+
+{% img center /images/backbone.png %}
+
 **Backbone.js** is a great client-side MV* JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, Router, and Event class objects.  Although your application may not need all of the functionality that Backbone.js provides you, 99% of all applications could use the functionality provided by one or more Backbone.js class objects.  **Let's take a look at each Backbone.js class object and determine if a "simple" application needs the functionality provided.**
 
 ####Backbone.js View

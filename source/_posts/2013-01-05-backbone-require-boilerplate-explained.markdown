@@ -8,16 +8,14 @@ description: "A walk-through of Backbone-Require-Boilerplate, the popular Backbo
 keywords: "Greg Franko, Backbone.js, Require.js, Backbone.js and Require.js boilerplate"
 ---
 
-<a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank">{% img left /images/rubik.png 200 %}</a>
-
-[Backbone-Require-Boilerplate](https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate) is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.  In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!
+[Backbone-Require-Boilerplate](https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate) is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.
 
 <!-- more -->
 
-<br><br>
+<a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank">{% img center /images/rubik.png %}</a>
+
+In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!
 
 {% youtube L_kqGJmc1rY %}
-<!-- more -->
-
 
 If you are also interested in incorporating the Backbone Marionette library into your stack, check out the <a href="https://github.com/BoilerplateMVC/Marionette-Require-Boilerplate" target="_blank">Marionette-Require-Boilerplate</a>. Happy boilerplating!

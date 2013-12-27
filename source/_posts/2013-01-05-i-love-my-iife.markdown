@@ -8,13 +8,12 @@ description: "Write more readable Immediately Invoked Function Expression's (IIF
 keywords: "Greg Franko, JavaScript Design Patters, IIFE, Immediately Invoked Function Expression"
 ---
 
-<a href="blog/i-love-my-iife">{% img left /images/JavaScript-logo-small.png 200 %}</a>
-
 An **IIFE**, or [Immediately Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/), is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.  
 
 <!-- more -->
 
-<br><br><br><br>
+<a href="blog/i-love-my-iife">{% img center /images/JavaScript-logo-small.png %}</a>
+
 In the words of [James Padolsey](http://james.padolsey.com/javascript/iife-argument-madness/):
 
 > An IIFE protects a module's scope from the environment in which it is placed.

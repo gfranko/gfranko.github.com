@@ -21,14 +21,14 @@ else if(somethingElse === false) {
 }
 {% endcodeblock %}
 
+<!-- more -->
+
 If you have, then you need to be using **JavaScript logical operators**.  The previous code can be rewritten like this:
 
 {% codeblock lang:js %}
 var something = somethingElse || false;
 {% endcodeblock %}
 <br />
-
-<!-- more -->
 
 ##Logical OR Operator
 The logical OR operator **returns the first true value** it finds (looking from left to right).  If nothing is true in the statement, then it defaults to the last value (false in the previous code example).  This makes it **perfect for setting default values**.

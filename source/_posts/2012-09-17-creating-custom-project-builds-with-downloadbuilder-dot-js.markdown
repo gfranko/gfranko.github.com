@@ -8,11 +8,11 @@ description: "DownloadBuilder.js helps you create custom project builds for your
 keywords: "Greg Franko, DownloadBuilder.js, Custom Project Builds" 
 ---
 
-{% img left http://gregfranko.com/DownloadBuilder.js/img/html5.png 205 %}
-<br /><br /><br /><br /><br /><br />
-
-###Please, Just Give Me What I Want
 Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important for users.  Since it is nearly impossible to create a project that is a perfect fit for all users, many OS projects provide a custom build option.  This allows users to specify which parts of a project he/she wants and then download only those parts (thus minimizing file size).
+
+<!-- more -->
+
+{% img center /images/html5.png %}
 
 _Examples of popular OS projects that are providing custom build options now include jQuery (recent addition in version 1.8), jQueryUI, Modernizr, Twitter Bootstrap, Can.js, etc._
 
@@ -22,8 +22,6 @@ After reviewing the custom build processes of the above OS projects, it seemed t
 
 ####Description
 [DownloadBuilder.js](http://gregfranko.com/DownloadBuilder.js/) is a JavaScript library that uses the HTML5 Filesystem API to create concatenated single file custom builds for front-end projects.  Since the project uses the HTML5 Filesystem API, all of its features only currently work in Chrome 21+, although it can still be used in all other modern browsers(Firefox, IE8+) to create a generated concatenated project file.
-
-<!-- more -->
 
 ####Getting Started
 

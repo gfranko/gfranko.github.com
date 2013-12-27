@@ -8,13 +8,12 @@ description: "Instant Dependency Management with RequireJS covers how to improve
 keywords: "Greg Franko, Require.js"
 ---
 
-<a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS">{% img left /images/amd_and_require.jpg 300 %}</a>
-
 In May 2013, Packt Publishing published my Require.js book, [Instant Dependency Management with RequireJS](http://www.packtpub.com/dependency-management-with-requirejs-how-to/book).  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.
 
 <!-- more -->
 
-<br><br>
+<a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS">{% img center /images/amd_and_require.jpg %}</a>
+
 ##Topics
 
 Some of the topics covered include Require.js configurations, creating AMD modules, using third-party libraries with Require.js, the mobile web, Lodash templates, Jasmine unit testing, and r.js (the Require.js optimizer).

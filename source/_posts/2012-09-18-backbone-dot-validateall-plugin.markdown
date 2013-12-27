@@ -8,10 +8,11 @@ description: "Backbone.js plugin that provides an option to only validate Model 
 keywords: "Greg Franko, Backbone.js, Backbone.js validateAll" 
 ---
 
-{% img left http://backbonejs.org/docs/images/backbone.png 405 %}
-<br /><br /><br /><br /><br />
-
 **[Backbone.validateAll](https://github.com/gfranko/Backbone.validateAll)** is a small Backbone.js plugin that provides an option to only validate Model properties that are currently being set or saved.
+
+<!-- more -->
+
+{% img center /images/backbone.png %}
 
 ###Background
 _Backbone.validateAll_ originated from a failed Backbone.js [pull request](https://github.com/documentcloud/backbone/pull/1595).  The original pull request was created because of frustration with using the Backbone.js Model validate method when validating HTML forms.

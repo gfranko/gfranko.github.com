@@ -8,10 +8,11 @@ description: "Use Backbone.js and Require.js together to decouple your JavaScrip
 keywords: "Greg Franko, Backbone.js, Require.js, Using Backbone and Require Together, Backbone, Require, Greg Franko" 
 ---
 
-{% img left http://backbonejs.org/docs/images/backbone.png 405 %}{% img left http://requirejs.org/i/logo.png 124 %}
-<br /><br /><br /><br /><br />
-
 **Backbone.js** is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it's objects to trigger and bind to events.
+
+<!-- more -->
+
+{% img center /images/backbone.png %}
 
 Backbone **Views** act as a combination of traditional MVC Views and Controllers, since they allow you to organize all of your JavaScript event handlers while also providing a mechanism for adding dynamic HTML to your page through the optional use of JavaScript templates.  Views will also often be where you set data on your Models.
 
@@ -52,8 +53,6 @@ Here is an example Backbone View class:
 
     });
 {% endcodeblock %}
-
-<!-- more -->
 
 Backbone **Models** store all of your applications business logic and data. This allows you to organize all of your application's data validation inside of your Models.  In most cases, Models should not know about any of your Views, or the DOM.  There are certain design patterns (eg. modelbinding) where Models are aware of the DOM and set data on it, but most patterns do not implement this strategy since it is beneficial for Model's to be completely decoupled from other pieces of the application.
 
@@ -210,6 +209,8 @@ Here is an example Event being bound by a Backbone View class:
 {% endcodeblock %}
 
 **Require.js** serves two different purposes than Backbone.js. Require.js is an AMD (Asynchronous Module Definition) script loader that asynchronously loads your JavaScript to improve page load performance, while also providing you the ability to organize your JavaScript into self contained modules.  Each JavaScript file represents a module.
+
+{% img center /images/requirejs.png %}
 
 Each module is enclosed in a define tag that lists the module's file dependencies, and keeps the global namespace free (essentially acting as a JavaScript closure).  Since none of your modules are global, inside of each module, you need to declare which other modules are dependencies and pass them to your current module.  This provides a solution for limiting global variables and dependency management. This solution is much better then having many script tags in a single page, which can be cumbersome to keep track of which files depend on which other files.  It also encourages you to decouple your JavaScript logic (instead of the traditionally hard to read one page JavaScript application).
 

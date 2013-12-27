@@ -8,16 +8,17 @@ description: "Register the jQueryUI Widget Factory as a named AMD module so that
 keywords: "Greg Franko, jQuery, jQuery Best Practices"
 ---
 
-<a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">{% img left /images/jquery.png 300 %}</a>
-
 Back in February 2013, I presented about jQuery best practices at the [Nova Web Development User Group](http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/) meetup.  Let's take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.
 
 <!-- more -->
 
-<br><br>
+<a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/" target="_blank">{% img center /images/novameetup.jpeg %}</a>
+
 ##IIFEs
 
 IIFEs are an ideal solution for locally scoping global variables/properties and protecting your JavaScript codebase from outside interference (e.g. third-party libraries).  If you are writing jQuery code that will be run in many different environments (e.g. jQuery plugins), then it is important to use an IIFE to locally scope jQuery.
+
+<a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">{% img center /images/jquery.png %}</a>
 
 > You can't assume everyone is using the $ to alias jQuery.
 

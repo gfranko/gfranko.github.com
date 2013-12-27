@@ -8,17 +8,17 @@ description: "DownloadBuilder.js helps you create custom project builds for your
 keywords: "Open Source, Documentation, Documenting Open Source, OS, Tocify, Document-Bootstrap" 
 ---
 
-{% img left http://opensource.org/files/garland_logo.png 105 %}
-<br /><br /><br /><br /><br /><br />
-
-###What?  I Actually Have to Show People How to Use My Project?
 Popular Open Source (OS) projects are self promoted by their easy to read, organized, and exhaustive documentation.  Great examples include Backbone.js, Can.js, jQuery++, Underscore.js, jQuery, HTML5 Boilerplate, Require.js, Twitter Bootstrap, and many more.
+
+<!-- more -->
+
+{% img center /images/opensource.png %}
 
 These projects realize that users expect their documentation to follow a common format that includes a table of contents that houses, at the very least, a _Getting Started_ guide, a _Demos/Examples_ section, and a _forum_ section to ask questions.  Additional sections (ie. _annotated source code_, _Contributor Guide_) targeting potential core project contributors may also be included.
 
 All OS developers should take note of these documentation practices and follow them when promoting their own projects.  When patrolling Github to find new and interesting projects, I often find myself dismissing a project right away if there is a lack of documentation.
 
-**The project could have the most readable, brilliant, and performant code known to man, yet I (and many other developers) would never know.**
+>The project could have the most readable, brilliant, and performant code known to man, yet I (and many other developers) would never know
 
 ###But Documentation Takes Too Long to Write!
 It's true, documenting your project may take longer than writing the project code itself.  But there are open source tools that can help expediate the process...

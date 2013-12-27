@@ -8,16 +8,15 @@ description: "JavaScript design patterns used for AddThis Smart Layers"
 keywords: "Greg Franko, Design Patterns, AddThis"
 ---
 
-<a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns">{% img left /images/architecture.jpg 300 %}</a>
-
 JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.
 
 <!-- more -->
 
-<br><br>
 ##Use Case
 
 Smart Layers is a product suite that currently includes 6 different UI widgets (including share, follow, recommended content). Although each widget contains unique functionality, there are many similarities between the widgets.
+
+<a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns">{% img center /images/smartlayers.png %}</a>
 
 For example, all widgets create and append DOM elements, listen to events, support user-specified options, utilize CSS3 show/hide animations, etc. Once we put our code architect hats on, we realized that:
 

@@ -8,13 +8,12 @@ description: "jQuery Plugin Architecture"
 keywords: "Greg Franko, jQuery, Modular jQuery Plugins"
 ---
 
-<a href="blog/modular-jquery-plugins/" target="_blank" title="Modular jQuery Plugins">{% img left /images/constructionhat.png 250 %}</a>
-
 In June 2013, I presented about modular jQuery plugins at the [jQuery Portland 2013](http://events.jquery.org/2013/portland/) conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.
 
 <!-- more -->
 
-<br><br>
+{% youtube sC0JJRHuP5M %}
+
 ##What Does Modular Mean to You?
 
 The term "modular" has many different definitions in the JavaScript community.  In the context of this blog post, let's establish it as JavaScript logic that is separated from the rest of a codebase, can work independently, and **does one thing and does it well**.
@@ -104,7 +103,7 @@ Make the codebase **modular** (even without Require.js)
 There are currently two open-source libraries that help abstract away common jQuery plugin boilerplate code; the [jQueryUI Widget Factory](http://api.jqueryui.com/jQuery.widget/) and [jqfactory](https://github.com/gfranko/jqfactory).
 
 ##jQueryUI Widget Factory
-<a href="http://jqueryui.com" target="_blank" title="jQueryUI">{% img center /images/jquery_ui_logo_small.gif 500 %}</a>
+<a href="http://jqueryui.com" target="_blank" title="jQueryUI">{% img center /images/jquery_ui_logo_small.gif %}</a>
 
 Provides a **consistent foundation and API** for building jQuery plugins
 
@@ -134,7 +133,7 @@ $.widget("an.example", {
 {% endcodeblock %}
 
 ##jqfactory
-<a href="http://jqueryui.com" target="_blank" title="jQueryUI">{% img center /images/constructionhat.png 400 %}</a>
+<a href="http://jqueryui.com" target="_blank" title="jQueryUI">{% img center /images/constructionhat.png %}</a>
 
 Supports **widget inheritance** using object literals
 
@@ -239,7 +238,7 @@ Since our plugin has been separated into multiple files, we need a command-line 
 
 ##What is Grunt?
 
-<a href="http://nodejs.org" target="_blank" title="Node.js">{% img left /images/nodejs.png 200 %}</a>
+<a href="http://nodejs.org" target="_blank" title="Node.js">{% img left /images/nodejs.png %}</a>
 JavaScript (Node.js) Command-Line Task Runner
 
 Perfect for **automating repetitive tasks**
@@ -361,7 +360,7 @@ On the command line, type: `grunt customBuild`.  This will build all of our plug
 
 If you had wanted to exclude a file from the build (let's assume there is an optional customMethod.js file), then you could type: `grunt customBuild:customMethod`
 
-{% img center /images/gruntcustombuild.png 400 %}
+{% img center /images/gruntcustombuild.png %}
 
 **Success!**
 
@@ -373,5 +372,3 @@ JavaScript workflow tools are improving every day and will continue to improve. 
 Also, if you would like to learn how to create custom web UI builds for your users, then check out the rest of [jQuery Portland Slide Deck](http://gregfranko.com/modular-jquery-plugins-talk/#32) that covers my open source library, [DownloadBuilder.js](http://gregfranko.com/DownloadBuilder.js/)
 
 Happy jQuery plugin building!
-
-{% youtube sC0JJRHuP5M %}

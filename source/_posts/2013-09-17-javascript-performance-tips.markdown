@@ -8,8 +8,6 @@ description: "jQuery Plugin Architecture"
 keywords: "Greg Franko, Performance, AddThis"
 ---
 
-<a href="http://www.addthis.com/blog/2013/09/17/performance-optimizing-for-smart-layers/" target="_blank" title="JavaScript Performance Best Practices">{% img left http://farm4.staticflickr.com/3742/9776421873_0d5795a966_z.jpg 300 %}</a>
-
 It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.
 
 <!-- more -->
@@ -19,7 +17,7 @@ It is a competitive advantage for websites to be fast and responsive.  When buil
 
 With the increasing number of mobile web users using a 3g/4g connection, it’s more important than ever to only download what you need. To save unnecessary bytes from being downloaded, we dynamically load assets (JavaScript, CSS, etc).
 
-<!-- more -->
+<a href="http://www.addthis.com/blog/2013/09/17/performance-optimizing-for-smart-layers/" target="_blank" title="JavaScript Performance Best Practices">{% img center http://farm4.staticflickr.com/3742/9776421873_0d5795a966_z.jpg %}</a>
 
 For example, Smart Layers uses the great <a href="https://github.com/douglascrockford/JSON-js" target="_blank">JSON2.js</a> JavaScript library, created by <a href="https://github.com/douglascrockford" target="_blank">Douglas Crockford</a>, to provide native JSON support for older browsers (IE6 and IE7). Instead of including JSON2.js for browsers that already support the native JSON methods, we make sure to only include JSON2.js for browsers that need the polyfill.
 
