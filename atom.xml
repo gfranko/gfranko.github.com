@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Greg Franko]]></title>
-  <link href="http://gfranko.github.com/atom.xml" rel="self"/>
-  <link href="http://gfranko.github.com/"/>
-  <updated>2013-12-27T14:22:11-05:00</updated>
-  <id>http://gfranko.github.com/</id>
+  <link href="http://gregfranko.com/atom.xml" rel="self"/>
+  <link href="http://gregfranko.com/"/>
+  <updated>2013-12-27T15:03:48-05:00</updated>
+  <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
     <email><![CDATA[gfranko5@yahoo.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript Design Patterns]]></title>
-    <link href="http://gfranko.github.com/blog/javascript-design-patterns/"/>
+    <link href="http://gregfranko.com/blog/javascript-design-patterns/"/>
     <updated>2013-10-05T11:43:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/javascript-design-patterns</id>
+    <id>http://gregfranko.com/blog/javascript-design-patterns</id>
     <content type="html"><![CDATA[<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
 
 <!-- more -->
@@ -27,7 +27,7 @@
 
 <p>Smart Layers is a product suite that currently includes 6 different UI widgets (including share, follow, recommended content). Although each widget contains unique functionality, there are many similarities between the widgets.</p>
 
-<p><a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns"><img class="center" src="http://gfranko.github.com/images/smartlayers.png"></a></p>
+<p><a href="http://www.addthis.com/blog/2013/10/03/javascript-design-patterns-used-in-smart-layers/" target="_blank" title="JavaScript Design Patterns"><img class="center" src="http://gregfranko.com/images/smartlayers.png"></a></p>
 
 <p>For example, all widgets create and append DOM elements, listen to events, support user-specified options, utilize CSS3 show/hide animations, etc. Once we put our code architect hats on, we realized that:</p>
 
@@ -346,9 +346,9 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript Performance Tips]]></title>
-    <link href="http://gfranko.github.com/blog/javascript-performance-tips/"/>
+    <link href="http://gregfranko.com/blog/javascript-performance-tips/"/>
     <updated>2013-09-17T16:25:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/javascript-performance-tips</id>
+    <id>http://gregfranko.com/blog/javascript-performance-tips</id>
     <content type="html"><![CDATA[<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
 
 <!-- more -->
@@ -447,9 +447,9 @@
   
   <entry>
     <title type="html"><![CDATA[Modular jQuery Plugins]]></title>
-    <link href="http://gfranko.github.com/blog/modular-jquery-plugins/"/>
+    <link href="http://gregfranko.com/blog/modular-jquery-plugins/"/>
     <updated>2013-08-22T20:54:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/modular-jquery-plugins</id>
+    <id>http://gregfranko.com/blog/modular-jquery-plugins</id>
     <content type="html"><![CDATA[<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let&#8217;s review my talk.</p>
 
 <!-- more -->
@@ -580,7 +580,7 @@
 
 <h2>jQueryUI Widget Factory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="http://gfranko.github.com/images/jquery_ui_logo_small.gif"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="http://gregfranko.com/images/jquery_ui_logo_small.gif"></a></p>
 
 <p>Provides a <strong>consistent foundation and API</strong> for building jQuery plugins</p>
 
@@ -623,7 +623,7 @@
 
 <h2>jqfactory</h2>
 
-<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="http://gfranko.github.com/images/constructionhat.png"></a></p>
+<p><a href="http://jqueryui.com" target="_blank" title="jQueryUI"><img class="center" src="http://gregfranko.com/images/constructionhat.png"></a></p>
 
 <p>Supports <strong>widget inheritance</strong> using object literals</p>
 
@@ -761,13 +761,13 @@
 
 <h2>Building Our Plugin with Grunt</h2>
 
-<p><a href="http://gruntjs.com" target="_blank" title="Grunt.js"><img class="center" src="http://gfranko.github.com/images/grunt.png"></a></p>
+<p><a href="http://gruntjs.com" target="_blank" title="Grunt.js"><img class="center" src="http://gregfranko.com/images/grunt.png"></a></p>
 
 <p>Since our plugin has been separated into multiple files, we need a command-line tool to build our plugin into one file (for a user to use).  We also want users to be able to exclude certain files from the build to allow custom builds.  This is where <strong>Grunt</strong> comes in.</p>
 
 <h2>What is Grunt?</h2>
 
-<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="http://gfranko.github.com/images/nodejs.png"></a>
+<p><a href="http://nodejs.org" target="_blank" title="Node.js"><img class="left" src="http://gregfranko.com/images/nodejs.png"></a>
 JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>Perfect for <strong>automating repetitive tasks</strong></p>
@@ -963,7 +963,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>If you had wanted to exclude a file from the build (let&#8217;s assume there is an optional customMethod.js file), then you could type: <code>grunt customBuild:customMethod</code></p>
 
-<p><img class="center" src="http://gfranko.github.com/images/gruntcustombuild.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/gruntcustombuild.png"></p>
 
 <p><strong>Success!</strong></p>
 
@@ -981,15 +981,15 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   
   <entry>
     <title type="html"><![CDATA[Instant Dependency Management with RequireJS]]></title>
-    <link href="http://gfranko.github.com/blog/instant-dependency-management-with-requirejs/"/>
+    <link href="http://gregfranko.com/blog/instant-dependency-management-with-requirejs/"/>
     <updated>2013-07-21T23:28:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/instant-dependency-management-with-requirejs</id>
+    <id>http://gregfranko.com/blog/instant-dependency-management-with-requirejs</id>
     <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
 <!-- more -->
 
 
-<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="center" src="http://gfranko.github.com/images/amd_and_require.jpg"></a></p>
+<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="center" src="http://gregfranko.com/images/amd_and_require.jpg"></a></p>
 
 <h2>Topics</h2>
 
@@ -999,27 +999,27 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 
 <p>A <a href="http://my.safaribooksonline.com/book/programming/javascript/9781782169062">free preview</a> and <a href="http://www.packtpub.com/article/using-jQuery-jQueryui-widget-factory-plugins-with-requirejs">sample chapter</a> are both available.  Happy reading!</p>
 
-<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="left" src="http://gfranko.github.com/images/requirejsbook.jpg" width="350"></a></p>
+<p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="left" src="http://gregfranko.com/images/requirejsbook.jpg" width="350"></a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[jQuery Best Practices]]></title>
-    <link href="http://gfranko.github.com/blog/jquery-best-practices/"/>
+    <link href="http://gregfranko.com/blog/jquery-best-practices/"/>
     <updated>2013-07-20T11:24:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/jquery-best-practices</id>
+    <id>http://gregfranko.com/blog/jquery-best-practices</id>
     <content type="html"><![CDATA[<p>Back in February 2013, I presented about jQuery best practices at the <a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/">Nova Web Development User Group</a> meetup.  Let&#8217;s take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.</p>
 
 <!-- more -->
 
 
-<p><a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/" target="_blank"><img class="center" src="http://gfranko.github.com/images/novameetup.jpeg"></a></p>
+<p><a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/" target="_blank"><img class="center" src="http://gregfranko.com/images/novameetup.jpeg"></a></p>
 
 <h2>IIFEs</h2>
 
 <p>IIFEs are an ideal solution for locally scoping global variables/properties and protecting your JavaScript codebase from outside interference (e.g. third-party libraries).  If you are writing jQuery code that will be run in many different environments (e.g. jQuery plugins), then it is important to use an IIFE to locally scope jQuery.</p>
 
-<p><a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank"><img class="center" src="http://gfranko.github.com/images/jquery.png"></a></p>
+<p><a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank"><img class="center" src="http://gregfranko.com/images/jquery.png"></a></p>
 
 <blockquote><p>You can&#8217;t assume everyone is using the $ to alias jQuery.</p></blockquote>
 
@@ -1073,7 +1073,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>To read more about IIFEs, you can read my blog post titled, <a href="http://gfranko.github.com/blog/i-love-my-iife/">I Love My IIFE</a>.</p>
+<p>To read more about IIFEs, you can read my blog post titled, <a href="http://gregfranko.com/blog/i-love-my-iife/">I Love My IIFE</a>.</p>
 
 <h2>Ready Event</h2>
 
@@ -1362,9 +1362,9 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   
   <entry>
     <title type="html"><![CDATA[Registering the jQueryUI Widget Factory as an AMD Module]]></title>
-    <link href="http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
+    <link href="http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
     <updated>2013-02-10T09:39:00-05:00</updated>
-    <id>http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
+    <id>http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
     <content type="html"><![CDATA[<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
 
 <!-- more -->
@@ -1662,7 +1662,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
 
 <p>The above code example is a great solution for jQuery plugins to register themselves as anonymous AMD modules, but let&#8217;s next look at jQuery plugins that depend on both jQuery and the <strong>jQueryUI Widget Factory</strong>.</p>
 
-<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="center" src="http://gfranko.github.com/images/jqueryui.png"></a></p>
+<p><a href="http://api.jqueryui.com/jQuery.widget/" target="_blank"><img class="center" src="http://gregfranko.com/images/jqueryui.png"></a></p>
 
 <p>In case you are not familiar, the jQueryUI Widget Factory <em>provides a flexible base for building complex, stateful plugins with a consistent API.</em> - per the jQueryUI website.</p>
 
@@ -1984,15 +1984,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Backbone-Require-Boilerplate Explained]]></title>
-    <link href="http://gfranko.github.com/blog/backbone-require-boilerplate-explained/"/>
+    <link href="http://gregfranko.com/blog/backbone-require-boilerplate-explained/"/>
     <updated>2013-01-05T15:53:00-05:00</updated>
-    <id>http://gfranko.github.com/blog/backbone-require-boilerplate-explained</id>
+    <id>http://gregfranko.com/blog/backbone-require-boilerplate-explained</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
 
 <!-- more -->
 
 
-<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="center" src="http://gfranko.github.com/images/rubik.png"></a></p>
+<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="center" src="http://gregfranko.com/images/rubik.png"></a></p>
 
 <p>In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!</p>
 
@@ -2005,15 +2005,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[I Love My IIFE]]></title>
-    <link href="http://gfranko.github.com/blog/i-love-my-iife/"/>
+    <link href="http://gregfranko.com/blog/i-love-my-iife/"/>
     <updated>2013-01-05T14:29:00-05:00</updated>
-    <id>http://gfranko.github.com/blog/i-love-my-iife</id>
+    <id>http://gregfranko.com/blog/i-love-my-iife</id>
     <content type="html"><![CDATA[<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
 
 <!-- more -->
 
 
-<p><a href="blog/i-love-my-iife"><img class="center" src="http://gfranko.github.com/images/JavaScript-logo-small.png"></a></p>
+<p><a href="blog/i-love-my-iife"><img class="center" src="http://gregfranko.com/images/JavaScript-logo-small.png"></a></p>
 
 <p>In the words of <a href="http://james.padolsey.com/javascript/iife-argument-madness/">James Padolsey</a>:</p>
 
@@ -2151,15 +2151,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Backbone.validateAll plugin]]></title>
-    <link href="http://gfranko.github.com/blog/backbone-dot-validateall-plugin/"/>
+    <link href="http://gregfranko.com/blog/backbone-dot-validateall-plugin/"/>
     <updated>2012-09-18T14:56:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/backbone-dot-validateall-plugin</id>
+    <id>http://gregfranko.com/blog/backbone-dot-validateall-plugin</id>
     <content type="html"><![CDATA[<p><strong><a href="https://github.com/gfranko/Backbone.validateAll">Backbone.validateAll</a></strong> is a small Backbone.js plugin that provides an option to only validate Model properties that are currently being set or saved.</p>
 
 <!-- more -->
 
 
-<p><img class="center" src="http://gfranko.github.com/images/backbone.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/backbone.png"></p>
 
 <h3>Background</h3>
 
@@ -2203,15 +2203,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Documenting Your Open Source Projects]]></title>
-    <link href="http://gfranko.github.com/blog/documenting-your-open-source-projects/"/>
+    <link href="http://gregfranko.com/blog/documenting-your-open-source-projects/"/>
     <updated>2012-09-18T10:14:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/documenting-your-open-source-projects</id>
+    <id>http://gregfranko.com/blog/documenting-your-open-source-projects</id>
     <content type="html"><![CDATA[<p>Popular Open Source (OS) projects are self promoted by their easy to read, organized, and exhaustive documentation.  Great examples include Backbone.js, Can.js, jQuery++, Underscore.js, jQuery, HTML5 Boilerplate, Require.js, Twitter Bootstrap, and many more.</p>
 
 <!-- more -->
 
 
-<p><img class="center" src="http://gfranko.github.com/images/opensource.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/opensource.png"></p>
 
 <p>These projects realize that users expect their documentation to follow a common format that includes a table of contents that houses, at the very least, a <em>Getting Started</em> guide, a <em>Demos/Examples</em> section, and a <em>forum</em> section to ask questions.  Additional sections (ie. <em>annotated source code</em>, <em>Contributor Guide</em>) targeting potential core project contributors may also be included.</p>
 
@@ -2258,15 +2258,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Creating Custom Project Builds with DownloadBuilder.js]]></title>
-    <link href="http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/"/>
+    <link href="http://gregfranko.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/"/>
     <updated>2012-09-17T14:52:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js</id>
+    <id>http://gregfranko.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js</id>
     <content type="html"><![CDATA[<p>Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important for users.  Since it is nearly impossible to create a project that is a perfect fit for all users, many OS projects provide a custom build option.  This allows users to specify which parts of a project he/she wants and then download only those parts (thus minimizing file size).</p>
 
 <!-- more -->
 
 
-<p><img class="center" src="http://gfranko.github.com/images/html5.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/html5.png"></p>
 
 <p><em>Examples of popular OS projects that are providing custom build options now include jQuery (recent addition in version 1.8), jQueryUI, Modernizr, Twitter Bootstrap, Can.js, etc.</em></p>
 
@@ -2433,9 +2433,9 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Backbone.js: Convincing the Boss Guide]]></title>
-    <link href="http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide/"/>
+    <link href="http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide/"/>
     <updated>2012-09-17T10:00:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide</id>
+    <id>http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide</id>
     <content type="html"><![CDATA[<p>I am officially pronouncing <strong>2012 as the year of the JavaScript MV* frameworks</strong>.  Although many people complain that the JavaScript MV* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let&#8217;s look at the glass half full.</p>
 
 <!-- more -->
@@ -2449,7 +2449,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
 
 <h3>Backbone.js</h3>
 
-<p><img class="center" src="http://gfranko.github.com/images/backbone.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/backbone.png"></p>
 
 <p><strong>Backbone.js</strong> is a great client-side MV* JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, Router, and Event class objects.  Although your application may not need all of the functionality that Backbone.js provides you, 99% of all applications could use the functionality provided by one or more Backbone.js class objects.  <strong>Let&#8217;s take a look at each Backbone.js class object and determine if a &#8220;simple&#8221; application needs the functionality provided.</strong></p>
 
@@ -2865,15 +2865,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Require.js 2.0 Shim Configuration]]></title>
-    <link href="http://gfranko.github.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
+    <link href="http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
     <updated>2012-05-29T15:40:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
+    <id>http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
     <content type="html"><![CDATA[<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
 
 <!-- more -->
 
 
-<p><img class="center" src="http://gfranko.github.com/images/requirejs.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/requirejs.png"></p>
 
 <p>The <code>Shim</code> configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  In my previous post <a href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/">Using Backbone.js with Require.js</a>, I covered how Use.js, a Require.js plugin created by Backbone.js core contributor <a href="http://tbranyen.com/" target="_blank">Tim Branyen</a>, was necessary to load Backbone.js and Underscore.js (both AMD incompatible) with Require.js.  This was a good solution for integrating these two wonderful projects together, but it was still another project dependency that you needed to keep track of.</p>
 
@@ -2925,15 +2925,15 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[Using Backbone.js with Require.js]]></title>
-    <link href="http://gfranko.github.com/blog/using-backbone-dot-js-with-require-dot-js/"/>
+    <link href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/"/>
     <updated>2012-05-24T17:30:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/using-backbone-dot-js-with-require-dot-js</id>
+    <id>http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js</id>
     <content type="html"><![CDATA[<p><strong>Backbone.js</strong> is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it&#8217;s objects to trigger and bind to events.</p>
 
 <!-- more -->
 
 
-<p><img class="center" src="http://gfranko.github.com/images/backbone.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/backbone.png"></p>
 
 <p>Backbone <strong>Views</strong> act as a combination of traditional MVC Views and Controllers, since they allow you to organize all of your JavaScript event handlers while also providing a mechanism for adding dynamic HTML to your page through the optional use of JavaScript templates.  Views will also often be where you set data on your Models.</p>
 
@@ -3293,7 +3293,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
 
 <p><strong>Require.js</strong> serves two different purposes than Backbone.js. Require.js is an AMD (Asynchronous Module Definition) script loader that asynchronously loads your JavaScript to improve page load performance, while also providing you the ability to organize your JavaScript into self contained modules.  Each JavaScript file represents a module.</p>
 
-<p><img class="center" src="http://gfranko.github.com/images/requirejs.png"></p>
+<p><img class="center" src="http://gregfranko.com/images/requirejs.png"></p>
 
 <p>Each module is enclosed in a define tag that lists the module&#8217;s file dependencies, and keeps the global namespace free (essentially acting as a JavaScript closure).  Since none of your modules are global, inside of each module, you need to declare which other modules are dependencies and pass them to your current module.  This provides a solution for limiting global variables and dependency management. This solution is much better then having many script tags in a single page, which can be cumbersome to keep track of which files depend on which other files.  It also encourages you to decouple your JavaScript logic (instead of the traditionally hard to read one page JavaScript application).</p>
 
@@ -3534,9 +3534,9 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   
   <entry>
     <title type="html"><![CDATA[JavaScript Logical Operators]]></title>
-    <link href="http://gfranko.github.com/blog/javascript-logical-operators/"/>
+    <link href="http://gregfranko.com/blog/javascript-logical-operators/"/>
     <updated>2012-04-19T23:03:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/javascript-logical-operators</id>
+    <id>http://gregfranko.com/blog/javascript-logical-operators</id>
     <content type="html"><![CDATA[<p>Have you ever written code like this?</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jQueryUI Widget Factory | Greg Franko]]></title>
-  <link href="http://gfranko.github.com/blog/categories/jqueryui-widget-factory/atom.xml" rel="self"/>
-  <link href="http://gfranko.github.com/"/>
-  <updated>2013-12-27T14:22:11-05:00</updated>
-  <id>http://gfranko.github.com/</id>
+  <link href="http://gregfranko.com/blog/categories/jqueryui-widget-factory/atom.xml" rel="self"/>
+  <link href="http://gregfranko.com/"/>
+  <updated>2013-12-27T15:03:48-05:00</updated>
+  <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
     <email><![CDATA[gfranko5@yahoo.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Registering the jQueryUI Widget Factory as an AMD Module]]></title>
-    <link href="http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
+    <link href="http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
     <updated>2013-02-10T09:39:00-05:00</updated>
-    <id>http://gfranko.github.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
+    <id>http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
     <content type="html"><![CDATA[<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
 
 <!-- more -->

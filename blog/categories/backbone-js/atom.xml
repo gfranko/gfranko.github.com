@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Backbone.js | Greg Franko]]></title>
-  <link href="http://gfranko.github.com/blog/categories/backbone-js/atom.xml" rel="self"/>
-  <link href="http://gfranko.github.com/"/>
-  <updated>2013-12-27T14:22:11-05:00</updated>
-  <id>http://gfranko.github.com/</id>
+  <link href="http://gregfranko.com/blog/categories/backbone-js/atom.xml" rel="self"/>
+  <link href="http://gregfranko.com/"/>
+  <updated>2013-12-27T15:03:48-05:00</updated>
+  <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
     <email><![CDATA[gfranko5@yahoo.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Backbone-Require-Boilerplate Explained]]></title>
-    <link href="http://gfranko.github.com/blog/backbone-require-boilerplate-explained/"/>
+    <link href="http://gregfranko.com/blog/backbone-require-boilerplate-explained/"/>
     <updated>2013-01-05T15:53:00-05:00</updated>
-    <id>http://gfranko.github.com/blog/backbone-require-boilerplate-explained</id>
+    <id>http://gregfranko.com/blog/backbone-require-boilerplate-explained</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
 
 <!-- more -->
@@ -35,9 +35,9 @@
   
   <entry>
     <title type="html"><![CDATA[Backbone.validateAll plugin]]></title>
-    <link href="http://gfranko.github.com/blog/backbone-dot-validateall-plugin/"/>
+    <link href="http://gregfranko.com/blog/backbone-dot-validateall-plugin/"/>
     <updated>2012-09-18T14:56:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/backbone-dot-validateall-plugin</id>
+    <id>http://gregfranko.com/blog/backbone-dot-validateall-plugin</id>
     <content type="html"><![CDATA[<p><strong><a href="https://github.com/gfranko/Backbone.validateAll">Backbone.validateAll</a></strong> is a small Backbone.js plugin that provides an option to only validate Model properties that are currently being set or saved.</p>
 
 <!-- more -->
@@ -96,9 +96,9 @@
   
   <entry>
     <title type="html"><![CDATA[Backbone.js: Convincing the Boss Guide]]></title>
-    <link href="http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide/"/>
+    <link href="http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide/"/>
     <updated>2012-09-17T10:00:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/backbone-dot-js-convincing-the-boss-guide</id>
+    <id>http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide</id>
     <content type="html"><![CDATA[<p>I am officially pronouncing <strong>2012 as the year of the JavaScript MV* frameworks</strong>.  Although many people complain that the JavaScript MV* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let's look at the glass half full.</p>
 
 <!-- more -->
@@ -569,9 +569,9 @@
   
   <entry>
     <title type="html"><![CDATA[Require.js 2.0 Shim Configuration]]></title>
-    <link href="http://gfranko.github.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
+    <link href="http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
     <updated>2012-05-29T15:40:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
+    <id>http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
     <content type="html"><![CDATA[<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
 
 <!-- more -->
@@ -631,9 +631,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Backbone.js with Require.js]]></title>
-    <link href="http://gfranko.github.com/blog/using-backbone-dot-js-with-require-dot-js/"/>
+    <link href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/"/>
     <updated>2012-05-24T17:30:00-04:00</updated>
-    <id>http://gfranko.github.com/blog/using-backbone-dot-js-with-require-dot-js</id>
+    <id>http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js</id>
     <content type="html"><![CDATA[<p><strong>Backbone.js</strong> is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it's objects to trigger and bind to events.</p>
 
 <!-- more -->
