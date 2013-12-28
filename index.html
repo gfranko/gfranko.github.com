@@ -46,26 +46,39 @@
 <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=gfranko5"></script>
 <script type="text/javascript">
-  addthis.layers({
-    'theme' : 'dark',
-    'domain': 'gregfranko.com',
-    'drawer': {
-      'animationType': 'push'
-    },
-    'share': {
-      'mobile': true,
-      'desktop': false
-    },
-    'follow' : {
-      'services' : [
-        {'service': 'twitter', 'id': 'gregfranko'},
-        {'service': 'youtube', 'id': 'UCSMPXTmaC98Fk8tj-zDXDZg'},
-        {'service': 'linkedin', 'id': 'gregfranko'}
-      ],
-      'mobile': true,
-      'desktop': false
-    }
-  });
+  (function() {
+    addthis.layers({
+      'theme' : 'dark',
+      'domain': 'gregfranko.com',
+      'share': {
+        'mobile': true,
+        'desktop': false
+      },
+      'follow' : {
+        'services' : [
+          {'service': 'twitter', 'id': 'gregfranko'},
+          {'service': 'youtube', 'id': 'UCSMPXTmaC98Fk8tj-zDXDZg'},
+          {'service': 'linkedin', 'id': 'gregfranko'}
+        ],
+        'mobile': true,
+        'desktop': false
+      },
+      'recommended': {
+        'title': 'More Blog Posts',
+        'maxitems': 2
+      },
+      // 'drawer': {
+      //   'animationType': 'push',
+      //   'title': 'Recommended Blog Posts',
+      //   'maxitems': 2
+      // },
+      'linkFilter' : function(link, layer) {
+        if(link.image) {
+          return link;
+        }
+      }
+    });
+  }());
 </script>
 <!-- AddThis Smart Layers END -->
   <meta property='og:site_name' content='Greg Franko'>
