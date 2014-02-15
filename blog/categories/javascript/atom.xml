@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Greg Franko]]></title>
   <link href="http://gregfranko.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-01-11T07:18:30-05:00</updated>
+  <updated>2014-02-14T18:08:17-08:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -14,9 +14,51 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Building JavaScript Tools]]></title>
+    <link href="http://gregfranko.com/blog/building-javascript-tools/"/>
+    <updated>2014-02-14T17:58:00-08:00</updated>
+    <id>http://gregfranko.com/blog/building-javascript-tools</id>
+    <content type="html"><![CDATA[<p>Many developers use popular JavaScript static code analysis tools such as <a href='http://jshint.com' target='_blank'>JSHint</a>, <a href='http://lisperator.net/uglifyjs/' target='_blank'>UglifyJS</a>, and the <a href='http://requirejs.org/docs/optimization.html' target='_blank'>RequireJS Optimizer</a> in their workflows.</p>
+
+<p>Unfortunately, not many developers know how to create similar tools for themselves.</p>
+
+<!-- more -->
+
+
+<p>This talk will cover what JavaScript Abstract Syntax Trees (ASTs) are, how to use ASTs to create powerful node.js and client-side tools, and why you are smart enough to use them.</p>
+
+<p><strong>Note:</strong> If the slide deck does not appear below, or you would like to view the actual presentation, go to: <a href='http://gregfranko.com/building-javascript-tools-talk' target='_blank'>http://gregfranko.com/building-javascript-tools-talk</a></p>
+
+<script async class="speakerdeck-embed" data-id="2e62fb60780b0131442d06710e138990" data-ratio="0.772830188679245" src="http://gregfranko.com//speakerdeck.com/assets/embed.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Modular Workflow with Require.js]]></title>
+    <link href="http://gregfranko.com/blog/requirejs-presentation/"/>
+    <updated>2014-02-14T17:40:00-08:00</updated>
+    <id>http://gregfranko.com/blog/requirejs-presentation</id>
+    <content type="html"><![CDATA[<p>Building JavaScript web apps today that you will still enjoy working on a year from now is difficult. The solution is to decrease code complexity and increase maintainability. Easier said than done.</p>
+
+<p>This talk will review some of the traditional maintainability roadblocks facing JavaScript client-side developers, and introduce a new project workflow with RequireJS and Almond.js/AMDClean.js.</p>
+
+<!-- more -->
+
+
+<p>Let's dive in and see how we can improve code maintainability with AMD and start enjoying the code that we write.</p>
+
+<p><strong>Note:</strong> If the slide deck does not appear below, or you would like to view the actual presentation, go to: <a href='http://gregfranko.com/requirejs-talk' target='_blank'>http://gregfranko.com/requirejs-talk</a></p>
+
+<script async class="speakerdeck-embed" data-id="05053010780c0131442c06710e138990" data-ratio="0.772830188679245" src="http://gregfranko.com//speakerdeck.com/assets/embed.js"></script>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[JavaScript Design Patterns]]></title>
     <link href="http://gregfranko.com/blog/javascript-design-patterns/"/>
-    <updated>2013-10-05T11:43:00-04:00</updated>
+    <updated>2013-10-05T11:43:00-07:00</updated>
     <id>http://gregfranko.com/blog/javascript-design-patterns</id>
     <content type="html"><![CDATA[<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
 
@@ -408,7 +450,7 @@
   <entry>
     <title type="html"><![CDATA[JavaScript Performance Tips]]></title>
     <link href="http://gregfranko.com/blog/javascript-performance-tips/"/>
-    <updated>2013-09-17T16:25:00-04:00</updated>
+    <updated>2013-09-17T16:25:00-07:00</updated>
     <id>http://gregfranko.com/blog/javascript-performance-tips</id>
     <content type="html"><![CDATA[<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
 
@@ -507,7 +549,7 @@
   <entry>
     <title type="html"><![CDATA[Instant Dependency Management with RequireJS]]></title>
     <link href="http://gregfranko.com/blog/instant-dependency-management-with-requirejs/"/>
-    <updated>2013-07-21T23:28:00-04:00</updated>
+    <updated>2013-07-21T23:28:00-07:00</updated>
     <id>http://gregfranko.com/blog/instant-dependency-management-with-requirejs</id>
     <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
@@ -525,169 +567,6 @@
 <p>A <a href="http://my.safaribooksonline.com/book/programming/javascript/9781782169062">free preview</a> and <a href="http://www.packtpub.com/article/using-jQuery-jQueryui-widget-factory-plugins-with-requirejs">sample chapter</a> are both available.  Happy reading!</p>
 
 <p><a href="http://www.amazon.com/Instant-Dependency-Management-RequireJS-How/dp/1782169067" target="_blank" title="Instant Dependency Management with RequireJS"><img class="left" src="/images/requirejsbook.jpg" width="350"></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Backbone-Require-Boilerplate Explained]]></title>
-    <link href="http://gregfranko.com/blog/backbone-require-boilerplate-explained/"/>
-    <updated>2013-01-05T15:53:00-05:00</updated>
-    <id>http://gregfranko.com/blog/backbone-require-boilerplate-explained</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
-
-<!-- more -->
-
-
-<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate" target="_blank"><img class="center" src="/images/rubik.png"></a></p>
-
-<p>In the video, I walk through each boilerplate file, and explain in-depth how the library helps you create more maintainable applications.  Enjoy!</p>
-
-<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/L_kqGJmc1rY "></iframe></div></p>
-
-<p>If you are also interested in incorporating the Backbone Marionette library into your stack, check out the <a href="https://github.com/BoilerplateMVC/Marionette-Require-Boilerplate" target="_blank">Marionette-Require-Boilerplate</a>. Happy boilerplating!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[I Love My IIFE]]></title>
-    <link href="http://gregfranko.com/blog/i-love-my-iife/"/>
-    <updated>2013-01-05T14:29:00-05:00</updated>
-    <id>http://gregfranko.com/blog/i-love-my-iife</id>
-    <content type="html"><![CDATA[<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
-
-<!-- more -->
-
-
-<p><a href="blog/i-love-my-iife"><img class="center" src="/images/JavaScript-logo-small.png"></a></p>
-
-<p>In the words of <a href="http://james.padolsey.com/javascript/iife-argument-madness/">James Padolsey</a>:</p>
-
-<blockquote><p>An IIFE protects a module's scope from the environment in which it is placed.</p></blockquote>
-
-<p>There are more benefits to using IIFE's than just local scoping, but before we talk about some of the other benefits, let's take a look at some code to see how to create a basic IIFE:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>  <span class="c1">// my special code</span>
-</span><span class='line'><span class="p">}());</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>The above <strong>IFFE</strong> is just an anonymous function (no name attached to it) that is wrapped inside of a set of parentheses and called (invoked) immediately.  Let's break this down step by step.</p>
-
-<h3>The Anonymous Function:</h3>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function</span>
-</span><span class='line'><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>  <span class="c1">// my special code</span>
-</span><span class='line'><span class="p">}();</span> <span class="c1">// The parentheses make sure the anonymous function gets called immediately</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>A function, without a name, is created and then called (invoked) immediately via the <code>()</code> at the very end.</p>
-
-<h3>The Parentheses</h3>
-
-<p>You might be wondering why we need to wrap the immediately invoked anonymous function inside of parentheses.  Before I explain why, try the above code inside of a console window.  Get a syntax error?</p>
-
-<p>By wrapping the anonymous function inside of parentheses, the JavaScript parser knows to treat the anonymous function as a function expression instead of a function declaration.  A function expression can be called (invoked) immediately by using a set of parentheses, but a function declaration cannot be.</p>
-
-<!-- more -->
-
-
-<p><strong>Note</strong>: In case you forget the difference between JavaScript function expressions and function declarations:</p>
-
-<p><em>Function Expression</em> - <code>var test = function() {};</code></p>
-
-<p><em>Function Declaration</em> - <code>function test() {};</code></p>
-
-<p>Since the anonymous function within our IIFE is a function expression and is not being assigned to a global variable, no global property is being created, and all of the properties created inside of the function expression are scoped locally to the expression itself.</p>
-
-<h3>Other Benefits of using an IIFE</h3>
-
-<p>Whew, now that we understand the basic concept of an IIFE, let's determine some other benefits of using them in your code.</p>
-
-<h4>Reduce scope lookups</h4>
-
-<p>A small performance benefit of using IIFE's is the ability to pass commonly used global objects (window, document, jQuery, etc) to an IIFE's anonymous function, and then reference these global objects within the IIFE via a local scope.</p>
-
-<p><strong>Note</strong>: JavaScript first looks for a property in the local scope, and then it goes all the way up the chain, last stopping at the global scope.  Being able to place global objects in the local scope provides faster internal lookup speeds and performance.</p>
-
-<p>Let's look at a code example of passing global objects to an IIFE:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function that has three arguments</span>
-</span><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// You can now reference the window, document, and jQuery objects in a local scope&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span> <span class="c1">// The global window, document, and jQuery objects are passed into the anonymous function</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<h4>Minification Optimization</h4>
-
-<p>Another small performance benefit of using IIFE's is that it helps with minification optimization.  Since we are able to pass global objects into the anonymous function as local values (parameters), a minifier is able to reduce the name of each global object to a one letter word (as long as you don't already have a variable of the same name).  Let's look at the above code sample after minification:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Anonymous function that has three arguments</span>
-</span><span class='line'><span class="kd">function</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="c1">// You can now reference the window, document, and jQuery objects in a local scope&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span> <span class="c1">// The global window, document, and jQuery objects are passed into the anonymous function</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><strong>Note</strong>:  Another added benefit (when using jQuery), is that you can freely use the <code>$</code> without worrying about other library conflicts, since you passed in the global <code>jQuery</code> object and scoped it to the <code>$</code> as a local parameter.</p>
-
-<h3>Readability</h3>
-
-<p>One of the con's with using IIFE's is readability.  If you have a lot of JavaScript code inside of an IIFE, and you want to find the parameters that you are passing into an IIFE, then you need to scroll all the way to the bottom of the page.  Luckily, there is a more readable pattern that I have begun to use:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">library</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="c1">// Calls the second IIFE and locally passes in the global jQuery, window, and document objects</span>
-</span><span class='line'><span class="nx">library</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Locally scoped parameters</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="c1">// Library code goes here&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}));</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>This IIFE pattern allows you see what global objects you are passing into your IIFE, without you having to scroll to the very bottom of a potentially very long file.  Happy IIFE'ing!</p>
 ]]></content>
   </entry>
   

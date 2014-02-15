@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Design Patterns | Greg Franko]]></title>
   <link href="http://gregfranko.com/blog/categories/design-patterns/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-01-11T07:18:30-05:00</updated>
+  <updated>2014-02-14T18:08:17-08:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[I Love My IIFE]]></title>
     <link href="http://gregfranko.com/blog/i-love-my-iife/"/>
-    <updated>2013-01-05T14:29:00-05:00</updated>
+    <updated>2013-01-05T14:29:00-08:00</updated>
     <id>http://gregfranko.com/blog/i-love-my-iife</id>
     <content type="html"><![CDATA[<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
 

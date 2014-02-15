@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Static Analysis | Greg Franko]]></title>
+  <link href="http://gregfranko.com/blog/categories/static-analysis/atom.xml" rel="self"/>
+  <link href="http://gregfranko.com/"/>
+  <updated>2014-02-14T18:08:17-08:00</updated>
+  <id>http://gregfranko.com/</id>
+  <author>
+    <name><![CDATA[Greg Franko]]></name>
+    <email><![CDATA[gfranko5@yahoo.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Building JavaScript Tools]]></title>
+    <link href="http://gregfranko.com/blog/building-javascript-tools/"/>
+    <updated>2014-02-14T17:58:00-08:00</updated>
+    <id>http://gregfranko.com/blog/building-javascript-tools</id>
+    <content type="html"><![CDATA[<p>Many developers use popular JavaScript static code analysis tools such as <a href='http://jshint.com' target='_blank'>JSHint</a>, <a href='http://lisperator.net/uglifyjs/' target='_blank'>UglifyJS</a>, and the <a href='http://requirejs.org/docs/optimization.html' target='_blank'>RequireJS Optimizer</a> in their workflows.</p>
+
+<p>Unfortunately, not many developers know how to create similar tools for themselves.</p>
+
+<!-- more -->
+
+
+<p>This talk will cover what JavaScript Abstract Syntax Trees (ASTs) are, how to use ASTs to create powerful node.js and client-side tools, and why you are smart enough to use them.</p>
+
+<p><strong>Note:</strong> If the slide deck does not appear below, or you would like to view the actual presentation, go to: <a href='http://gregfranko.com/building-javascript-tools-talk' target='_blank'>http://gregfranko.com/building-javascript-tools-talk</a></p>
+
+<script async class="speakerdeck-embed" data-id="2e62fb60780b0131442d06710e138990" data-ratio="0.772830188679245" src="http://gregfranko.com//speakerdeck.com/assets/embed.js"></script>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: AMD | Greg Franko]]></title>
+  <link href="http://gregfranko.com/blog/categories/amd/atom.xml" rel="self"/>
+  <link href="http://gregfranko.com/"/>
+  <updated>2014-02-14T18:08:17-08:00</updated>
+  <id>http://gregfranko.com/</id>
+  <author>
+    <name><![CDATA[Greg Franko]]></name>
+    <email><![CDATA[gfranko5@yahoo.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Modular Workflow with Require.js]]></title>
+    <link href="http://gregfranko.com/blog/requirejs-presentation/"/>
+    <updated>2014-02-14T17:40:00-08:00</updated>
+    <id>http://gregfranko.com/blog/requirejs-presentation</id>
+    <content type="html"><![CDATA[<p>Building JavaScript web apps today that you will still enjoy working on a year from now is difficult. The solution is to decrease code complexity and increase maintainability. Easier said than done.</p>
+
+<p>This talk will review some of the traditional maintainability roadblocks facing JavaScript client-side developers, and introduce a new project workflow with RequireJS and Almond.js/AMDClean.js.</p>
+
+<!-- more -->
+
+
+<p>Let's dive in and see how we can improve code maintainability with AMD and start enjoying the code that we write.</p>
+
+<p><strong>Note:</strong> If the slide deck does not appear below, or you would like to view the actual presentation, go to: <a href='http://gregfranko.com/requirejs-talk' target='_blank'>http://gregfranko.com/requirejs-talk</a></p>
+
+<script async class="speakerdeck-embed" data-id="05053010780c0131442c06710e138990" data-ratio="0.772830188679245" src="http://gregfranko.com//speakerdeck.com/assets/embed.js"></script>
+
+]]></content>
+  </entry>
+  
+</feed>

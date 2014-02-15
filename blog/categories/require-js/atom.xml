@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Require.js | Greg Franko]]></title>
   <link href="http://gregfranko.com/blog/categories/require-js/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-01-11T07:18:30-05:00</updated>
+  <updated>2014-02-14T18:08:17-08:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Modular jQuery Plugins]]></title>
     <link href="http://gregfranko.com/blog/modular-jquery-plugins/"/>
-    <updated>2013-08-22T20:54:00-04:00</updated>
+    <updated>2013-08-22T20:54:00-07:00</updated>
     <id>http://gregfranko.com/blog/modular-jquery-plugins</id>
     <content type="html"><![CDATA[<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let's review my talk.</p>
 
@@ -575,7 +575,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   <entry>
     <title type="html"><![CDATA[Instant Dependency Management with RequireJS]]></title>
     <link href="http://gregfranko.com/blog/instant-dependency-management-with-requirejs/"/>
-    <updated>2013-07-21T23:28:00-04:00</updated>
+    <updated>2013-07-21T23:28:00-07:00</updated>
     <id>http://gregfranko.com/blog/instant-dependency-management-with-requirejs</id>
     <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
@@ -599,7 +599,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   <entry>
     <title type="html"><![CDATA[Registering the jQueryUI Widget Factory as an AMD Module]]></title>
     <link href="http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
-    <updated>2013-02-10T09:39:00-05:00</updated>
+    <updated>2013-02-10T09:39:00-08:00</updated>
     <id>http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
     <content type="html"><![CDATA[<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
 
@@ -1271,7 +1271,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Backbone-Require-Boilerplate Explained]]></title>
     <link href="http://gregfranko.com/blog/backbone-require-boilerplate-explained/"/>
-    <updated>2013-01-05T15:53:00-05:00</updated>
+    <updated>2013-01-05T15:53:00-08:00</updated>
     <id>http://gregfranko.com/blog/backbone-require-boilerplate-explained</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
 
@@ -1291,7 +1291,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Require.js 2.0 Shim Configuration]]></title>
     <link href="http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
-    <updated>2012-05-29T15:40:00-04:00</updated>
+    <updated>2012-05-29T15:40:00-07:00</updated>
     <id>http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
     <content type="html"><![CDATA[<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
 
