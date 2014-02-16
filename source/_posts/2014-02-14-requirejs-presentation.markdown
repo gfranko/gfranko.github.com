@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Modular Workflow with Require.js"
+title: "Modular Workflow with Require.js"
 date: 2014-02-14 17:40
 comments: true
 categories: [JavaScript, RequireJS, AMD, Modules]
