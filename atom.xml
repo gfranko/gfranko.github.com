@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Franko]]></title>
   <link href="http://gregfranko.com/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-02-16T08:57:24-08:00</updated>
+  <updated>2014-03-16T14:59:42-04:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Building JavaScript Tools]]></title>
     <link href="http://gregfranko.com/blog/building-javascript-tools/"/>
-    <updated>2014-02-14T17:58:00-08:00</updated>
+    <updated>2014-02-14T17:58:00-05:00</updated>
     <id>http://gregfranko.com/blog/building-javascript-tools</id>
     <content type="html"><![CDATA[<p>Many developers use popular JavaScript static code analysis tools such as <a href='http://jshint.com' target='_blank'>JSHint</a>, <a href='http://lisperator.net/uglifyjs/' target='_blank'>UglifyJS</a>, and the <a href='http://requirejs.org/docs/optimization.html' target='_blank'>RequireJS Optimizer</a> in their workflows.</p>
 
@@ -37,7 +37,7 @@
   <entry>
     <title type="html"><![CDATA[Modular Workflow with Require.js]]></title>
     <link href="http://gregfranko.com/blog/requirejs-presentation/"/>
-    <updated>2014-02-14T17:40:00-08:00</updated>
+    <updated>2014-02-14T17:40:00-05:00</updated>
     <id>http://gregfranko.com/blog/requirejs-presentation</id>
     <content type="html"><![CDATA[<p>Building JavaScript web apps today that you will still enjoy working on a year from now is difficult. The solution is to decrease code complexity and increase maintainability. Easier said than done.</p>
 
@@ -58,7 +58,7 @@
   <entry>
     <title type="html"><![CDATA[JavaScript Design Patterns]]></title>
     <link href="http://gregfranko.com/blog/javascript-design-patterns/"/>
-    <updated>2013-10-05T11:43:00-07:00</updated>
+    <updated>2013-10-05T11:43:00-04:00</updated>
     <id>http://gregfranko.com/blog/javascript-design-patterns</id>
     <content type="html"><![CDATA[<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
 
@@ -389,7 +389,7 @@
   <entry>
     <title type="html"><![CDATA[JavaScript Performance Tips]]></title>
     <link href="http://gregfranko.com/blog/javascript-performance-tips/"/>
-    <updated>2013-09-17T16:25:00-07:00</updated>
+    <updated>2013-09-17T16:25:00-04:00</updated>
     <id>http://gregfranko.com/blog/javascript-performance-tips</id>
     <content type="html"><![CDATA[<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
 
@@ -490,7 +490,7 @@
   <entry>
     <title type="html"><![CDATA[Modular jQuery Plugins]]></title>
     <link href="http://gregfranko.com/blog/modular-jquery-plugins/"/>
-    <updated>2013-08-22T20:54:00-07:00</updated>
+    <updated>2013-08-22T20:54:00-04:00</updated>
     <id>http://gregfranko.com/blog/modular-jquery-plugins</id>
     <content type="html"><![CDATA[<p>In June 2013, I presented about modular jQuery plugins at the <a href="http://events.jquery.org/2013/portland/">jQuery Portland 2013</a> conference.  You can watch my entire <a href="http://www.youtube.com/watch?v=sC0JJRHuP5M" target="_blank">presentation video</a> and/or check out my full <a href="http://gregfranko.com/modular-jquery-plugins-talk/" target="_blank">slide deck</a>, but let&#8217;s review my talk.</p>
 
@@ -1024,7 +1024,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   <entry>
     <title type="html"><![CDATA[Instant Dependency Management with RequireJS]]></title>
     <link href="http://gregfranko.com/blog/instant-dependency-management-with-requirejs/"/>
-    <updated>2013-07-21T23:28:00-07:00</updated>
+    <updated>2013-07-21T23:28:00-04:00</updated>
     <id>http://gregfranko.com/blog/instant-dependency-management-with-requirejs</id>
     <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
@@ -1048,7 +1048,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   <entry>
     <title type="html"><![CDATA[jQuery Best Practices]]></title>
     <link href="http://gregfranko.com/blog/jquery-best-practices/"/>
-    <updated>2013-07-20T11:24:00-07:00</updated>
+    <updated>2013-07-20T11:24:00-04:00</updated>
     <id>http://gregfranko.com/blog/jquery-best-practices</id>
     <content type="html"><![CDATA[<p>Back in February 2013, I presented about jQuery best practices at the <a href="http://www.meetup.com/NoVA-Web-Develoment-User-Group/events/101712422/">Nova Web Development User Group</a> meetup.  Let&#8217;s take a moment to review my <a href="http://gregfranko.com/jquery-best-practices/#/" target="_blank">presentation</a>.</p>
 
@@ -1405,7 +1405,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
   <entry>
     <title type="html"><![CDATA[Registering the jQueryUI Widget Factory as an AMD Module]]></title>
     <link href="http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/"/>
-    <updated>2013-02-10T09:39:00-08:00</updated>
+    <updated>2013-02-10T09:39:00-05:00</updated>
     <id>http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module</id>
     <content type="html"><![CDATA[<p><strong>AMD</strong> (Asynchronous Module Definition) script loaders are fast becoming one of the most popular and important tools for organizing and maintaining JavaScript applications.  Many front-end developers, like myself, are becoming educated on the benefits of using a module system that promotes code reusability/decoupling, freeing the global namespace, dependency script management, and more.</p>
 
@@ -2027,7 +2027,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Backbone-Require-Boilerplate Explained]]></title>
     <link href="http://gregfranko.com/blog/backbone-require-boilerplate-explained/"/>
-    <updated>2013-01-05T15:53:00-08:00</updated>
+    <updated>2013-01-05T15:53:00-05:00</updated>
     <id>http://gregfranko.com/blog/backbone-require-boilerplate-explained</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/BoilerplateMVC/Backbone-Require-Boilerplate">Backbone-Require-Boilerplate</a> is a popular open-source boilerplate library that I created to help promote best practices when using Backbone.js with Require.js.</p>
 
@@ -2048,7 +2048,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[I Love My IIFE]]></title>
     <link href="http://gregfranko.com/blog/i-love-my-iife/"/>
-    <updated>2013-01-05T14:29:00-08:00</updated>
+    <updated>2013-01-05T14:29:00-05:00</updated>
     <id>http://gregfranko.com/blog/i-love-my-iife</id>
     <content type="html"><![CDATA[<p>An <strong>IIFE</strong>, or <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a>, is a common JavaScript design pattern used by most popular libraries (jQuery, Backbone.js, Modernizr, etc) to place all library code inside of a local scope.</p>
 
@@ -2194,7 +2194,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Backbone.validateAll plugin]]></title>
     <link href="http://gregfranko.com/blog/backbone-dot-validateall-plugin/"/>
-    <updated>2012-09-18T14:56:00-07:00</updated>
+    <updated>2012-09-18T14:56:00-04:00</updated>
     <id>http://gregfranko.com/blog/backbone-dot-validateall-plugin</id>
     <content type="html"><![CDATA[<p><strong><a href="https://github.com/gfranko/Backbone.validateAll">Backbone.validateAll</a></strong> is a small Backbone.js plugin that provides an option to only validate Model properties that are currently being set or saved.</p>
 
@@ -2246,7 +2246,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Documenting Your Open Source Projects]]></title>
     <link href="http://gregfranko.com/blog/documenting-your-open-source-projects/"/>
-    <updated>2012-09-18T10:14:00-07:00</updated>
+    <updated>2012-09-18T10:14:00-04:00</updated>
     <id>http://gregfranko.com/blog/documenting-your-open-source-projects</id>
     <content type="html"><![CDATA[<p>Popular Open Source (OS) projects are self promoted by their easy to read, organized, and exhaustive documentation.  Great examples include Backbone.js, Can.js, jQuery++, Underscore.js, jQuery, HTML5 Boilerplate, Require.js, Twitter Bootstrap, and many more.</p>
 
@@ -2301,7 +2301,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Creating Custom Project Builds with DownloadBuilder.js]]></title>
     <link href="http://gregfranko.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/"/>
-    <updated>2012-09-17T14:52:00-07:00</updated>
+    <updated>2012-09-17T14:52:00-04:00</updated>
     <id>http://gregfranko.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js</id>
     <content type="html"><![CDATA[<p>Many of the most popular Open Source (OS) projects understand that flexibility and performance is very important for users.  Since it is nearly impossible to create a project that is a perfect fit for all users, many OS projects provide a custom build option.  This allows users to specify which parts of a project he/she wants and then download only those parts (thus minimizing file size).</p>
 
@@ -2476,7 +2476,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Backbone.js: Convincing the Boss Guide]]></title>
     <link href="http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide/"/>
-    <updated>2012-09-17T10:00:00-07:00</updated>
+    <updated>2012-09-17T10:00:00-04:00</updated>
     <id>http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide</id>
     <content type="html"><![CDATA[<p>I am officially pronouncing <strong>2012 as the year of the JavaScript MV* frameworks</strong>.  Although many people complain that the JavaScript MV* frameworks boom has created too many frameworks to choose from, which further divides the developer community, let&#8217;s look at the glass half full.</p>
 
@@ -2908,7 +2908,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Require.js 2.0 Shim Configuration]]></title>
     <link href="http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration/"/>
-    <updated>2012-05-29T15:40:00-07:00</updated>
+    <updated>2012-05-29T15:40:00-04:00</updated>
     <id>http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration</id>
     <content type="html"><![CDATA[<p>Require.js 2.0 was recently released by James Burke, and with it comes a bunch of bug fixes and enhancements.  The major enhancement that I wanted to shed light on includes the new <code>Shim</code> configuration.</p>
 
@@ -2968,7 +2968,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[Using Backbone.js with Require.js]]></title>
     <link href="http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/"/>
-    <updated>2012-05-24T17:30:00-07:00</updated>
+    <updated>2012-05-24T17:30:00-04:00</updated>
     <id>http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js</id>
     <content type="html"><![CDATA[<p><strong>Backbone.js</strong> is a great client-side MV* (not MVC) JavaScript framework that provides structure to JavaScript applications by providing View, Model, Collection, and Router classes.  Backbone also provides a pub sub (publish subscribe) mechanism, by allowing each of it&#8217;s objects to trigger and bind to events.</p>
 
@@ -3577,7 +3577,7 @@ No!  Although the <code>shim</code> configuration works for the most common uses
   <entry>
     <title type="html"><![CDATA[JavaScript Logical Operators]]></title>
     <link href="http://gregfranko.com/blog/javascript-logical-operators/"/>
-    <updated>2012-04-19T23:03:00-07:00</updated>
+    <updated>2012-04-19T23:03:00-04:00</updated>
     <id>http://gregfranko.com/blog/javascript-logical-operators</id>
     <content type="html"><![CDATA[<p>Have you ever written code like this?</p>
 
