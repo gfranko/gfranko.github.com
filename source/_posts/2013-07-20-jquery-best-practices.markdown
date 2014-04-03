@@ -50,7 +50,7 @@ If you don't like having to scroll to the bottom of your source file to see what
 			// The rest of your code goes here!
 
 		}
-	}));
+	));
 {% endcodeblock %}
 To read more about IIFEs, you can read my blog post titled, [I Love My IIFE](/blog/i-love-my-iife/).
 
