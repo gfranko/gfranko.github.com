@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Franko]]></title>
   <link href="http://gregfranko.com/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-03-16T15:22:57-04:00</updated>
+  <updated>2014-04-02T23:08:49-04:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -1184,7 +1184,7 @@ JavaScript (Node.js) Command-Line Task Runner</p>
 </span><span class='line'>          <span class="c1">// The rest of your code goes here!</span>
 </span><span class='line'>
 </span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>  <span class="p">}));</span>
+</span><span class='line'>  <span class="p">));</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
