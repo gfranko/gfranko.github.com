@@ -95,7 +95,7 @@ If you are doing either of the above patterns, then you should consider moving t
 			// The rest of your code goes here!
 
 		}
-	}));
+	));
 {% endcodeblock %}
 
 This pattern makes it easier to separate your logic (from a code design perspective) since not everything has to be wrapped inside of a single anonymous function.  It will also improve your application's page load performance, since not everything needs to initialized right away.
