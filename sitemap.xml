@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://gregfranko.com/blog/javascript-logical-operators/</loc>
-        <lastmod>2013-12-27T11:21:25-08:00</lastmod>
+        <lastmod>2014-05-03T08:02:35-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/</loc>
@@ -70,18 +70,18 @@
     </url>
     <url>
         <loc>http://gregfranko.com/blog/building-javascript-tools/</loc>
-        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
+        <lastmod>2014-05-03T08:02:40-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/archives/</loc>
-        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
+        <lastmod>2014-05-03T08:02:40-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/contact/</loc>
-        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
+        <lastmod>2014-05-03T08:02:40-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/</loc>
-        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
+        <lastmod>2014-05-03T08:02:40-07:00</lastmod>
     </url>
 </urlset>

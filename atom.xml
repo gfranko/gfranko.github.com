@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Franko]]></title>
   <link href="http://gregfranko.com/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-05-03T08:00:10-07:00</updated>
+  <updated>2014-05-03T08:02:45-07:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -28,6 +28,11 @@
 <p>This talk will cover what JavaScript Abstract Syntax Trees (ASTs) are, how to use ASTs to create powerful node.js and client-side tools, and why you are smart enough to use them.</p>
 
 <div class="embed-video-container"><iframe src="http://www.youtube.com/embed/XA8_hZfVecI "></iframe></div>
+
+
+
+
+<br />
 
 
 <p><strong>Note:</strong> If the slide deck does not appear below, or you would like to view the actual presentation, go to: <a href='http://gregfranko.com/building-javascript-tools-talk' target='_blank'>http://gregfranko.com/building-javascript-tools-talk</a></p>
