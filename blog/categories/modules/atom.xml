@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Modules | Greg Franko]]></title>
   <link href="http://gregfranko.com/blog/categories/modules/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-04-02T23:11:41-04:00</updated>
+  <updated>2014-05-03T08:00:10-07:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Modular Workflow with Require.js]]></title>
     <link href="http://gregfranko.com/blog/requirejs-presentation/"/>
-    <updated>2014-02-14T17:40:00-05:00</updated>
+    <updated>2014-02-14T17:40:00-08:00</updated>
     <id>http://gregfranko.com/blog/requirejs-presentation</id>
     <content type="html"><![CDATA[<p>Building JavaScript web apps today that you will still enjoy working on a year from now is difficult. The solution is to decrease code complexity and increase maintainability. Easier said than done.</p>
 

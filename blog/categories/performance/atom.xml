@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Performance | Greg Franko]]></title>
   <link href="http://gregfranko.com/blog/categories/performance/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-04-02T23:11:41-04:00</updated>
+  <updated>2014-05-03T08:00:10-07:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[JavaScript Performance Tips]]></title>
     <link href="http://gregfranko.com/blog/javascript-performance-tips/"/>
-    <updated>2013-09-17T16:25:00-04:00</updated>
+    <updated>2013-09-17T16:25:00-07:00</updated>
     <id>http://gregfranko.com/blog/javascript-performance-tips</id>
     <content type="html"><![CDATA[<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
 

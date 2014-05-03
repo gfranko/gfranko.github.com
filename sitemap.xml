@@ -2,86 +2,86 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://gregfranko.com/blog/javascript-logical-operators/</loc>
-        <lastmod>2013-12-27T14:21:25-05:00</lastmod>
+        <lastmod>2013-12-27T11:21:25-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/using-backbone-dot-js-with-require-dot-js/</loc>
-        <lastmod>2013-12-27T15:03:39-05:00</lastmod>
+        <lastmod>2013-12-27T12:03:39-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/require-dot-js-2-dot-0-shim-configuration/</loc>
-        <lastmod>2013-12-27T15:03:27-05:00</lastmod>
+        <lastmod>2013-12-27T12:03:27-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/backbone-dot-js-convincing-the-boss-guide/</loc>
-        <lastmod>2013-12-27T15:03:14-05:00</lastmod>
+        <lastmod>2013-12-27T12:03:14-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://gregfranko.com/blog/creating-custom-project-builds-with-downloadbuilder-dot-js/
         </loc>
-        <lastmod>2013-12-27T15:02:59-05:00</lastmod>
+        <lastmod>2013-12-27T12:02:59-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/documenting-your-open-source-projects/</loc>
-        <lastmod>2013-12-27T15:02:44-05:00</lastmod>
+        <lastmod>2013-12-27T12:02:44-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/backbone-dot-validateall-plugin/</loc>
-        <lastmod>2013-12-27T15:02:33-05:00</lastmod>
+        <lastmod>2013-12-27T12:02:33-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/i-love-my-iife/</loc>
-        <lastmod>2013-12-27T14:03:33-05:00</lastmod>
+        <lastmod>2013-12-27T11:03:33-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/backbone-require-boilerplate-explained/</loc>
-        <lastmod>2013-12-27T14:59:50-05:00</lastmod>
+        <lastmod>2013-12-27T11:59:50-08:00</lastmod>
     </url>
     <url>
         <loc>
             http://gregfranko.com/blog/registering-the-jqueryui-widget-factory-as-an-amd-module/
         </loc>
-        <lastmod>2013-12-27T14:59:12-05:00</lastmod>
+        <lastmod>2013-12-27T11:59:12-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/jquery-best-practices/</loc>
-        <lastmod>2014-04-02T23:11:35-04:00</lastmod>
+        <lastmod>2014-04-02T20:11:35-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/instant-dependency-management-with-requirejs/</loc>
-        <lastmod>2013-12-27T14:58:26-05:00</lastmod>
+        <lastmod>2013-12-27T11:58:26-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/modular-jquery-plugins/</loc>
-        <lastmod>2013-12-27T14:58:11-05:00</lastmod>
+        <lastmod>2013-12-27T11:58:11-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/javascript-performance-tips/</loc>
-        <lastmod>2013-12-27T14:56:17-05:00</lastmod>
+        <lastmod>2013-12-27T11:56:17-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/javascript-design-patterns/</loc>
-        <lastmod>2013-12-27T14:57:08-05:00</lastmod>
+        <lastmod>2013-12-27T11:57:08-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/requirejs-presentation/</loc>
-        <lastmod>2014-02-16T11:57:11-05:00</lastmod>
+        <lastmod>2014-02-16T08:57:11-08:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/building-javascript-tools/</loc>
-        <lastmod>2014-02-14T21:06:57-05:00</lastmod>
+        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/blog/archives/</loc>
-        <lastmod>2014-04-02T23:11:35-04:00</lastmod>
+        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/contact/</loc>
-        <lastmod>2014-04-02T23:11:35-04:00</lastmod>
+        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
     </url>
     <url>
         <loc>http://gregfranko.com/</loc>
-        <lastmod>2014-04-02T23:11:35-04:00</lastmod>
+        <lastmod>2014-05-03T07:58:59-07:00</lastmod>
     </url>
 </urlset>

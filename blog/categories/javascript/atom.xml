@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Greg Franko]]></title>
   <link href="http://gregfranko.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://gregfranko.com/"/>
-  <updated>2014-04-02T23:11:41-04:00</updated>
+  <updated>2014-05-03T08:00:10-07:00</updated>
   <id>http://gregfranko.com/</id>
   <author>
     <name><![CDATA[Greg Franko]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Building JavaScript Tools]]></title>
     <link href="http://gregfranko.com/blog/building-javascript-tools/"/>
-    <updated>2014-02-14T17:58:00-05:00</updated>
+    <updated>2014-02-14T17:58:00-08:00</updated>
     <id>http://gregfranko.com/blog/building-javascript-tools</id>
     <content type="html"><![CDATA[<p>Many developers use popular JavaScript static code analysis tools such as <a href='http://jshint.com' target='_blank'>JSHint</a>, <a href='http://lisperator.net/uglifyjs/' target='_blank'>UglifyJS</a>, and the <a href='http://requirejs.org/docs/optimization.html' target='_blank'>RequireJS Optimizer</a> in their workflows.</p>
 
@@ -26,6 +26,8 @@
 
 
 <p>This talk will cover what JavaScript Abstract Syntax Trees (ASTs) are, how to use ASTs to create powerful node.js and client-side tools, and why you are smart enough to use them.</p>
+
+<p><div class="embed-video-container"><iframe src="http://www.youtube.com/embed/XA8_hZfVecI "></iframe></div></p>
 
 <p><strong>Note:</strong> If the slide deck does not appear below, or you would like to view the actual presentation, go to: <a href='http://gregfranko.com/building-javascript-tools-talk' target='_blank'>http://gregfranko.com/building-javascript-tools-talk</a></p>
 
@@ -37,7 +39,7 @@
   <entry>
     <title type="html"><![CDATA[Modular Workflow with Require.js]]></title>
     <link href="http://gregfranko.com/blog/requirejs-presentation/"/>
-    <updated>2014-02-14T17:40:00-05:00</updated>
+    <updated>2014-02-14T17:40:00-08:00</updated>
     <id>http://gregfranko.com/blog/requirejs-presentation</id>
     <content type="html"><![CDATA[<p>Building JavaScript web apps today that you will still enjoy working on a year from now is difficult. The solution is to decrease code complexity and increase maintainability. Easier said than done.</p>
 
@@ -58,7 +60,7 @@
   <entry>
     <title type="html"><![CDATA[JavaScript Design Patterns]]></title>
     <link href="http://gregfranko.com/blog/javascript-design-patterns/"/>
-    <updated>2013-10-05T11:43:00-04:00</updated>
+    <updated>2013-10-05T11:43:00-07:00</updated>
     <id>http://gregfranko.com/blog/javascript-design-patterns</id>
     <content type="html"><![CDATA[<p>JavaScript design patterns are important for the maintainability and scalability of web applications. While working on the <a href="http://addthis.com/get/smart-layers" target="_blank">AddThis Smart Layers</a> product, the team focused on writing DRY (Don’t Repeat Yourself), consistent, and cross-browser compliant code. Before we talk about the specific techniques that we used, let’s first understand the Smart Layers use case.</p>
 
@@ -450,7 +452,7 @@
   <entry>
     <title type="html"><![CDATA[JavaScript Performance Tips]]></title>
     <link href="http://gregfranko.com/blog/javascript-performance-tips/"/>
-    <updated>2013-09-17T16:25:00-04:00</updated>
+    <updated>2013-09-17T16:25:00-07:00</updated>
     <id>http://gregfranko.com/blog/javascript-performance-tips</id>
     <content type="html"><![CDATA[<p>It is a competitive advantage for websites to be fast and responsive.  When building the <a href="https://www.addthis.com/get/smart-layers#.UjjAS2TXhTs" target="_blank">AddThis Smart Layers</a> tool suite, performance was a priority and first-class feature. Let’s take a look at some of the mobile and desktop performance best practices that I (and the rest of the AddThis team) used to make Smart Layers blazing fast.</p>
 
@@ -549,7 +551,7 @@
   <entry>
     <title type="html"><![CDATA[Instant Dependency Management with RequireJS]]></title>
     <link href="http://gregfranko.com/blog/instant-dependency-management-with-requirejs/"/>
-    <updated>2013-07-21T23:28:00-04:00</updated>
+    <updated>2013-07-21T23:28:00-07:00</updated>
     <id>http://gregfranko.com/blog/instant-dependency-management-with-requirejs</id>
     <content type="html"><![CDATA[<p>In May 2013, Packt Publishing published my Require.js book, <a href="http://www.packtpub.com/dependency-management-with-requirejs-how-to/book">Instant Dependency Management with RequireJS</a>.  This book is perfect for intermediate to advanced JavaScript developers who are interested in learning more about AMD and Require.js.</p>
 
